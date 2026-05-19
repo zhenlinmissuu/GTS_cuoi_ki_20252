@@ -1,0 +1,65 @@
+================================================================================
+FILE_NAME: GTS_Chuong_5_Gia_Tri_Rieng_Vector_Rieng.txt
+DESCRIPTION: Các phương pháp giải bài toán tìm giá trị riêng, vector riêng và khai triển kỳ dị của ma trận.
+================================================================================
+
+[SECTION_1: TỔNG QUAN CHƯƠNG 5]
+- MỤC TIÊU: Tìm đa thức đặc trưng, giá trị riêng, vector riêng của ma trận và ứng dụng giá trị riêng, vector riêng trong xấp xỉ ma trận.
+- CÁC DẠNG BÀI CHÍNH: 
+  + Tìm đa thức đặc trưng (Phương pháp Danielevski).
+  + Tìm giá trị riêng trội (Phương pháp lũy thừa).
+  + Tìm giá trị riêng trội tiếp theo (Phương pháp xuống thang).
+  + Khai triển kỳ dị của ma trận và ứng dụng.
+
+--------------------------------------------------------------------------------
+
+[SECTION_2: 5.1 PHƯƠNG PHÁP DANIELEVSKI (DANIELEVSKI'S METHOD)]
+- MỤC TIÊU: Tìm đa thức đặc trưng của ma trận.
+- THEORETICAL_BASIS: 
+  + Dựa trên việc chuyển đổi ma trận ban đầu thành ma trận đồng dạng Frobenius. Các hệ số của ma trận Frobenius chính là các hệ số của đa thức đặc trưng.
+  + Lưu ý thực tế: Phương pháp này kém ổn định. Khi tính toán trên máy tính với ma trận lớn, sai số làm tròn dồn lại sẽ khiến kết quả bị lệch rất nhiều.
+- ALGORITHM:
+  + Dùng các phép biến đổi sơ cấp để biến từng cột của ma trận thành vector đơn vị, bắt đầu từ cột cuối về cột đầu.
+  + Nhân ma trận nghịch đảo để bảo toàn tính đồng dạng.
+  + Trích xuất hệ số đa thức đặc trưng ở hàng cuối của ma trận kết quả.
+
+--------------------------------------------------------------------------------
+
+[SECTION_3: 5.2.A PHƯƠNG PHÁP LŨY THỪA (POWER METHOD)]
+- MỤC TIÊU: Tìm giá trị riêng trội (có trị tuyệt đối lớn nhất) và vector riêng.
+- THEORETICAL_BASIS: 
+  + Giả thiết: Ma trận có một giá trị riêng lấn át các giá trị khác (|λ1| > |λ2| ≥ ...).
+  + Khi nhân liên tiếp ma trận với một vector bất kỳ, thành phần của vector riêng tương ứng với λ1 sẽ tăng trưởng nhanh nhất và lấn át tất cả.
+  + Lưu ý thực tế: Phương pháp này sẽ hội tụ cực kỳ chậm, thậm chí thất bại nếu hai giá trị riêng lớn nhất gần bằng nhau.
+- ALGORITHM:
+  + Khởi tạo vector x_0 tùy ý.
+  + Bước lặp: Tính y_k = A * x_{k-1}.
+  + Tìm hằng số c_k là phần tử có trị tuyệt đối lớn nhất trong y_k (đây chính là xấp xỉ của λ1).
+  + Chuẩn hóa: x_k = y_k / c_k. Dừng khi c_k hội tụ.
+
+--------------------------------------------------------------------------------
+
+[SECTION_4: 5.2.B PHƯƠNG PHÁP XUỐNG THANG (DEFLATION METHOD)]
+- MỤC TIÊU: Tìm giá trị riêng lớn thứ 2, thứ 3... sau khi đã có giá trị riêng trội.
+- THEORETICAL_BASIS: 
+  + Triệt tiêu thành phần của giá trị riêng lớn nhất ra khỏi ma trận để tạo ra ma trận mới có giá trị riêng trội là λ2.
+  + Lưu ý thực tế: Mức độ rủi ro rất cao. Bất kỳ sai số nào trong lúc tìm λ1 cũng sẽ bị khuếch đại khi tìm λ2, λ3. Không nên dùng liên tiếp.
+- ALGORITHM:
+  + Đã biết λ1 và vector riêng v1.
+  + Tìm vector u sao cho tích vô hướng u^T * v1 = 1.
+  + Tạo ma trận mới A' = A - λ1 * v1 * u^T.
+  + Áp dụng Phương pháp lũy thừa trên A' để tìm λ2.
+
+--------------------------------------------------------------------------------
+
+[SECTION_5: 5.3 KHAI TRIỂN KỲ DỊ CỦA MA TRẬN (SVD)]
+- MỤC TIÊU: Phân tích cấu trúc ma trận và ứng dụng thực tế.
+- THEORETICAL_BASIS: 
+  + Mọi ma trận A (m x n) đều phân tích được thành tích 3 ma trận: A = U * Σ * V^T.
+  + Trong đó U, V là các ma trận trực giao và Σ là ma trận đường chéo chứa các giá trị kỳ dị.
+- ALGORITHM & APPLICATIONS:
+  + Thuật toán: Thường tính qua ma trận đối xứng A^T*A và A*A^T để tìm vector riêng và giá trị riêng (lấy căn bậc 2 ra giá trị kỳ dị).
+  + Ứng dụng: Xấp xỉ ma trận hạng thấp (giảm chiều dữ liệu, nén ảnh bằng cách cắt bỏ các giá trị kỳ dị nhỏ) và tính ma trận nghịch đảo suy rộng (giả nghịch đảo).
+
+================================================================================
+EOF

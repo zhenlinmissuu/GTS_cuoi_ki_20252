@@ -1,0 +1,90 @@
+CƠ SỞ LÝ THUYẾT CHẶT CHẼ VỀ HAI NHÓM PHƯƠNG PHÁP TÌM MA TRẬN NGHỊCH ĐẢO
+
+===================================================================
+PHẦN 1: PHƯƠNG PHÁP ĐÚNG VÀ PHƯƠNG PHÁP VIỀN QUANH (BORDERING METHOD)
+===================================================================
+
+1.1. Bản chất của Phương pháp đúng (Exact Methods)
+- Định nghĩa: Là các phương pháp đại số cho phép tìm ra chính xác ma trận nghịch đảo A^(-1) sau một số hữu hạn các bước tính toán (trong điều kiện giả định sai số làm tròn bằng 0).
+- Các phương pháp tiêu biểu nền tảng: Phương pháp Gauss-Jordan (biến đổi sơ cấp dòng trên ma trận ghép [A | I]), phương pháp sử dụng ma trận phụ hợp (Adjugate matrix).
+- Ưu điểm: Đảm bảo tính chính xác tuyệt đối về mặt lý thuyết đồ sộ.
+- Nhược điểm thực tế: Chi phí tính toán lớn đối với ma trận cỡ lớn (độ phức tạp O(n³)), dễ tích tụ sai số làm tròn khi thực hiện trên máy tính với số thực dấu phẩy động.
+
+1.2. Phương pháp Viền quanh (Bordering Method / Block Inversion)
+- Ý tưởng cốt lõi: Quy bài toán tìm ma trận nghịch đảo cấp n về việc tìm nghịch đảo của các ma trận con tăng dần từ cấp 1, cấp 2,..., đến cấp n bằng cách bổ sung thêm hàng và cột ("viền quanh").
+
+- Cơ sở toán học xây dựng công thức:
+  Giả sử ta đã biết ma trận nghịch đảo của ma trận con cấp (k-1), ký hiệu là A_(k-1)^(-1).
+  Ta muốn tìm ma trận nghịch đảo của ma trận con cấp k, ký hiệu là A_k, được cấu tạo bằng cách "viền quanh" A_(k-1):
+  
+  A_k = [ A_(k-1)   |   u_k  ]
+        [ -----------+--------]
+        [   v_k^T    |  alpha_k]
+  
+  Trong đó:
+  + u_k là vectơ cột kích thước (k-1) x 1.
+  + v_k^T là vectơ hàng kích thước 1 x (k-1).
+  + alpha_k là một phần tử số thực (hằng số).
+
+  Giả sử ma trận nghịch đảo A_k^(-1) có dạng phân khối tương ứng:
+  A_k^(-1) = [   P_(k-1)   |   q_k  ]
+             [ ------------+--------]
+             [    r_k^T    |  beta_k]
+
+  Áp dụng định nghĩa A_k * A_k^(-1) = I_k (Ma trận đơn vị cấp k), ta thiết lập hệ phương trình phân khối:
+  1) A_(k-1) * P_(k-1) + u_k * r_k^T = I_(k-1)
+  2) A_(k-1) * q_k + u_k * beta_k = 0
+  3) v_k^T * P_(k-1) + alpha_k * r_k^T = 0
+  4) v_k^T * q_k + alpha_k * beta_k = 1
+
+- Hệ thức nghiệm chặt chẽ:
+  Giải hệ phương trình phân khối trên, ta thu được các công thức tính toán tường minh theo thứ tự:
+  1. Tính đại lượng vô hướng: theta_k = A_(k-1)^(-1) * u_k  (Vectơ cột)
+  2. Tính đại lượng vô hướng: beta_k = 1 / (alpha_k - v_k^T * theta_k)
+  3. Nếu (alpha_k - v_k^T * theta_k) = 0, ma trận không khả nghịch.
+  4. Tính vectơ hàng: r_k^T = - beta_k * v_k^T * A_(k-1)^(-1)
+  5. Tính vectơ cột: q_k = - beta_k * theta_k
+  6. Tính ma trận khối chính: P_(k-1) = A_(k-1)^(-1) + beta_k * theta_k * (v_k^T * A_(k-1)^(-1)) = A_(k-1)^(-1) - q_k * (v_k^T * A_(k-1)^(-1))
+
+- Điều kiện áp dụng chặt chẽ:
+  + Tất cả các ma trận con dẫn đầu từ cấp 1 đến cấp n-1 của A đều phải khả nghịch (định thức khác 0).
+  + Thích hợp khi bài toán yêu cầu cập nhật ma trận nghịch đảo khi mở rộng dữ liệu theo từng chiều.
+
+===================================================================
+PHẦN 2: PHƯƠNG PHÁP LẶP VÀ PHƯƠNG PHÁP NEWTON (NEWTON-SCHULZ)
+===================================================================
+
+2.1. Bản chất của Phương pháp Lặp (Iterative Methods)
+- Định nghĩa: Thay vì tìm lời giải chính xác sau một số bước cố định, phương pháp lặp xây dựng một dãy các ma trận xấp xỉ {X_0, X_1, X_2,..., X_k} sao cho giới hạn của dãy số này khi k tiến ra vô cùng chính là A^(-1).
+- Ưu điểm: Rất mạnh đối với ma trận thưa, kích thước cực lớn, hoặc khi ta đã có sẵn một xấp xỉ ban đầu tốt. Có khả năng tự sửa sai số làm tròn trong quá trình lặp.
+
+2.2. Phương pháp Newton (Thuật toán Newton-Schulz)
+- Cơ sở lý thuyết: Bản chất là áp dụng phương pháp Newton-Raphson để tìm nghiệm của hàm số ma trận F(X) = X^(-1) - A = 0.
+- Đạo hàm Fréchet của hàm F(X) theo hướng H là -X^(-1) * H * X^(-1). 
+- Công thức lặp Newton tương ứng: X_(k+1) = X_k - [F'(X_k)]^(-1) * F(X_k)
+- Sau khi biến đổi đại số, ta thu được công thức lặp tuyến tính không chứa ma trận nghịch đảo:
+  
+  X_(k+1) = X_k * (2*I - A * X_k)
+
+- Chứng minh tính hội tụ bậc hai (Quadratic Convergence):
+  Gọi E_k = I - A * X_k là ma trận sai số tại bước lặp thứ k.
+  Ta có:
+  E_(k+1) = I - A * X_(k+1)
+          = I - A * [X_k * (2*I - A * X_k)]
+          = I - 2 * A * X_k + (A * X_k)^2
+          = (I - A * X_k)^2
+          = (E_k)^2
+  
+  Từ hệ thức E_(k+1) = (E_k)^2, lấy chuẩn ma trận hai vế (chuẩn dưới chuẩn toán tử tương thích):
+  ||E_(k+1)|| <= ||E_k||^2
+  Điều này chứng minh tốc độ hội tụ của phương pháp Newton-Schulz là bậc hai (số chữ số chính xác tăng gấp đôi sau mỗi bước lặp khi đã vào vùng hội tụ).
+
+- Điều kiện hội tụ ngặt nghèo:
+  Dãy lặp hội tụ về A^(-1) khi và chỉ khi bán kính phổ của ma trận sai số ban đầu nhỏ hơn 1:
+  rho(I - A * X_0) < 1
+  Hoặc một điều kiện đủ mạnh hơn trong thực hành: ||I - A * X_0|| < 1 (với một chuẩn ma trận bất kỳ).
+
+- Cách chọn ma trận xấp xỉ đầu X_0 trong thực tế:
+  Để đảm bảo hội tụ, X_0 thường được chọn theo phương pháp của Ben-Israel:
+  X_0 = alpha * A^T
+  Trong đó alpha là một số thực thỏa mãn: 0 < alpha < 2 / (sigma_max(A)^2), hoặc đơn giản hơn là alpha = 1 / (||A||_1 * ||A||_inf).

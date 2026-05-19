@@ -1,0 +1,76 @@
+================================================================================
+FILE_NAME: GTS_Chương_2_Phuong_Trinh_Phi_Tuyen_1_Chieu.txt
+DESCRIPTION: Cơ sở lý thuyết và phương pháp tính toán các thuật toán giải gần đúng phương trình phi tuyến f(x) = 0 trong không gian 1 chiều.
+================================================================================
+
+[SECTION_1: TÁCH NGHIỆM VÀ KHOẢNG PHÂN LY NGHIỆM]
+- THEORETICAL_BASIS: 
+  + Khoảng (a, b) được gọi là một khoảng phân ly nghiệm thực α của phương trình f(x) = 0 nếu trong khoảng đó phương trình chỉ chứa một nghiệm thực α duy nhất [3].
+  + Điều kiện đủ: Khoảng (a, b) là khoảng phân ly nghiệm nếu hàm số f(x) liên tục, f(a)f(b) < 0 và f(x) là hàm số đơn điệu liên tục trên đoạn [a, b] [4]. Tương đương với việc đạo hàm f'(x) giữ nguyên dấu trên đoạn [a, b] [5].
+- METHODOLOGY: 
+  + Phương pháp đồ thị: Vẽ đồ thị y = f(x) hoặc biến đổi f(x) = 0 <=> g(x) = h(x) rồi vẽ y = g(x) và y = h(x) [3].
+  + Xác định hoành độ giao điểm để tìm số nghiệm và khoảng chứa nghiệm, sau đó kết hợp tính đạo hàm để lập bảng biến thiên nhằm xác định chính xác khoảng phân ly nghiệm [3, 5].
+
+--------------------------------------------------------------------------------
+
+[SECTION_2: PHƯƠNG PHÁP CHIA ĐÔI (BISECTION METHOD)]
+- THEORETICAL_BASIS: 
+  + Cho phương trình f(x) = 0, f(x) liên tục và trái dấu tại 2 đầu đoạn [a, b] (giả sử f(a) < 0, f(b) > 0). Chắc chắn có ít nhất 1 nghiệm α thuộc [a, b] [6].
+  + Quá trình xây dựng các khoảng lồng nhau [a_i, b_i] sao cho luôn chứa nghiệm α. Khi đó, tồn tại giới hạn lim(n->+∞) a_n = lim(n->+∞) b_n = α [7].
+- ALGORITHM:
+  1. Đặt [a_0, b_0] = [a, b] [6].
+  2. Tại bước i, tính trung điểm x = (a_{i-1} + b_{i-1}) / 2 [7].
+  3. Tính f(x). Nếu f(a_{i-1}) * f(x) > 0, gán a_i = x, b_i = b_{i-1} [7, 8].
+  4. Nếu f(a_{i-1}) * f(x) < 0, gán b_i = x, a_i = a_{i-1} [7, 8].
+  5. Dừng khi f(x) = 0 hoặc |b - a| < ε [7, 8]. Nghiệm xấp xỉ ở bước n là (a_n + b_n) / 2 [7].
+- ERROR_EVALUATION:
+  + Sai số theo độ dài đoạn lồng nhau: |x_n - α| < (b - a) / 2^n [9].
+  + Sai số theo đạo hàm (nếu m = min(|f'(x)|) > 0 trên [a,b]): |x_n - α| < |f(x_n)| / m [9].
+
+--------------------------------------------------------------------------------
+
+[SECTION_3: PHƯƠNG PHÁP LẶP ĐƠN (SIMPLE ITERATION METHOD)]
+- THEORETICAL_BASIS: 
+  + Biến đổi tương đương phương trình f(x) = 0 thành dạng x = g(x) [10].
+  + Chọn giá trị ban đầu x_0 thuộc (a, b). Xây dựng dãy xấp xỉ x_n = g(x_{n-1}). Nếu dãy hội tụ, giới hạn của dãy chính là nghiệm η của phương trình [10].
+  + Điều kiện hội tụ: Nếu g(x) khả vi trên [a, b], g(x) thuộc [a, b] với mọi x thuộc [a, b] và tồn tại hệ số q > 0 sao cho |g'(x)| <= q < 1 với mọi x thuộc (a, b), thì quá trình lặp hội tụ với mọi x_0 [11].
+- ALGORITHM:
+  1. Khai báo hàm g(x), nhập giá trị x_0, sai số ε, hệ số q [12].
+  2. Vòng lặp: gán y = x_0, tính x_1 = g(y) [12].
+  3. Điều kiện lặp: thực hiện liên tục trong khi sai số q * |x_1 - y| / (1 - q) > ε [12, 13].
+- ERROR_EVALUATION:
+  + Sai số tiên nghiệm: |x_n - η| <= (q^n / (1 - q)) * |x_1 - x_0| [14].
+  + Sai số hậu nghiệm (dùng trong thuật toán): |x_n - η| <= (q / (1 - q)) * |x_n - x_{n-1}| [14].
+
+--------------------------------------------------------------------------------
+
+[SECTION_4: PHƯƠNG PHÁP TIẾP TUYẾN / NEWTON (TANGENT METHOD)]
+- THEORETICAL_BASIS: 
+  + Giả sử [a, b] là khoảng phân ly nghiệm, đạo hàm f'(x) và f''(x) liên tục, không đổi dấu và không triệt tiêu trên [a, b] [15].
+  + Phương pháp sử dụng tiếp tuyến của đường cong y = f(x) tại điểm (x_n, f(x_n)) để xấp xỉ điểm cắt trục hoành x_{n+1} [16].
+  + Điều kiện hội tụ: Cần chọn xấp xỉ ban đầu x_0 thuộc [a, b] sao cho thỏa mãn điều kiện Fourier: f(x_0)f''(x) > 0 [17]. 
+- ALGORITHM:
+  1. Kiểm tra dấu của f'(x) và f''(x). Nếu cùng dấu thì dãy x_n hội tụ giảm; nếu khác dấu thì dãy x_n hội tụ tăng [17]. Chọn x_0 phù hợp.
+  2. Công thức lặp truy hồi: x_{n+1} = x_n - [f(x_n) / f'(x_n)] [15].
+  3. Tính liên tục y = x, x = x - f(x)/f'(x) cho đến khi đạt sai số ε [18].
+- ERROR_EVALUATION:
+  + Giả sử m_1 = min|f'(x)| > 0 và M_2 = max|f''(x)| trên [a, b] [17].
+  + Công thức sai số: |x_n - η| <= [M_2 / (2 * m_1)] * (x_n - x_{n-1})^2 [19]. (Tốc độ hội tụ bậc 2).
+
+--------------------------------------------------------------------------------
+
+[SECTION_5: PHƯƠNG PHÁP DÂY CUNG (SECANT METHOD)]
+- THEORETICAL_BASIS: 
+  + Dựa trên việc thay thế cung AB của đồ thị y = f(x) bằng đường thẳng (dây cung) đi qua 2 điểm A(x_0, f(x_0)) và B(x_1, f(x_1)) [20].
+  + Giả thiết f'(x) và f''(x) không đổi dấu trên [x_0, x_1]. Gọi d là điểm cố định của dây cung. Nếu f(x_0)*f''(x) > 0 thì d = x_0, ngược lại d = x_1 [20, 21].
+  + Dãy số xây dựng bằng phương pháp này sẽ hội tụ đơn điệu đến nghiệm đúng α [22].
+- ALGORITHM:
+  1. Xác định điểm cố định d thuộc {a, b} (điểm thỏa mãn f(d)*f''(x)>0) [20, 21]. 
+  2. Công thức lặp truy hồi: x_n = x_{n-1} - [(d - x_{n-1}) / (f(d) - f(x_{n-1}))] * f(x_{n-1}) [21].
+  3. Cụ thể theo sơ đồ thuật toán: Đặt x = a - (b - a)*f(a) / (f(b) - f(a)). Nếu f(x)f(a) < 0 thì cập nhật b = x; ngược lại a = x. Lặp lại quá trình tính x mới cho đến khi |x - điểm cũ| <= ε [23, 24].
+- ERROR_EVALUATION:
+  + Giả sử 0 < m_1 <= |f'(x)| <= M_1 trên đoạn đang xét [25].
+  + Công thức sai số: |x_n - α| <= [(M_1 - m_1) / m_1] * |x_n - x_{n-1}| [25].
+
+================================================================================
+EOF

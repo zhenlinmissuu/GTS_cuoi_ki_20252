@@ -1,0 +1,130 @@
+================================================================================
+FILE_NAME: GTS_Chuong_3_He_Phuong_Trinh_Phi_Tuyen_Nhieu_Chieu.txt
+DESCRIPTION: Cơ sở lý thuyết và phương pháp tính toán các thuật toán giải gần đúng hệ phương trình phi tuyến trong không gian nhiều chiều (cụ thể xét hệ 2 biến).
+================================================================================
+
+[SECTION_1: TỔNG QUAN CHƯƠNG 3]
+- MỤC TIÊU: Tìm nghiệm gần đúng (x*, y*) cho hệ phương trình phi tuyến tổng quát dạng f(x, y) = 0 và g(x, y) = 0 trong không gian nhiều chiều [1, 2].
+- Các phương pháp tiếp cận chính bao gồm Phương pháp lặp đơn và Phương pháp Newton [1].
+
+--------------------------------------------------------------------------------
+
+[SECTION_2: PHƯƠNG PHÁP LẶP ĐƠN (SIMPLE ITERATION METHOD)]
+- THEORETICAL_BASIS: 
+  + Biến đổi hệ phương trình ban đầu f(x, y) = 0, g(x, y) = 0 về dạng tương đương: x = F(x, y) và y = G(x, y) [3].
+  + Điều kiện hội tụ: Giả sử hệ có nghiệm đúng (α, β) nằm trong hình chữ nhật D = {a <= x <= b; c <= y <= d}. Nếu trong miền D, các hàm F, G liên tục, có đạo hàm riêng liên tục và thỏa mãn điều kiện:
+    |∂F/∂x| + |∂G/∂x| <= q  VÀ  |∂F/∂y| + |∂G/∂y| <= q  (với 0 < q < 1)
+    thì quá trình lặp sẽ hội tụ với xấp xỉ đầu M0(x0, y0) thuộc D bất kỳ. Khi đó, hệ chỉ có một nghiệm duy nhất trong miền D [4].
+- ALGORITHM:
+  1. Xác định miền hình chữ nhật D chứa nghiệm và đảm bảo điều kiện hội tụ q < 1 [4, 5].
+  2. Chọn một điểm M0(x0, y0) bất kỳ thuộc miền D làm xấp xỉ ban đầu [3, 4].
+  3. Sử dụng công thức lặp truy hồi để tìm các nghiệm xấp xỉ tiếp theo:
+     x_n = F(x_{n-1}, y_{n-1})
+     y_n = G(x_{n-1}, y_{n-1}) với n = 1, 2, 3... [4].
+  4. Lặp lại quá trình tính toán đến bước n mong muốn [6].
+- ERROR_EVALUATION:
+  + Công thức đánh giá sai số để tìm mức độ sai lệch của nghiệm xấp xỉ: 
+    |α - x_n| + |β - y_n| <= (q^n) * {|b - a| + |d - c|} [5].
+
+--------------------------------------------------------------------------------
+
+[SECTION_3: PHƯƠNG PHÁP NEWTON (NEWTON'S METHOD FOR SYSTEMS)]
+- THEORETICAL_BASIS: 
+  + Phương pháp dựa trên việc sử dụng khai triển Taylor của hai hàm f(x, y) và g(x, y) tại lân cận điểm xấp xỉ (x0, y0). Bằng cách bỏ qua các vô cùng bé bậc cao (chứa h0^2, k0^2), hệ phương trình phi tuyến được tuyến tính hóa [2, 7].
+  + Điều kiện hội tụ: Đòi hỏi phải biết trước một điểm xấp xỉ ban đầu (x0, y0) khá gần với nghiệm chính xác (x*, y*) của hệ [2]. Đồng thời, định thức Jacobi (J0) tại các điểm xấp xỉ phải khác 0 để hệ phương trình tuyến tính có nghiệm duy nhất [7].
+- ALGORITHM:
+  1. Xác định xấp xỉ ban đầu (x0, y0) [2].
+  2. Tại mỗi bước lặp n, tính định thức Jacobi J(x_n, y_n):
+     J(x_n, y_n) = | f'x(x_n, y_n)   f'y(x_n, y_n) |
+                   | g'x(x_n, y_n)   g'y(x_n, y_n) | [7].
+  3. Tính các bước nhảy h_n và k_n theo hệ số ma trận:
+     h_n = (-1 / J(x_n, y_n)) * | f(x_n, y_n)   f'y(x_n, y_n) |
+                                | g(x_n, y_n)   g'y(x_n, y_n) | [8].
+     k_n = (-1 / J(x_n, y_n)) * | f'x(x_n, y_n)   f(x_n, y_n) |
+                                | g'x(x_n, y_n)   g(x_n, y_n) | [8, 9].
+  4. Cập nhật giá trị nghiệm cho bước tiếp theo:
+     x_{n+1} = x_n + h_n
+     y_{n+1} = y_n + k_n [8].
+  5. Tiếp tục lặp lại các bước 2-4 với điểm xấp xỉ mới (x_{n+1}, y_{n+1}) cho đến khi độ lệch h_n, k_n đủ nhỏ [7, 10].
+
+================================================================================
+EOF
+================================================================================
+FILE_NAME: GTS_Chuong_4_He_Dai_So_Tuyen_Tinh.txt
+DESCRIPTION: Cơ sở lý thuyết và thuật toán các phương pháp giải hệ đại số tuyến tính trong không gian nhiều chiều, bám sát theo đề cương MI3041.
+================================================================================
+
+[SECTION_1: TỔNG QUAN CHƯƠNG 4]
+- MỤC TIÊU: Tìm nghiệm đúng hoặc gần đúng cho phương trình đại số tuyến tính dạng Ax = b trong không gian nhiều chiều [5, 6].
+- CẤU TRÚC ĐỀ CƯƠNG MI3041 GỒM CÁC PHẦN:
+  + 4.1 Phương pháp Gauss và Gauss-Jordan [1].
+  + 4.2 Phương pháp phân tách LU và phương pháp Cholesky [2].
+  + 4.3 Phương pháp lặp đơn và lặp Jacobi [2].
+  + 4.4 Phương pháp lặp Seidel và lặp Gauss-Seidel [2].
+  + 4.5 & 4.6 Tìm ma trận nghịch đảo bằng phương pháp đúng và viền quanh [3].
+  + 4.7 & 4.8 Tìm ma trận nghịch đảo bằng phương pháp lặp và Newton [4].
+- LƯU Ý DỮ LIỆU: Các tài liệu hiện hành chỉ cung cấp cơ sở lý thuyết chi tiết cho Mục 4.2 và mở rộng thêm Phương pháp truy đuổi cho ma trận 3 đường chéo.
+
+--------------------------------------------------------------------------------
+
+[SECTION_2: 4.1 PHƯƠNG PHÁP GAUSS VÀ GAUSS-JORDAN]
+- LƯU Ý: Chi tiết thuật toán không có trong tập dữ liệu hiện tại, tuy nhiên quá trình thế ngược (quá trình nghịch) của phương pháp Gauss được sử dụng làm cơ sở để giải các hệ tam giác trong phương pháp phân rã LU [7].
+
+--------------------------------------------------------------------------------
+
+[SECTION_3: 4.2.A PHƯƠNG PHÁP PHÂN TÁCH LU (LU DECOMPOSITION)]
+- THEORETICAL_BASIS: 
+  + Áp dụng cho hệ phương trình tuyến tính Ax = b [6].
+  + Nếu ma trận vuông A có tất cả các định thức con chính khác 0, nó có thể được phân tích duy nhất dưới dạng A = LU [6].
+  + Trong đó, L là ma trận tam giác dưới không suy biến, U là ma trận tam giác trên không suy biến [6].
+  + Để giải hệ có n x n phương trình và n x n + n ẩn, ta có thể chọn trước đường chéo chính của U: diag(U) = [1, 1, ..., 1] [8].
+- ALGORITHM:
+  1. Phân rã ma trận:
+     + Bước 1: Tìm L1 và U1. Cột L1 = Cột A1; Hàng U1 = Hàng A1 / l_11 [9].
+     + Bước k: Tìm Lk và Uk. 
+       L_k = A_k - Tổng(L_t * u_tk) (từ t=1 đến k-1) [9].
+       U_k = (A_k - Tổng(U_t * l_kt)) / l_kk (từ t=1 đến k-1) [9].
+     + Dạng tọa độ tương đương: l_i1 = a_i1; u_1i = a_1i / a_11 [7].
+  2. Quá trình giải hệ Ax = b <=> LUx = b [7]:
+     + Đặt y = Ux [7].
+     + Giải hệ tam giác dưới Ly = b để tìm ma trận y [7].
+     + Sử dụng quá trình nghịch của phương pháp Gauss để giải hệ tam giác trên Ux = y nhằm tìm nghiệm x cuối cùng [7, 10, 11].
+
+--------------------------------------------------------------------------------
+
+[SECTION_4: 4.2.B PHƯƠNG PHÁP CHOLESKY (CHOLESKY DECOMPOSITION)]
+- THEORETICAL_BASIS: 
+  + Áp dụng khi ma trận hệ số A là ma trận đối xứng (a_ij = a_ji với mọi i, j) và det(A) khác 0 [11].
+  + Ma trận A có thể phân tích thành dạng A = Q^T * Q, trong đó Q là ma trận tam giác trên [11].
+  + Việc giải hệ Ax = b quy về giải 2 hệ phương trình tuyến tính liên tiếp: Q^T * y = b và Q * x = y [11].
+- ALGORITHM:
+  1. Tìm các phần tử của ma trận Q:
+     + q_11 = căn bậc hai của (a_11) [12].
+     + q_1j = a_1j / q_11 (với i = 2..n) [12].
+     + q_ii = căn bậc hai của (a_ii - Tổng(q_ki^2)) (k từ 1 đến i-1) [12, 13].
+     + q_ij = (a_ij - Tổng(q_ki * q_kj)) / q_ii (với i < j) [13].
+     + q_ij = 0 (với i > j) [13].
+  2. Giải hệ Q^T * y = b: y_1 = b_1 / q_11; y_n = (b_n - Tổng(q_1n*y_1 + ...)) / q_nn [13].
+  3. Giải hệ Q * x = y: x_n = y_n / q_nn; x_1 = (y_1 - Tổng(q_2n*x_2 + ...)) / q_11 [13, 14].
+- SYSTEM_EXCEPTIONS & REAL-WORLD ADJUSTMENTS:
+  + Nếu u_ii = 0: Cần thông báo ma trận A suy biến, thuật toán thất bại do không thỏa mãn điều kiện [15].
+  + Nếu u_ii < 0: Cần chuyển sang tính toán với số phức và thực hiện các phép toán trên tập số phức [15].
+  + Nếu A không đối xứng và không suy biến: Biến đổi hệ ban đầu thành A^T * Ax = A^T * b. Đặt M = A^T * A = Q^T * Q và d = A^T * b, sau đó giải bình thường [15].
+
+--------------------------------------------------------------------------------
+
+[SECTION_5: BỔ SUNG - PHƯƠNG PHÁP TRUY ĐUỔI CHO MA TRẬN 3 ĐƯỜNG CHÉO]
+- THEORETICAL_BASIS: 
+  + Áp dụng cho hệ phương trình có ma trận hệ số dạng 3 đường chéo (chỉ có đường chéo chính và 2 đường chéo kề bên có phần tử khác 0) [16].
+  + Điều kiện ổn định thuật toán: a_i > 0, b_i > 0, c_i >= a_i + b_i. Đồng thời 0 <= b_0/c_0 < 1 và 0 <= a_n/c_n < 1 [17, 18].
+- ALGORITHM (TRUY ĐUỔI PHẢI):
+  1. Tính các hệ số truy hồi:
+     + alpha_1 = b_0 / c_0; beta_1 = d_0 / c_0 [16].
+     + alpha_{i+1} = b_i / (c_i - alpha_i * a_i) [16, 17].
+     + beta_{i+1} = (a_i * beta_i + d_i) / (c_i - alpha_i * a_i) [17].
+  2. Tìm nghiệm x:
+     + x_n = (a_n * beta_n + d_n) / (c_n - a_n * alpha_n) [17].
+     + Thế ngược để tìm các nghiệm trước: x_i = alpha_{i+1} * x_{i+1} + beta_{i+1} [17].
+
+================================================================================
+EOF
