@@ -1,0 +1,198 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: 07b_Gauss_Jordan ma trận B.pdf ===
+Tổng số trang: 12
+========================================
+
+--- Trang 1 / 12 ---
+PP GAUSS VÀ GAUSS-JORDAN
+GIẢI  PT  Ax = b
+Hà Thị Ngọc Yến
+Hà nội, 2026
+
+--- Trang 2 / 12 ---
+3.1 Bài toán
+• Ax = b, A cỡ mxn, b cỡ mx1, x cỡ nx1
+• Mô hình kinh tế Leotief:
+– Mô hình định giá:  X = CX
+C(i,j) = tỷ lệ cung cấp sp của ngành j cho
+ngành i = nhu cầu của ngành i đối với ngành j
+- Mô hình định lượng: X = CX +D
+
+--- Trang 3 / 12 ---
+Bài toán
+11 12 1 11 1 11 1
+21 22 2 21 2 21 2
+1 2 1 1
+n k k
+n k k
+m m mn n nk m mk
+a a a x x b b
+a a a x x b b
+a a a x x b b
+    
+    
+     =    
+    
+    
+
+
+--- Trang 4 / 12 ---
+Phương pháp Gauss
+Ý tưởng:
+• Quy trình thuận (QTT): Dùng phép khử dần 
+ẩn khỏi các phương trình đề đưa ma trận bổ 
+sung về dạng bậc thang.
+• Quy trình nghịch (QTN): Dùng phép thế từ hệ 
+bậc thang để tìm dần giá trị các ẩn.
+
+--- Trang 5 / 12 ---
+PP Gauss – QTT
+• B1:  Khởi tạo
+• B2: Kiểm tra nếu
+B3, trái lại thì sang B6
+• B3: Nếu thì kết thúc QTT
+Nếu không, thì sang B4
+• B4: Cho k chạy từ i+1 đến m, thực hiện
+biến đổi
+11 ; 1 ; [0,0,....,0] mi j ind = = =
+ 0ija ind i j  = 
+kj
+k i k
+ij
+aL L La−  
+im=
+
+--- Trang 6 / 12 ---
+PP Gauss - QTT
+• B5: Nếu thì QTT kết thúc, trái lại
+B2
+• B6: Cho               
+• B7: Kiểm tra nếu thì đổi chỗ 2 hàng
+t và i, và B3, trái lại sang B8
+• B8: Nếu thì QTT kết thúc
+Nếu thì B2, 
+Nếu thì B7       
+1.ti=+
+0tja 
+;t m j n==
+1jj= + 
+ ind i j =
+1tt= + 
+1 ; 1i i j j= + = + 
+jn=
+;t m j n=
+tm
+
+--- Trang 7 / 12 ---
+PP Gauss - QTN
+Dành cho các bạn tự viết
+
+--- Trang 8 / 12 ---
+Phương pháp Gauss - Jordan
+Ý tưởng:
+• Hạn chế sai số tính toán khi gặp các phép
+chia cho số gần 0 bằng cách chọn phần tử
+khử thích hợp
+• Dùng phép khử ẩn thứ k (tương ứng với
+cột có chứa phần tử khử) khỏi tất cả các
+hàng không chứa phần tử khử
+
+--- Trang 9 / 12 ---
+Chọn phần tử khử
+• Ưu tiên 1:
+Chọn để các phép chia 
+cho không có sai số hoặc sai số nhỏ.
+• Ưu tiên 2:
+Chọn sao cho
+• Chú ý: Phần tử khử thứ k được chọn từ các hàng và cột không
+chứa các phần tử khử đã chọn trước đó. 
+( ) 1 ;2;4;5...
+pq
+ka =
+( )k
+pqa
+( ) ( )1
+,maxkk
+pq i j ijaa −=
+( )k
+pqa
+
+--- Trang 10 / 12 ---
+Quá trình khử
+Cho t chạy từ 1 đến m,              thực hiện 
+phép biến đổi
+,tp
+tq
+t p t
+pq
+aL L La−
+
+--- Trang 11 / 12 ---
+Quá trình khử
+11 12 1
+21 22 2
+1 1 1
+11 12 1 1 11 1
+1 1 1
+21 22 2 2 21 2
+112 12
+112
+... 0 ...... ...
+... ... ... 0 ...
+... ... ... ...
+... ... ...
+...
+... ...
+n
+n
+qn r
+qn r
+p prp p pq pn p p pq
+m mrm m mq mn
+a a aa a a a bb
+a a a a bb a a a
+bba a a a a a a
+bba a a a
+
+
+
+
+ 
+
+
+
+
+1
+12
+1
+1
+1
+22
+11 1 1
+...
+...
+... 0 ... mm m mn
+r
+r
+prppn
+mr
+b b
+bb
+bba
+bba a a
+
+
+
+
+
+
+
+
+
+
+
+
+--- Trang 12 / 12 ---
+2 4 5 -6 7 3
+2 3 5 2 1 4
+5 8.5 13 -3 8.5 9
+-3 -4 -9 -11 4.3 -8

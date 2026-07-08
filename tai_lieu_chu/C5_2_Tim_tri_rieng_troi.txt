@@ -1,0 +1,477 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C5_2_Tim_tri_rieng_troi.pdf ===
+Tổng số trang: 14
+========================================
+
+--- Trang 1 / 14 ---
+PP lũy thừa tìm giá trị riêng trội
+PP xuống thang tìm giá trị riệng trội
+tiếp theo
+Hà nội,  2026
+
+--- Trang 2 / 14 ---
+Phương pháp lặp tìm giá trị riêng trội
+
+--- Trang 3 / 14 ---
+Giá trị riêng trội 
+• Giả sử ma trận A vuông cỡ n thực có các giá trị
+riêng khác nhau xếp theo thứ tự:
+• Các véc tơ riêng ứng với các giá trị riêng:  
+• Khi đó
+▪ là giá trị riêng trội
+▪ là các giá trị riêng trội
+▪ …
+12 ... s    
+, 1, .i i iAv v i s==
+1 2 1  
+1 2 3 1 2 ,    =  
+
+--- Trang 4 / 14 ---
+PP lũy thừa tìm GTR 
+• Giả sử
+1 1 2 2 ssx a v a v a v= + + +
+1 1 2 2
+1 1 1 2 2 2
+2 2 2 2
+1 1 1 2 2 2
+1 1 1 2 2 2
+2
+1 1 2 2
+1 1 1
+ss
+s s s
+s s s
+k k k k
+s s s
+kkk
+s
+ssk k k
+Ax a Av a Av a Av
+a v a v a v
+A x a v a v a v
+A x a v a v a v
+Ax a v a v a v
+  
+  
+  
+
+  
+ = + + +
+= + + +
+ = + + +
+ = + + +
+ = + + +
+
+
+--- Trang 5 / 14 ---
+PP lũy thừa tìm GTR 
+• Trường hợp
+12
+( )
+( )
+( )
+2
+1 1 2 2
+1 1 1
+2
+1 1 2 2 1 1
+1 1 1
+1
+1 1 1 1 1
+1 1 1
+1
+1
+lim lim
+1, .
+kkk
+s
+ssk k k
+kkk
+s
+ssk k kkk
+k k k
+k k k
+k
+i
+k
+i
+Ax a v a v a v
+Ax a v a v a v a v
+A x A x A xa v A a v
+Ax
+in
+Ax
+
+  
+
+  
+  
+
+→ →
++
++
+= + + +
+= + + + =
+   =  
+
+   =
+
+
+--- Trang 6 / 14 ---
+PP lũy thừa tìm GTR 
+• Trường hợp
+1 2 3 1 2 ,    =  =−
+( )
+( )
+( )
+2
+1 1 2 2
+1 1 1
+222
+2 3
+1 1 2 2 3 32 2 2
+1 1 1
+1 1 2 2
+2 2 2
+22
+1 1 2 2 12 2 2
+1 1 1
+22
+2
+1 2
+lim lim 1
+kkk
+s
+ssk k k
+nnn
+n s
+ssn n nnn
+n n n
+n n n
+n
+i
+n
+i
+Ax a v a v a v
+Ax a v a v a v a v
+a v a v
+A x A x A xa v a v A
+Ax
+Ax
+
+  
+
+  
+  
+
+→ →
++
+= + + +
+= + − + + +
+=+
+     +  =    
+   
+
+
+
+--- Trang 7 / 14 ---
+PP lũy thừa tìm GTR 
+• Trường hợp
+1 2 3 1 2 ,.    =  =
+( )
+2
+1 1 2 2 1;2
+1 1 1
+3
+33
+11
+2
+1 1 2 2 1 1 1 2 2 2
+11
+21
+1 2 1 2
+,
+lim 0
+0.
+kkk
+s
+ssk k k
+nn
+s
+ssnnn
+nn
+n n n
+nn
+n n n
+Ax a v a v a v i
+a v a v
+Ax a v a v A x a v a v
+A x A x A x
+     
+
+
+ 
+  
+→
+++
+= + + + = 
+ + + =
+  +  = +
+ − + + =
+
+
+--- Trang 8 / 14 ---
+PP lũy thừa tìm GTR 
+• Trường hợp
+1 2 3 1 2 ,.    =  =
+( ) ( )
+( ) ( ) ( )
+( ) ( ) ( )
+( ) ( ) ( )
+1 2 1 2
+21
+2
+2
+21
+1;2
+21
+: ; ; 1, , 0,0,0
+0 1,
+0
+1
+0
+n n n
+i i i
+n n n
+r r r
+n n n
+s s s
+p q p q
+A x p A x q A x i m
+t pt q
+A x A x A x
+A x A x A x
+  
+
+
+++
+++
+++
+= + = − 
+ − + =  =
+− + =
+ = 
+
+--- Trang 9 / 14 ---
+PP lũy thừa tìm GTR, VTR 
+• Trường hợp
+1 2 3 1 2 ,.    =  =
+( )
+( )
+( ) ( )
+( ) ( )
+1 1 1 2 2 2
+1
+1 2 2 2 1 2
+1
+2 1 1 1 2 1
+11
+1 2 1
+11
+2 1 2
+n n n
+n n n
+n n n
+n n n n
+n n n n
+A x a v a v
+A x A x a v
+A x A x a v
+A A x A x A x A x
+A A x A x A x A x
+
+   
+   
+  
+  
++
++
+++
+++
++
+ −  − −  −
+ − = − − = −
+
+--- Trang 10 / 14 ---
+PP XUỐNG THANG 
+• Cho ma trận vuông cấp n:
+• Ký hiệu các giá trị riêng và véc-tơ riêng t.ư của
+A : 
+• Véc-tơ x thỏa mãn:
+• Ma trận xuống thang:
+• Giá trị riêng và véc-tơ riêng t.ư. của B:
+• Liên hệ giữa các vtr của A và B:
+12, , , , . n i i i Av v    =
+11
+TB A v x=−
+nnA 
+1 1Txv =
+20, , , , . n i i i Bu u   =
+( ) ( )1 1 1
+T
+i i i iv u x u v  = − +
+
+--- Trang 11 / 14 ---
+PP XUỐNG THANG 
+• Cách chọn 1: 
+•
+( )
+1
+1 1 1 1 1 1 1
+11
+1
+11
+11
+1 1 1 1
+1
+11
+11
+1 1 1 1 1 1 1 1
+, 1.
+0
+0
+TT
+T
+T
+T
+T
+k k k k k k T
+T T T T
+k k k k
+wAv v A w w x x v wv
+B A v w wv
+Bv Av v
+Bv Av v w v Av vwv
+A w w w Av w v w v
+
+
+
+ 
+   
+= = =  =
+=−
+ = − =
+= − = =
+=  =  =  
+
+--- Trang 12 / 14 ---
+PP XUỐNG THANG 
+• Cách chọn 2:
+1 , 1 , , 1 ,
+1
+1 T
+s s s s s s s s nx a a a a a
+−+= 
+1 1 , 1 , , 1 ,s s s s s s s s nB A v a a a a a A −+= − =
+( )  
+ 
+11
+1 1 1 1
+, 0 0 0 0
+s s s n
+s v I v
+e e e v e e −+
+ = −
+=−
+1 1, 1, 1.T
+sx v v==
+
+--- Trang 13 / 14 ---
+PP XUỐNG THANG 
+• Xét
+• Đặt
+• Ma trận mới:
+0 : 0 1. ssx s x x    =
+( )  
+( )
+( )
+11,
+,
+,0
+s s s m
+m
+s
+s
+s x e e e x e e
+s x z z z x s
+s x x x x x
+− = −
+ = −  
+ = − =
+( ) ( )
+( ) ( )
+( ) ( ) ( )
+2
+1
+2
+1 1 1 1
+2
+11
+,
+,0
+, , , 1.i i i
+A s v A
+A v s v v
+A s v v s v v i
+
+
+=
+= =
+ =  
+
+--- Trang 14 / 14 ---
+PP XUỐNG THANG 
+• GT:
+• Sau  k - 1  bước xuống thang, đã tìm được
+• Tìm gtr, vtr tiếp theo từ ma trận
+, 1,i i iAv v i r==
+( ) ( ) ( )
+( ) ( )
+( ) ( ) ( )
+( ) ( ) ( )
+1
+11
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1
+,
+,0
+, , 0. 0, 1
+, , , 1.
+kk
+kk
+k
+k k k k k
+k
+k k i k k k
+k
+k k i i i
+A v s A
+A v v s v
+A v s v v s v i k
+A v s v v s v i k
+
+
+−
+−−
+− − − − −
+− − − − −
+−−
+=
+= =
+ = =  −
+ =   −
+( ) ( ), , 1, 1,
+k
+ii v i k A =−
+( )k
+A

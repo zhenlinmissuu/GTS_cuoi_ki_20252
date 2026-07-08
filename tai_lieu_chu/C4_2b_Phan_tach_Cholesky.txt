@@ -1,0 +1,345 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C4_2b_Phan_tach_Cholesky.pdf ===
+Tổng số trang: 14
+========================================
+
+--- Trang 1 / 14 ---
+PP PHÂN TÁCH LU VÀ 
+PP CHOLESKI GIẢI PT Ax=b.
+Hà Thị Ngọc Yến
+Hà nội, 2026
+
+--- Trang 2 / 14 ---
+Bài toán
+11 12 1 1 1
+21 22 2 2 2
+12
+n
+n
+n n nn n n
+a a a x b
+a a a x b
+a a a x b
+    
+    
+     =    
+    
+    
+
+
+--- Trang 3 / 14 ---
+PP phân tách LU
+Ý tưởng:
+• Khi giải HĐSTT, nếu ma trận liên kết là ma 
+trận tam giác thì việc giải nó là đơn giản, tính 
+toán ít vì chỉ cần thực hiện QTN của Gauss là 
+đủ.
+• Tách ma trận liên kết thành tích của hai ma 
+trận tam giác. 
+
+--- Trang 4 / 14 ---
+PP phân tách LU
+Tách Ma trận A thành tích của ma trận tam 
+giác dưới (Lower) và ma trận tam giác trên 
+(Upper)
+11 12 1 11 11 12 1
+21 22 2 21 22 22 2
+1 2 1 2
+nn
+nn
+n n nn n n nn nn
+a a a l u u u
+a a a l l u u
+a a a l l l u
+     
+     
+      =     
+     
+     
+A LU=
+
+--- Trang 5 / 14 ---
+PP phân tách LU
+Phương trình trên tương ứng với một hệ có
+• phương trình
+• ẩn
+Có thể chọn trước giá trị, các giá trị còn
+lại tìm được bằng cách giải phương trình.  
+nn
+n n n+
+n
+
+--- Trang 6 / 14 ---
+PP phân tách LU
+Chọn
+11 12 1 11 12 1
+21 22 2 21 22 2
+1 2 1 2
+11 11
+11 1 1
+11
+1 1 2 2
+1
+1
+1
+, 2,
+, 2,
+, 2, , 2,
+n n
+n n
+n n nn n n nn
+kk
+ii
+i k i k ii ik ik
+a a a l uu
+a a a l l u
+a a a l l l
+la
+l u a k n
+l a i n
+l u l u l u a k n i n
+    
+    
+    =    
+       
+=
+ == ==
+ + + + = = =
+1, 1, .iiu i n==
+
+--- Trang 7 / 14 ---
+PP phân tách LU
+•
+( )
+2
+11
+1
+1
+11
+1 12
+2 1 12 2
+11
+2 21 1
+2
+22
+3 3 1 13 2 23
+3 31 1 32 2
+3
+33
+1 1 2 2 , 1 1,
+, 1,
+, 2,
+,2
+,2
+,3
+,3
+,
+i
+ii
+k
+k
+i
+i i i
+kk
+k
+i i i i
+k k k
+k
+it it i t i t i t t t
+tk
+tk
+l a i n
+au k n a
+aal a l u a i a
+a l uuk l
+l a l u l u i
+a l u l uuk l
+l a l u l u l u i t
+a
+u
+−−
+ == ==
+ = − = −  − =
+= − − 
+ −+ =
+= − − − − 
+−
+=
+ ( )1 1 2 2 , 1 1, ,t k t k t t t k
+tt
+l u l u l u
+ktl
+−−
+
+ + + + 
+
+
+
+--- Trang 8 / 14 ---
+PP phân tách Choleski
+Chọn
+Điều kiện: A là ma trận đối xứng không suy biến
+11 12 1 11 11 12 1
+12 22 2 12 22 22 2
+1 2 1 2
+nn
+nn
+n n nn n n nn nn
+a a a u u u u
+a a a u u u u
+a a a u u u u
+     
+     
+      =     
+     
+     
+TTU L A U U=  =
+
+--- Trang 9 / 14 ---
+PP phân tách Choleski
+Chọn
+Điều kiện: A là ma trận đối xứng không suy biến
+2
+11 11
+11 1 1
+22
+12 22 22
+12 1 22 2 2
+2 2 2
+12
+1 1 2 2
+, 2,
+,
+, 3, ,
+, 3,
+, 1, , 3, 1
+kk
+k k k
+i i ii ii
+i k i k ii ik ik
+ua
+u u a k n
+u u a
+u u u u a k n
+u u u a i n
+u u u u u u a k i n i n
+ =
+
+==
+ += + = =
+ + + + = =
+ + + = = + = −
+TTU L A U U=  =
+
+--- Trang 10 / 14 ---
+PP phân tách Choleski
+Chọn
+Điều kiện: A là ma trận đối xứng không suy biến
+11 11
+1
+1
+11
+2
+22 22 12
+2 12 1
+2
+22
+, 2,
+,
+, 3, ,
+...........
+k
+k
+kk
+k
+ua
+au k n u
+u a u
+a u uu k n u
+ =
+
+ ==
+ = −
+ − ==
+
+
+
+TTU L A U U=  =
+
+--- Trang 11 / 14 ---
+PP phân tách Choleski
+Chọn
+Điều kiện: A là ma trận đối xứng không suy biến
+( )
+( )
+( )
+2 2 2 2
+1 2 1,
+1 1 2 2 1, 1,
+2 2 2
+1 2 1,
+,
+1, , 2, 1
+ii ii i i i i
+ik i k i k i i i k
+ik
+ii
+nn nn n n n n
+u a u u u
+a u u u u u u
+u u
+k i n i n
+u a u u u
+−
+−−
+−
+ = − + + + − + + + =
+= + = −
+= − + + +
+TTU L A U U=  =
+
+--- Trang 12 / 14 ---
+PP phân tách Choleski
+Chú ý: Khi viết thuật toán, cần chú ý một số
+trường hợp đặc biệt:
+cần thông báo ma trận A suy biến,
+không thỏa mãn điều kiện thực hiện phương
+pháp.
+cần chuyển sang tính toán với số phức
+và thực hiện các phép toán như trong công thức
+nhưng trên tập số phức.
+1. 0iiu =
+2. 0iiu 
+
+--- Trang 13 / 14 ---
+Phương pháp Choleski
+1. Trường hợp A đối xứng, cần sử dụng quy
+trình ngược của PP Gauss cho hệ (1):
+2. Trường hợp A không đối xứng:
+( )1T
+T
+Ux y
+Ax b U Ux b
+U y b
+==  =   =
+1
+, : , :
+A T T T T
+T
+T
+Ax b A Ax A b M A A d A b
+Ux y
+Mx d U Ux d
+U y d
+−
+=  = = =
+==  =   =
+
+--- Trang 14 / 14 ---
+Phương pháp Choleski
+Chú ý:
+Do đó, khi lập trình, không cần kiểm tra điều
+kiện không suy biến của A vì nếu A suy biến sẽ
+có giá trị
+Thuật toán: dành cho các bạn tự viết
+0 0 det 0TTx A Ax x A    
+0.iiu =

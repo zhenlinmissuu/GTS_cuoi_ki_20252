@@ -1,0 +1,155 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C3_1_Lap_don_nhieu_chieu.pdf ===
+Tổng số trang: 8
+========================================
+
+--- Trang 1 / 8 ---
+PHƯƠNG PHÁP NEWTON GIẢI GẦN
+ĐÚNG HỆ PHƯƠNG TRÌNH PHI
+TUYẾN
+Gv: Ts Đỗ Đức Tâm.
+Ngày 20 tháng 4 năm 2023 1 / 8
+
+--- Trang 2 / 8 ---
+Bài toán
+Xét hệ phương trình (
+f (x, y ) =0
+g (x, y ) =0 (1)
+biết trong hình chữ nhậtD = {a ≤ x ≤ b; c ≤ y ≤ d} hệ đã cho có duy
+nhật một nghiệm. Tìm nghiệm xấp xỉ(xn, yn) gần với nghiệm chính xác
+(x ∗, y ∗) của hệ.
+Ngày 20 tháng 4 năm 2023 2 / 8
+
+--- Trang 3 / 8 ---
+Nội dung phương pháp
+Từ hệ phương trình (1) ta viết lại trorg dạng
+(
+x = F (x, y )
+y = G (x, y ) (2)
+Chọn điểm M0 (x0, y0) bất kỳ làm xấp xỉ đầu và tính
+(
+x1 = F (x0, y0)
+y1 = G (x0, y0) ;
+(
+x2 = F (x1, y1)
+y2 = G (x1, y1) . . .
+Tổng quát: (
+xn = F (xn−1, yn−1)
+yn = G (xn−1, yn−1) n = 1,2 . . . (3)
+gọi là quá trình lặp.
+Ngày 20 tháng 4 năm 2023 3 / 8
+
+--- Trang 4 / 8 ---
+Điều kiện đủ cho sự hội tụ của phương pháp
+Giả sử (α, β) là nghiệm đúng của hệ (2) nằm trong hình chữ nhật
+D = {a ≤ x ≤ b; c ≤ y ≤ d}
+Nếu trong miếnD các hàm sốF và G liên tục và có các đạo hàm riêng
+liên tục thỏa mãn điều kiện:
+
+∂F
+∂x
+ +
+
+∂G
+∂x
+ ≤ q;
+
+∂F
+∂y
+ +
+
+∂G
+∂y
+ ≤ q (0 < q < 1)
+thì quá trình lặp (3) hội tụ với xấp xỉ đầu(x0, y0) ∈ D bất kỳ; đồng thời
+hệ (2) chỉ có một nghiệm duy nhất trong miền đang xét.
+Ngày 20 tháng 4 năm 2023 4 / 8
+
+--- Trang 5 / 8 ---
+Sai số của phương pháp
+Đế ước lượng sai số ta sử dụng bất đẳng thức
+|α − xn| + |β − yn| ≤qn{|b − a| + |d − c|}.
+Ngày 20 tháng 4 năm 2023 5 / 8
+
+--- Trang 6 / 8 ---
+Ví dụ
+Tìm các nghiệm gần đúng của hệ sau:
+(
+x +3 lg x − y 2 = 0
+2x 2 − xy −5x +1 = 0
+biết trong miền(ℓ) ={3 ≤ x ≤ 4;2 ≤ y ≤ 2,5} hệ có nghiệm duy nhất.
+Ngày 20 tháng 4 năm 2023 6 / 8
+
+--- Trang 7 / 8 ---
+Ví dụ
+Ta viết lại hệ trong dạng
+x = 1
+2
+p
+x(5 + y ) −1 ≡ F (x, y )
+y =
+p
+x +3 lg x ≡ G (x, y )
+∂F
+∂x =
+1
+2 (5 + y )
+1
+2
+p
+x(5 + y ) −1
+; ∂F
+∂y =
+1
+2 x
+1
+2
+p
+x(5 + y ) −1
+∂G
+∂x = 1 + 3 lg e
+x
+2√x +3 lg x ; ∂G
+∂y = 0
+Trong miền hình chữ nhật(ℓ) ={3 ≤ x ≤ 4;2 ≤ y ≤ 2,5} chứa nghiệm
+(α, β) 
+∂F
+∂x
+ < 0,60;
+
+∂F
+∂y
+ < 0,32;
+
+∂G
+∂x
+ < 0,340;
+
+∂G
+∂y
+ = 0
+thỏa mãn điều kiện hội tụ vớiq = 0.940 < 1.
+Ngày 20 tháng 4 năm 2023 7 / 8
+
+--- Trang 8 / 8 ---
+Ví dụ
+Với xấp xỉ đầu:x0 = 3,4; y0 = 2,2 ta có quá trình lặp sau:
+(
+xn = 1
+2
+p
+xn−1(5 + yn−1) −1
+yn =
+p
+xn−1 +3 lg xn−1.
+Quá trình tính toán thể hiện trong bảng sau:
+x1 = 3,426 y1 = 2,224
+x2 = 3,451 y2 = 2,2505
+x3 = 3,466 y3 = 2,255
+x4 = 3,475 y4 = 2,258
+x5 = 3,480 y5 = 2,259
+x6 = 3,483 y6 = 2,260
+Sai số dược đánh giá như sau:
+|x6 − α| + |y6 − β| ≤q6 ((4 −3) + (2,5 −2)) =1.0348.
+Nhận xét: Để cải thiện sai số ta có thể xác định là hình chữ nhậtℓ nhỏ
+hơn nữa và thực hiện nhiều bước lặp hơn.
+Ngày 20 tháng 4 năm 2023 8 / 8

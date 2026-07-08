@@ -1,0 +1,22 @@
+# TỔNG HỢP CÁC PHƯƠNG PHÁP GIẢI TÍCH SỐ (FULL TRÌNH BÀY)
+## CHƯƠNG 2: GIẢI PHƯƠNG TRÌNH PHI TUYẾN 1 CHIỀU
+### Chia đôi
+### Dây cung
+### Tiếp tuyến (Newton)
+### Lặp đơn (1 chiều)
+## CHƯƠNG 3: GIẢI HỆ PHƯƠNG TRÌNH PHI TUYẾN NHIỀU CHIỀU
+### Lặp đơn nhiều chiều
+### Newton nhiều chiều
+## CHƯƠNG 4: GIẢI HỆ ĐẠI SỐ TUYẾN TÍNH & TÌM MA TRẬN NGHỊCH ĐẢO
+### Phân tách LU
+### LU có Pivoting
+### Phân tách Cholesky
+### Lặp đơn (Hệ phương trình)
+### Lặp Gauss-Seidel
+### Nghịch đảo bằng Cholesky
+### Nghịch đảo bằng Lặp Jacobi / Gauss-Seidel
+## CHƯƠNG 5: GIÁ TRỊ RIÊNG VÀ VECTOR RIÊNG CỦA MA TRẬN
+### Phương pháp Danielevski
+### Phương pháp Xuống thang
+### Giá trị kỳ dị SVD (Lớn nhất)
+### Số điều kiện Cond(A)

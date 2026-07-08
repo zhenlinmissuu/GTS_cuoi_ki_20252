@@ -1,0 +1,672 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C5_3_Khai_trien_ky_di_SVD.pdf ===
+Tổng số trang: 15
+========================================
+
+--- Trang 1 / 15 ---
+Phân tích giá trị kì dị của ma trận
+Mọi đóng góp xin gửi về email: tam.doduc@hust.edu.vn
+Mục lục
+1. Phân tích SVD rút gọn của ma trận......................................................................................................................1
+2. Sự tồn tại của phân tích SVD............................................................................................................................... 4
+3. Phân tích SVD đầy đủ của ma trận...................................................................................................................... 5
+4.  Ứng dụng của phân tích SVD............................................................................................................................14
+4.1 Giả nghịch đảo của ma trận..........................................................................................................................14
+4.2 Xấp xỉ ma trận với  nhỏ................................................................................................................................ 14
+4.3 Số điều kiện..................................................................................................................................................14
+1. Phân tích SVD rút gọn của ma trận
+Cho ma trận 
+  . Giả sử có thể phân tích 
+trong đó
+, 
+ , 
+U và V là các ma trận có các cột tạo thành các hệ vector trực chuẩn và 
+ , 
+  .Khi đó, ta gọi  (1) 
+là phân tích giá trị kì dị của ma trận A. 
+Nhắc lại: Hệ vector 
+  gọi là trực chuẩn nếu 
+ , 
+  và 
+ , 
+ . Suy ra 
+Hiển nhiên, một hệ vector trực chuẩn là một hệ vector độc lập tuyến tính. Thật vậy, xét 
+. Khi đó 
+ , 
+ . Theo định nghĩa hệ 
+  là 
+hệ độc lập tuyến tính.
+1
+
+--- Trang 2 / 15 ---
+Khi đó phân tích (1) viết lại thành
+Ta gọi 
+ , 
+  và 
+ , với 
+  lần lượt là giá trị kì dị, vector kì dị phải và vector kì dị trái của A. Dễ 
+thấy từ phân tích (2) suy ra 
+Tính chất:
+a) Các vector kì dị trái 
+  tạo thành cơ sở trực chuẩn của không gian vector 
+ .
+Chứng minh. Lấy 
+  Do đó 
+ , 
+  là hệ sinh của 
+ . 
+Lại có 
+  gồm r vector độc lập tuyến tính nên nó tạo thành một cơ sở của 
+ .  (Một hệ sinh 
+độc lập tuyến tính thì tạo thành một cơ sở của kgvt). Tính chất trực chuẩn suy ra từ định nghĩa của các vector 
+kì dị trái.
+b) Các vector kì dị phải 
+  tạo thành cơ sở trực chuẩn của không gian vector 
+ .
+Chứng minh. Lấy 
+  Lại có 
+  gồm r vector độc lập 
+tuyến tính nên nó tạo thành một cơ sở của 
+ . Tính chất trực chuẩn suy ra từ định nghĩa của các vector kì 
+dị phải.
+c) Ma trận A có hạng bằng r. 
+Chứng minh. Ta có 
+ , mà theo mục a) thì 
+  nên 
+ .
+d) Ma trận A tương ứng với ánh xạ tuyến tính từ 
+  vào 
+  biến vector input x thành vector output y.
+Ta chia việc tìm output y thành các bước như sau:
+Bước 1. Tìm tọa độ hình chiếu của x (trong cở sở 
+ , 
+ ) xuống 
+ .
+Bước 2. Điều chỉnh các tọa độ vừa tìm được theo tỉ lệ tương ứng 
+ .
+Bước 3. Tính vector output y dựa vào vector 
+ , 
+  theo công thức 
+Ví dụ 1. Phân tích svd của ma trận A
+A = [1 2; 3 1;4 2]
+A = 3×2
+     1     2
+2
+
+--- Trang 3 / 15 ---
+     3     1
+     4     2
+%[U,Sigma,V] = svd(A)
+Ma trận U là
+U = [-0.319 0.915 ;-0.542  -0.391;
+-0.778  -0.103];
+disp(U)
+   -0.3190    0.9150
+   -0.5420   -0.3910
+   -0.7780   -0.1030
+Ma trận 
+  là
+disp(U'*U)
+    1.0008    0.0002
+    0.0002    1.0007
+Ma trận 
+  là
+Sigma = [5.747  0 ;0  1.403];
+disp(Sigma)
+    5.7470         0
+         0    1.4030
+Ma trận V là
+V = [-0.880  -0.476;
+-0.476  0.880];
+disp(V)
+   -0.8800   -0.4760
+   -0.4760    0.8800
+Ma trận 
+  là
+disp(V'*V)
+    1.0010         0
+         0    1.0010
+Ma trận 
+  là
+disp(U*Sigma*V')
+    1.0022    2.0023
+    3.0022    0.9999
+    4.0034    2.0011
+3
+
+--- Trang 4 / 15 ---
+2. Sự tồn tại của phân tích SVD
+Kiến thức từ đại số tuyến tính: Cho B là ma trận vuông thực cấp n. Khi đó, B chéo hóa trực giao (tồn tại ma trận 
+trực giao D sao cho 
+  là ma trận đường chéo 
+ ) được khi và chỉ khi B là ma trận đối xứng.
+Chuẩn 2 của ma trận A định nghĩa bởi 
+Sự tồn tại của phân tích SVD: Mọi ma trận
+  đều có phân tích giá trị kỳ dị.
+Chứng minh. Giả sử 
+  và nhớ lại rằng 
+  là đối xứng và nửa xác định dương. Do đó, ta có phân tích
+Sắp xếp các giá trị riêng theo thứ tự không tăng 
+ . Giả sử rằng các giá trị riêng 
+  khác 
+không trong khi 
+  Cho  là các vectơ riêng tương ứng. Gọi 
+  là ma trận có các cột 
+là 
+  và 
+  là ma trận đường chéo với 
+  trên đường chéo của nó. Tương tự, gọi 
+ là ma trận có các cột là 
+  và 
+Đối với ma trận đường chéo D có các phần tử trên đường chéo không âm, kí hiệu 
+  là ma trận đường chéo 
+thu được bằng cách lấy căn bậc hai của mỗi phần tử  đường chéo của D.  Tương tự, D có các phần tử trên 
+đường chéo dương, kí hiệu 
+  là ma trận đường chéo thu được bằng cách lấy nghịch đảo căn bậc hai của 
+mỗi phần tử  đường chéo của D. Khi đó, dễ dàng kiểm tra 
+, 
+ , 
+và 
+  là phân tích SVD của A.
+Từ chứng minh trên ta rút ra:
+Xét phân tích ma trận
+.
+Khi đó
+•
+  là các vector riêng của ma trận 
+  (ứng với giá trị riêng 
+ )
+•
+•
+  (do 
+ ).
+Tương tự, xét phân tích
+.
+Do đó
+4
+
+--- Trang 5 / 15 ---
+•
+  là các vector riêng của ma trận 
+  (ứng với giá trị riêng 
+ )
+•
+Nhận xét: Ta có thể sử dụng phương pháp lũy thừa và xuống thang để tìm phân tích SVD của ma trận 
+A
+Ví dụ 2. Cho ma trận
+A=[1 2; 3 4; 5 6]
+A = 3×2
+     1     2
+     3     4
+     5     6
+A'*A
+ans = 2×2
+    35    44
+    44    56
+[X,Y] = eig(A'*A)
+X = 2×2
+   -0.7849    0.6196
+    0.6196    0.7849
+Y = 2×2
+    0.2645         0
+         0   90.7355
+Do đó:
+,
+3. Phân tích SVD đầy đủ của ma trận
+Giả sử ta có phân tích SVD của 
+  với 
+  :
+5
+
+--- Trang 6 / 15 ---
+Tìm 
+  sao cho 
+  là các ma trận trực chuẩn.
+Thêm các dòng và cột 0 và ma trận
+  để tạo thành ma trận 
+Khi đó ta nhận được
+hay
+gọi là phân tích SVD đầy đủ của A.
+Ví dụ 3.
+disp(A)
+     1     2
+     3     4
+     5     6
+[U_2,Sigma_2,V_2]=svd(A)
+U_2 = 3×3
+   -0.2298    0.8835    0.4082
+   -0.5247    0.2408   -0.8165
+   -0.8196   -0.4019    0.4082
+Sigma_2 = 3×2
+    9.5255         0
+         0    0.5143
+         0         0
+V_2 = 2×2
+   -0.6196   -0.7849
+   -0.7849    0.6196
+Code MATLAB tìm phân tích SVD rút gọn và phân tích SVD đầy đủ sử dụng phương pháp lũy thừa và xuống 
+thang. Các vector kì dị ứng với 
+  tìm bằng quy trình Gauss-Jordan và trực chuẩn hóa Gram Smith
+clc
+clear all
+format short
+tol = 1e-3; %tham s ố đi ều ch ỉnh
+maxInteration=100;%số l ần lặp t ối đa
+A =     [6     7     5     4    -8     9
+6
+
+--- Trang 7 / 15 ---
+    10     9    -2   -10     7   -10
+     3     4     3    -5     4    -1
+    -4    -2     7    14   -15    19 ]'
+A = 6×4
+     6    10     3    -4
+     7     9     4    -2
+     5    -2     3     7
+     4   -10    -5    14
+    -8     7     4   -15
+     9   -10    -1    19
+M = A'*A; M_1 = A*A';
+V_2 = eig_vector_zero(M,tol);
+B = 4×4
+    1.0000         0         0    1.0000
+         0    1.0000         0   -1.0000
+         0         0    1.0000         0
+         0         0         0         0
+jb = 1×3
+     1     2     3
+U_2 = eig_vector_zero(M_1,tol);
+B = 6×6  Rows 1:6 | Columns 2:6
+         0         0   19.3478  -22.7391   16.6957
+    1.0000         0  -21.0435   24.2174  -18.0870
+         0    1.0000    7.0435   -8.2174    7.0870
+         0         0         0         0         0
+         0         0         0         0         0
+         0         0         0         0         0
+jb = 1×3
+     1     2     3
+[~,jb] = GJ(M,tol);
+r = length(jb);
+lambda=[];
+V=[];
+U=[];
+for i=1:r
+    [lambda_1,v_1] = powerMethod(M,tol,maxInteration);
+    u_1 = 1/sqrt(lambda_1)*A*v_1;
+    [~,w_1] = powerMethod(M',tol,maxInteration);
+    lambda=[lambda,lambda_1];
+    V =[V,v_1];
+    U=[U,u_1];
+    M = M-lambda_1*v_1*w_1'/(w_1'*v_1);
+    fprintf( 'Giá trị riêng thứ %d là %8.7f\n' ,i,lambda_1)
+    fprintf( 'Vector riêng v_i thứ %d là\n' ,i)
+    disp(v_1)
+    fprintf( 'Vector riêng w_i thứ %d là\n ' ,i)
+    disp(w_1)
+    disp( 'ma trận sau khi xu ống thang' )
+7
+
+--- Trang 8 / 15 ---
+    disp(M)
+end
+Giá trị riêng thứ 1 là 1326.3687645
+Vector riêng v_i thứ 1 là
+    0.2951
+   -0.5027
+   -0.1538
+    0.7978
+Vector riêng w_i thứ 1 là
+ 
+    0.2951
+   -0.5027
+   -0.1538
+    0.7978
+ma trận sau khi xu ống thang
+  155.4703  123.7815   60.2212   31.6888
+  123.7815   98.8223   45.4254   24.9592
+   60.2212   45.4254   44.6090   14.7958
+   31.6888   24.9592   14.7958    6.7296
+Giá trị riêng thứ 2 là 285.0442735
+Vector riêng v_i thứ 2 là
+    0.7367
+    0.5843
+    0.3044
+    0.1525
+Vector riêng w_i thứ 2 là
+ 
+    0.7367
+    0.5843
+    0.3044
+    0.1525
+ma trận sau khi xu ống thang
+    0.7627    1.0892   -3.6982   -0.3266
+    1.0892    1.5201   -5.2665   -0.4309
+   -3.6982   -5.2665   18.1999    1.5683
+   -0.3266   -0.4309    1.5683    0.1043
+Giá trị riêng thứ 3 là 20.6114945
+Vector riêng v_i thứ 3 là
+   -0.1913
+   -0.2719
+    0.9397
+    0.0806
+Vector riêng w_i thứ 3 là
+ 
+   -0.1913
+   -0.2719
+    0.9397
+    0.0806
+ma trận sau khi xu ống thang
+    0.0082    0.0169    0.0072   -0.0086
+    0.0169   -0.0042    0.0004    0.0210
+    0.0072    0.0004    0.0011    0.0068
+   -0.0086    0.0210    0.0068   -0.0297
+disp('Khai tri ển SVD rút gọn:' )
+Khai tri ển SVD rút gọn:
+sigma = diag(sqrt(lambda));
+disp('Sigma=')
+Sigma=
+8
+
+--- Trang 9 / 15 ---
+disp(sigma)
+   36.4193         0         0
+         0   16.8833         0
+         0         0    4.5400
+disp('U=')
+U=
+disp(U)
+   -0.1897    0.6258   -0.3020
+   -0.1282    0.6710   -0.0417
+    0.2088    0.2663    0.6543
+    0.4983   -0.1352   -0.3558
+   -0.5069   -0.1702    0.4793
+    0.6314    0.2002    0.3502
+disp('V=')
+V=
+disp(V)
+    0.2951    0.7367   -0.1913
+   -0.5027    0.5843   -0.2719
+   -0.1538    0.3044    0.9397
+    0.7978    0.1525    0.0806
+disp('Khai tri ển SVD đ ầy đ ủ')
+Khai tri ển SVD đ ầy đ ủ
+Sigma = zeros(size(A));
+for i = 1:r
+    Sigma(i,i) = sqrt(lambda(i));
+end
+disp('Sigma=')
+Sigma=
+disp(Sigma)
+   36.4193         0         0         0
+         0   16.8833         0         0
+         0         0    4.5400         0
+         0         0         0         0
+         0         0         0         0
+         0         0         0         0
+disp('U=')
+U=
+U_full = [U,U_2];
+disp(U_full)
+9
+
+--- Trang 10 / 15 ---
+   -0.1897    0.6258   -0.3020   -0.6568    0.1763    0.1481
+   -0.1282    0.6710   -0.0417    0.7144    0.1356   -0.0631
+    0.2088    0.2663    0.6543   -0.2391    0.0256   -0.6301
+    0.4983   -0.1352   -0.3558    0.0339    0.7384   -0.2456
+   -0.5069   -0.1702    0.4793         0    0.6361    0.2828
+    0.6314    0.2002    0.3502         0         0    0.6609
+disp('V=')
+V=
+V_full=[V,V_2];
+disp(V_full)
+    0.2951    0.7367   -0.1913   -0.5774
+   -0.5027    0.5843   -0.2719    0.5774
+   -0.1538    0.3044    0.9397         0
+    0.7978    0.1525    0.0806    0.5774
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [v] = eigvalues(A,tol)
+% s ử dụng phương pháp lũy thừa và xu ống thang đ ể tìm các
+% giá trị riêng c ủa A
+if nargin ==1
+    tol = 1e-5;
+end
+        v = zeros(0,1);
+        theta = eye(size(A,1));
+        while length(v) < size(A,1)
+            [vtr,vectr] = powerMethod(A,tol);
+            if size(vectr, 2)==1
+                A = XuongThang(A, vectr);
+            else
+                [A,theta] = XuongThang(A, vectr(:,1));
+                [A,~] = XuongThang(A, theta*vectr(:,2));  
+              end
+            v=[v;vtr(:)];    
+        end 
+end
+function [lambda, v] = powerMethod(A,tol,M)
+if nargin ==1
+    tol =1e-10;
+    M=200;
+end
+if nargin ==2
+    M=200;
+end
+%tol là giá tr? ?i?u ch?nh
+10
+
+--- Trang 11 / 15 ---
+%M s? l?n l?p nhi?u nh?t cho phép
+%example1
+%T =[10     9    10;    10     2     8;     5     5    10];
+%A= T*diag([11,-11, 2])*inv(T);
+%example2
+%A=[-2 1 1 1;-7 -5 -2 -1; 0 -1 -3 -2; -1 0 -1 0];
+%example3
+% A=[2 3 2;4 3 5;3 2 9]
+%tol =1e-3;
+n = size(A,1);
+x = ones(n,1);
+m = 1;
+check = false;
+lambda = [];
+v =zeros(n,0);
+% truong hop 1 gtr troi
+y1 = x;
+while check == false && (m <= M)
+    y1 = A*y1;
+    y2 = A*y1;
+    m= m+1;
+    check = KTsongsong(y1,y2,tol);
+end
+if check == true
+    index1 = y2~=0;
+    index2=y1~=0;
+    index = index1&index2;
+    lambda = [lambda; mean(y2(index)./y1(index))];
+   v1 = y1./norm(y1,2);
+    v = [v,v1];
+    return
+end
+%truong hop 2 nghiem doi nhau
+if check == false
+    m = 1;
+    y1 = x;
+    while check ==false && (m <= M)
+        y1 = A*y1;
+        y2 = A*y1;
+        y3 = A*y2;
+       m= m+1;
+        check = KTsongsong(y1,y2,tol);
+    end
+if check == true
+    index1 = y3~=0;
+    index2=y1~=0;
+    index = index1&index2;
+    lambda1 = sqrt(mean(y3(index)./y1(index)));
+    lambda = [lambda;lambda1;-lambda1];
+    v1 = y2+lambda1*y1;
+11
+
+--- Trang 12 / 15 ---
+    v1 = v1/norm(v1,2);
+    v2 = y2-lambda1*y1;
+    v2 = v2./norm(v2,2);
+    v=[v,v1,v2];
+    return
+end
+end
+%truong hop 2 nghiem phuc lien hop
+if check == false
+     y1 = ((A^(2*m+2))*x);
+     y2 = ((A^(2*m))*x);
+     y3 = ((A^(2*m+1))*x);
+    index = find(y1~=0);
+    r = index(1);
+    s = index(2);
+end
+    syms z
+    p = det([1, y2(r), y2(s); ...
+          z, y3(r), y3(s); z^2 y1(r) y1(s)]);
+    lambda = double(solve(p,z));
+    v1 = y3-lambda(2)*y1;
+    v1 = v1/norm(v1,2);
+    v2 = y3-lambda(1)*y1;
+    v2 = v2/norm(v2,2);
+    v= [v1,v2];
+end
+function check = KTsongsong(u,v,tol)
+    check =(norm( u./norm(u,2)-v./norm(v,2), 2)<=tol)||(norm( u./
+norm(u,2)+v./norm(v,2), 2)<=tol);
+end
+function [A1, theta] = XuongThang(A,v)
+%tra ra ma tran A1 da xuong thang
+%và ma trận đ ể xu ống thang theta
+[~,i] = max(abs(v));
+v = v/v(i);
+n = size(A);
+theta = eye(n);
+theta(:,i) = theta(:,i) - v;
+A1 = theta*A;
+end
+function [A, jb] = GJ(A, tol)
+[m,n] = size(A);
+% Loop over the entire matrix.
+i = 1; j = 1;
+%create empty row vector
+jb = zeros(1,0);
+while i <= m && j <= n
+12
+
+--- Trang 13 / 15 ---
+   % Find value and index of largest element in the remainder of column j.
+   [p, k] = max(abs(A(i:m,j)));
+   k = k+i-1;
+   if p < tol
+      % The column is negligible, zero it out.
+      A(i:m,j) = 0;
+      j = j + 1;
+   else
+      % Remember column index
+      jb = [jb j]; %#ok<AGROW>
+      % Swap i-th and k-th rows.
+      A([i k],j:n) = A([k i],j:n);
+      % Divide the pivot row by the pivot element.
+      A(i,j:n) = A(i,j:n)./A(i,j);
+      % Subtract multiples of the pivot row from all the other rows.
+      for k = [1:i-1 i+1:m]
+         A(k,j:n) = A(k,j:n) - A(k,j).*A(i,j:n);
+      end
+      i = i + 1;       j = j + 1;
+   end
+end
+end
+function S = eig_vector_zero(M,tol)
+%Nhận vào ma trận M và đưa ra ma trận trực chu ẩn S chứa các vector riêng
+%ứng với giá trị riêng lambda = 0 c ủa ma trận M
+n = size(M,1);
+% s ử dụng thuật toán Gauss-Jordan đ ể tìm vector riêng tương ứng với giá trị
+% riêng lambda = 0
+[B,jb] = GJ(M,tol)
+%jb là vector chứa các bi ến phụ thuộc c ủa hệ Mx=0
+js = setdiff(1:n,jb); %js chứa các bi ến độc lập
+r = length(jb); %r là rank c ủa ma trận M, cũng là rank c ủa ma trận A
+d = n - r; %số lượng các bi ến độc lập
+S = zeros(n,d); %tìm ma trận S có các cột chứa một cơ s ở c ủa không gian 
+nghiệm Mx=0
+for i = jb
+    S(i,:) = -B(i,js);
+end
+for i = js
+    index = find(js==i);
+    S(i,index) = 1; 
+end
+S = gramSmidth(S); %S chứa các vector kì dị ph ải (v_i) ứng với giá trị kì 
+dị 0 c ủa ma trận A
+end
+function S = gramSmidth(S)
+%S là ma trận  chứa các vector cơ s ở c ủa không gian các cột
+13
+
+--- Trang 14 / 15 ---
+%hàm thực hiện chu ẩn hóa Gram Smidth
+    [m,n] =  size(S);
+    for i = 1:n
+         x=zeros(m,1);
+        for j = 1:i-1
+            x =x -dot(S(:,i),S(:,j))*S(:,j);
+        end
+          S(:,i)=S(:,i)+x;
+          S(:,i) = S(:,i)/norm(S(:,i),2);
+    end
+end
+4.  Ứng dụng của phân tích SVD
+4.1 Giả nghịch đảo của ma trận
+Nếu A có phân tích SVD 
+ , giả nghịch đảo hay nghịch đảo Moore-Penrose của A là
+Nếu A có hạng đầy đủ và 
+ , (hệ 
+  vô nghiệm)
+xấp xỉ gần đúng bằng phương pháp bình phương tối thiểu là 
+ . Nhắc lại bài toán bình phương tối thiểu 
+đi tìm vector x sao cho 
+  đạt giá trị bé nhất.
+- nếu A có hạng đầy đủ và 
+ , (hệ 
+  có vô số nghiệm)
+cho lời giải bài toán chuẩn nhỏ nhất
+ . Bài toán chuẩn nhỏ nhất đi tìm giữa các vector x là nghiệm 
+phương trình 
+  nghiệm có chuẩn nhỏ nhất.
+4.2 Xấp xỉ ma trận với rank nhỏ
+Giả sử
+ , có phân tích SVD 
+ta tìm ma trận 
+ , sao cho
+ theo nghĩa là 
+  không đáng kể. Khi đó, xấp xỉ bậc p là
+Do đó 
+4.3 Số điều kiện
+14
+
+--- Trang 15 / 15 ---
+Xét 
+  khả nghịch. Khi đó 
+  Trong thực hành thường xuất hiện lỗi hoặc nhiễu trong y, 
+tức là,y trở thành 
+  thì x trở thành 
+  với 
+ . Do đó, ta có 
+ . Nếu 
+ lớn, các lỗi nhỏ trong y có thể dẫn đến các lỗi lớn trong x. Do đó, A có thể được coi là kỳ dị trong thực 
+hành. Tiếp theo nếu xét sai số tương đối của x và y. Vì 
+ , ta có 
+ , do đó
+.
+Vì vậy, chúng ta định nghĩa số điều kiện của 
+.
+Tương tự như trên trong trường hợp A không phải là ma trận vuông, ta cũng định nghĩa số điều kiện 
+  như 
+trên để phân tích tính ổn định của bài toán bình phương tối thiểu, nghĩa là tìm x để 
+  đạt 
+ .
+15

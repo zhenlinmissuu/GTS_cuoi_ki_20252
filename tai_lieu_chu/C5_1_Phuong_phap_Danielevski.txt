@@ -1,0 +1,969 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C5_1_Phuong_phap_Danielevski.pdf ===
+Tổng số trang: 36
+========================================
+
+--- Trang 1 / 36 ---
+Phương pháp Danielevsky
+tìm đa thức đặc trưng
+Hà nội, 2026
+
+--- Trang 2 / 36 ---
+Giá trị riêng – Véctơ riêng 
+( )
+( )
+12
+12
+0,
+det 0
+10
+n n n n
+n
+x Ax x
+AI
+p p p
+
+
+   −−
+  =
+ − =
+ − + + + + =
+
+
+--- Trang 3 / 36 ---
+Giá trị riêng, véctơ riêng
+• Hai ma trận đồng dạng có cùng bộ giá trị riêng
+( )
+( ) ( )
+1
+1 1 1
+det det
+B P AP
+B I P AP P P P A I P
+B I A I
+  
+
+−
+− − −
+=
+ − = − = −
+ − = −
+
+--- Trang 4 / 36 ---
+Giá trị riêng, véctơ riêng
+• Véc tơ riêng của 2 ma trận đồng dạng
+( ) ( )
+1
+Bx x
+P APx x
+A Px Px
+
+
+
+−
+=
+=
+=
+
+--- Trang 5 / 36 ---
+Câu hỏi 1
+• Ma trận nào nhận đa thức
+là đa thức đặc trưng?  
+( ) ( )
+1
+111
+n nn
+nnp p p p    −
+−= − + + +
+
+
+--- Trang 6 / 36 ---
+Khối Jordan
+( ) ( )
+,,
+,
+0 0 0
+1 0 0
+;0 1 0 0
+0 0 1
+det 1
+t
+rr
+r r
+r
+J or J
+J
+
+
+
+
+
+
+−
+ −
+=
+
+
+ −
+=−
+
+
+--- Trang 7 / 36 ---
+Khối Jordan
+• Từ khối Jordan cỡ r, bỏ đi cột k và hàng 1, ta 
+thu được ma trận có định thức là
+( )
+,
+1 0 0
+0 1 0 0
+0
+det 10 0 1
+0 0 0 1
+0
+rk rk
+rkJ 
+
+
+− −
+−
+−
+
+
+
+=− −
+
+
+
+
+
+--- Trang 8 / 36 ---
+Khối Frobenius dạng 1
+( ) ( )
+1 2 1
+1
+1
+1 0 0 0
+;0 1 0 0
+0 0 1 0
+rr
+r
+p p p p
+C C p
+−− − − −
+
+
+= =−
+
+
+
+
+
+--- Trang 9 / 36 ---
+Khối Frobenius 
+( ) ( )( ) ( ) ( )
+( ) ( ) ( )
+( ) ( )
+( )
+222 2
+2 1 2 1 2
+1
+1
+1 12
+11
+1
+11
+11
+1
+11
+1
+rrr
+r r r
+rr rr
+rr
+r rr
+rr
+C I p p p p
+C I C I p
+p p p
+p p p
+    
+  
+  
+  
+−
+−
+− −−
+−
+−
+−
+− = − − − + − = − + + 
+− =− − + −
+=− − + + + + −
+= − + + + +
+
+
+--- Trang 10 / 36 ---
+Khối Frobenius dạng 2 
+• Khối Frobeniuos
+1 2 1
+0 1 0 0
+;0 0 1 0
+0 0 0 1
+rr
+C
+p p p p −
+
+
+
+=
+
+
+− − − −
+
+
+--- Trang 11 / 36 ---
+Dạng chuẩn Frobenius 
+của ma trận
+• Dạng chuẩn Frobenious:
+11
+1
+1
+00
+00
+00
+,.ii
+s
+s
+s
+mm
+ii
+i
+F
+FP AP F
+F
+F m n
+−−
+
+=
+
+
+==
+
+
+= 
+
+
+--- Trang 12 / 36 ---
+Dạng chuẩn Frobenious 
+của ma trận
+trong đó
+1 2 1
+1 0 0 0
+0 1 0 0
+0 0 1 0
+iimm
+i
+p p p p
+F
+−− − − −
+
+
+=
+
+
+
+
+
+--- Trang 13 / 36 ---
+Dạng chuẩn Frobenious 
+của ma trận
+• Đa thức đặc trưng của ma trận dạng chuẩn 
+Frobenious:
+( ) ( )
+( )
+( )
+( )
+1
+11det det ...det
+k
+k
+rr
+n r k rA I F I F I  − = − −
+
+--- Trang 14 / 36 ---
+Câu hỏi 2
+Ma trận vuông A bất kỳ có thể có dạng chuẩn
+Frobenious hay không?
+
+--- Trang 15 / 36 ---
+Phương pháp Danielevsky
+• Ý tưởng: Dùng các ma trận chuyển cơ sở đưa
+ma trận A về ma trận tương đương dạng chuẩn
+Frobenious
+
+--- Trang 16 / 36 ---
+Phương pháp Danielevsky
+• Đưa hàng thứ n của ma trận A về dạng
+Hoặc
+Qui ước:
+0 0 1 0
+0 0 0 nna
+ 12
+t
+k k k kna a a a=
+
+
+--- Trang 17 / 36 ---
+Phương pháp Danielevsky
+Đưa hàng thứ n của ma trận A về dạng
+• Trường hợp 1
+Đưa giá trị vào vị trí hàng n cột n-1
+1 0, 0, 1nn nka a k n− =   −
+ 
+( ) ( ) ( )
+( )
+1 1 1 1 1 2
+1
+11
+1 1 1
+11
+1
+1
+1
+:
+0
+k n k n k n k n
+k n k n
+k n k n ij
+kn
+t
+nn n k nk
+C e e e e e e e
+CC
+A C A C a
+P PC
+a e Ae a
+ − − − + −
+−
+ −  −
+ −  −
+−
+−
+=
+=
+== 
+=
+= = 
+nka
+
+--- Trang 18 / 36 ---
+Phương pháp Danielevsky
+Đưa hàng thứ n của ma trận A về dạng F
+• Trường hợp 2
+1 0nna − 
+ 1 1 2
+1 2 1
+1 0 0 0
+0 1 0 0
+0 0 0 1
+t
+n n n
+n nn nn nn
+M e e a e
+a a a a
+−
+−−
+=
+
+
+
+=
+
+
+
+
+
+--- Trang 19 / 36 ---
+Phương pháp Danielevsky
+Đưa hàng thứ n của ma trận A về dạng F
+• Trường hợp 2
+1 0nna − 
+11
+1
+1
+12
+1 1 1 1
+1 2 1
+1 1 2 1 1
+1 1 1 1
+det 0
+1 0 0 0
+0 1 0 0
+1
+0 0 0 1
+nn
+n nn nn
+nn nn nn nn
+n nn n nn
+n n n n n
+nn nn nn nn
+Ma
+M a a a
+a a a a
+a a e ae e e e e ea a a a
+−
+−
+−
+− − − −
+−−
+− − − −
+− − − −
+=
+
+
+
+=
+− − −
+
+
+= − − −
+
+
+--- Trang 20 / 36 ---
+Phương pháp Danielevsky
+Đưa hàng thứ n của ma trận A về dạng F
+• Trường hợp 2
+1 0nna − 
+( ) ( ) ( ) ( )
+( )
+( )
+( )
+1 2 1 2 11
+1 1 1
+21
+1
+11
+2
+11
+1
+2
+;;
+, 1, 1
+1 ,1
+0, 1
+1, 1
+ij
+nj nj int
+ij i j n ij
+nn nn
+t
+in i n
+nn
+nj
+A A A M A M a P PM
+a a aa e A e e a i n j naa
+a e A e j n a
+jna jn
+−−
+−
+−
+−−
+−−
+−
+= = = = 
+
+= − = −  −  −
+=  −
+
+−=  =−
+
+--- Trang 21 / 36 ---
+Phương pháp Danielevsky
+Đưa hàng thứ n của ma trận A về dạng
+• Trường hợp 3
+Dòng cuối cùng có dạng khối Frobenious cấp 1
+0, 1nka k n=   −
+ 
+( ) ( ) ( )
+1
+11
+, 0 0
+det det
+n
+n
+nn
+n n nn n n
+AA
+a
+A I a A I
+
+
+  
+−
+−−
+==
+
+− = − −
+
+
+--- Trang 22 / 36 ---
+Phương pháp Danielevsky
+Gặp TH1 đưa về TH2.
+Gặp TH2: thực hiện tiếp tục cho hàng n-1:
+• Đưa hàng thứ n - 1 của ma trận A về dạng
+hoặc
+  ( )0 1 0 0 1, 2 n TH
+  ( )1 1 10 0 3 n n n n na a TH− − −
+
+
+--- Trang 23 / 36 ---
+Phương pháp Danielevsky
+Đưa hàng thứ k của ma trận A về dạng F
+• TH1
+• Đưa giá trị vào vị trí hàng k cột k-1
+1 0, 0, 1kk ksa a s k− =   −
+ 
+( ) ( ) ( )
+( ) ( )
+, 1 1 1 1 1
+1
+,,
+,,
+,
+1
+...
+:
+0
+s k s k s k s k n
+s k s k
+n k n k n k
+s k s k ij
+sk
+n k n k t
+kk k s ks
+C e e e e e e e e
+CC
+A C A C a
+P C P
+a e A e a
+− + − +
+−
+− − −
+−−
+−
+=
+=
+== 
+=
+= = 
+ksa
+
+--- Trang 24 / 36 ---
+Phương pháp Danielevsky
+Đưa hàng thứ k của ma trận A về dạng F
+• Tổng quát, TH2
+1 0kka − 
+( )1
+1
+12
+tk
+nk
+k k k n
+M
+e e a e e
+−
+−+
+−
+=
+
+( ) ( )
+( )1 11
+1 1 2
+1
+1
+...
+k kk
+tn k n k
+k
+n k k k n
+kk
+a a e
+M e e e e a
+−
+−−
+−−
+− + −
+−
+ −+=−
+
+
+--- Trang 25 / 36 ---
+Phương pháp Danielevsky
+Giả sử khi xét đến hàng n-m+1, ta gặp TH3, tức
+là
+( )
+( ) ( ) ( )
+( ) ( )
+2 1
+1
+132 1
+2 2 2 1 2 1
+1
+1 1 1 1
+1 1 1
+1 2 1
+... ...
+m
+mm
+m
+A M AM
+A M A M M M A M M
+A M M A M M
+P M M M
+−
+−−
+−
+−−
+− − −
+−
+=
+==
+=
+=
+
+
+--- Trang 26 / 36 ---
+Phương pháp Danielevsky
+trong đó
+là là khối Frobenius cỡ m.
+( )
+( )
+( )
+( )
+( )
+10
+m
+nm n m mm
+m
+m n m
+AB
+A
+F
+− −
+−
+
+=
+( )
+1
+m
+F
+
+--- Trang 27 / 36 ---
+Phương pháp Danielevsky
+Dùng các phép biến đổi đồng dạng đưa ma trận
+( )
+( )
+( )
+( )
+( )
+( )
+( )
+( )
+( )
+11
+0
+00
+mm
+n m n m n m m n m mm
+mm
+m n m m n m
+A B A
+A
+FF
+−− −  − 
+ −  −
+   
+   = ⎯⎯ →      
+
+--- Trang 28 / 36 ---
+Phương pháp Danielevsky
+Đưa cột thứ 1 của B về 0:
+( ) ( )
+( ) ( )     ( )
+( )
+( )
+1,1 1,1
+1
+11
+,1 ,1
+111
+1 1 1
+1
+0 0 0 0 0 0
+0 0 0 0 0 0
+00
+,
+0
+n m n m
+n m n m
+mm
+m m m
+n m n mmm
+m
+m n m
+bb
+EE
+SS bb
+EE
+A A B F
+A S A S P PS
+F
+−− −
+−−
+−−−−
+−
+−   
+   
+   =  =    −
+   
+      
+ + + + −
+= = =
+
+
+
+--- Trang 29 / 36 ---
+Phương pháp Danielevsky
+Đưa cột thứ 1 của B về 0:
+( )     ( )
+( )
+1
+11 12
+1,1 1,1
+,1 ,1
+1,1 1,1
+,1 ,1
+0 0 0 0 0 0 10
+010 0 0 0 0 0
+00
+00
+mm
+nm
+m
+nm
+n m n m
+n m n m
+A B F
+ppbb
+AB
+bb
+bb
+bb
+−
+−
+−−
+−−
++ + + −
+−−    −     = + +        −     
+    −  
+     = + + =      
+      −      
+
+
+
+
+
+--- Trang 30 / 36 ---
+Phương pháp Danielevsky
+Đưa cột q<m của B về 0 khi có q-1 cột đầu là 0:
+( ) ( ) ( )
+( ) ( )
+( ) ( )     ( )
+( )
+( )
+1,
+1
+,
+11
+1
+1
+00
+0
+0
+q
+nm n m q n m n m q
+q
+n m q
+m
+m m m
+n m n mmm
+qq m
+m n m
+q
+b
+E
+S b
+E
+A A B F
+A S A S
+F
+P PS
+− −  −  − − −
+−
+−−−
+−
+−
+−
+
+= −
+
+
+ + + + −
+==
+
+=
+
+
+--- Trang 31 / 36 ---
+Phương pháp Danielevsky
+Đưa cột q của B về 0 khi có q-1 cột đầu là 0:
+( )
+( ) ( ) ( ) ( )
+1,
+1
+,
+0 0 0
+q
+m
+nm n m q n m n m q n m q
+n m q
+b
+A
+b
+− −  −  − − − − 
+−
+
+ = 
+
+
+
+--- Trang 32 / 36 ---
+Phương pháp Danielevsky
+Đưa cột q của B về 0 khi có q-1 cột đầu là 0:
+( ) ( )
+( ) ( ) ( )
+1,
+1
+,1
+11 1,
+1, 1,
+2,1
+1
+1,
+,,
+0
+100 1
+q
+n m q
+nm
+q
+qq
+n m q n m q
+qq
+n m q n m q
+b
+B
+b
+ppbb
+bb
+−  −
+−
+−  −  −
++
+−−
+
+=
+
+−−    −−      =        −−     
+
+
+--- Trang 33 / 36 ---
+Phương pháp Danielevsky
+• Nếu cột cuối của B khác 0 thì dùng ma trận
+hoán vị cột n và cột n-m, rồi thực hiện lại thuật
+toán từ hàng n.
+( ) ( )mm
+n k n n k n
+n k n
+A C A C
+P PC
+−  − 
+−
+=
+=
+
+--- Trang 34 / 36 ---
+Phương pháp Danielevsky
+Sau hữu hạn lần biến đổi ta thu được
+Lặp lại quy trình với ma trận
+( )
+( )
+( )
+( )
+1
+0
+0
+m
+nmm
+m
+m n m
+A
+A
+F
+−
+−
+
+=
+
+( )m
+nmA −
+
+--- Trang 35 / 36 ---
+Phương pháp Danielevsky
+• Giải phương trình đa thức đặc trưng
+• Tìm véctơ riêng của từng khối Frobenius của
+dạng chuẩn F, ghép lại thành véctơ riêng của
+ma trận dạng chuẩn F, kết hợp với ma trận của
+phép biến đổi đồng dạng, ta thu được véctơ
+riêng của ma trận A ban đầu.
+
+--- Trang 36 / 36 ---
+Phương pháp Danielevsky
+• Véctơ riêng của khối
+• Véctơ riêng của ma trận
+( ) ( )
+1
+12
+1
+1
+,
+1
+m
+m
+uu
+
+
+
+
+−
+−
+ 
+ 
+ == 
+ 
+
+( )1 1 1 10 , ,0 , ,0 , ,0
+s i i
+TT T T T T
+m m m mPu
++−
+

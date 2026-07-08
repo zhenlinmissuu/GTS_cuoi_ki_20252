@@ -1,0 +1,281 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C4_3_Lap_Jacobi.pdf ===
+Tổng số trang: 12
+========================================
+
+--- Trang 1 / 12 ---
+PP LẶP ĐƠN – LẶP JACOBI 
+Hà Thị Ngọc Yến
+Hà nội, 2026
+
+--- Trang 2 / 12 ---
+Ý tưởng phương pháp
+- Đưa về phương trình tương đương
+- Lập dãy: 
+- Nếu dãy hội tụ thì giới hạn là nghiệm của 
+phương trình
+mpAx B x Cx D=   = +
+10 , mp
+nnx Cx D x 
+−= + 
+
+
+--- Trang 3 / 12 ---
+Sự hội tụ của PP lặp đơn
+• Nếu thì
+hội tụ tới nghiệm đúng duy nhất của phương trình
+theo đánh giá
+1C 
+10 , mp
+nnx Cx D x 
+−= + 
+10
+1
+* 1
+* 1
+n
+n
+n n n
+Bx x x x B
+Bx x x x B −
+−  − −
+−  − −
+
+--- Trang 4 / 12 ---
+Các bước cm sự hội tụ của PP
+• Dãy là dãy Cauchy nên hội tụ
+• Giới hạn của dãy là nghiệm duy nhất của 
+phương trình
+• Cm hai công thức sai số 
+ nx
+
+--- Trang 5 / 12 ---
+Phương pháp lặp Jacobi 
+• Ma trận chéo trội hàng
+• Ma trận chéo trội cột
+1
+m
+ii ij
+j
+ji
+aa
+=
+
+
+1
+m
+ii ji
+j
+ji
+aa
+=
+
+
+
+--- Trang 6 / 12 ---
+PP lặp Jacobi
+A là ma trận chéo trội hàng
+( )
+( ) ( ) ( )
+11 22
+01
+1 1 1, , , ;
+,
+,
+,.
+mm
+nnmp
+T diag a a a
+Ax B x I TA x TB
+C I TA D Tb
+x x Cx D +
+= 
+
+=  = − +
+= − =
+ = +
+
+
+--- Trang 7 / 12 ---
+1112 11
+1111 11 11
+22 2121
+2222 22 22
+112
+0
+0
+;
+0
+pm
+pm
+mmm mp
+mmmm mm mm
+baab
+aa a a
+baba
+aaaBD a
+baa b
+aaa a
+−−   −− ==   −−   
+PP lặp Jacobi
+A là ma trận chéo trội hàng
+1, 1
+1max 1
+m
+ijim ii j
+ji
+Ba a = =
+
+
+= 
+
+
+
+--- Trang 8 / 12 ---
+PP lặp Jacobi
+A là ma trận chéo trội cột
+( )
+( ) ( ) ( )
+11 22
+1
+01
+1
+1 1 1, , , ;
+,
+,.
+mm
+nnmp
+T diag x Tya a a
+Ax b ATy B y I AT y B
+C I AT
+y y C y B +
+== 
+
+=  =  = − +
+=−
+ = +
+
+
+--- Trang 9 / 12 ---
+PP lặp Jacobi
+A là ma trận chéo trội cột
+112
+22 111
+221
+221
+111
+1
+12
+11 22
+0
+0
+;
+0
+m
+mm p
+m
+p
+mm
+m mp
+mm
+aa
+aa bb
+aa bbaaCB
+b baa
+aa
+−−
+
+
+−−
+== 
+
+ −−
+
+1 1, 1
+1max 1
+m
+ijjm ijj
+ij
+Ba
+a= =
+
+
+= 
+
+
+
+--- Trang 10 / 12 ---
+PP lặp Jacobi
+A là ma trận chéo trội cột
+( ) ( )
+( ) ( ) ( )
+( ) ( ) ( )
+( ) ( )
+1
+1
+1 1
+1
+1
+nn
+nn
+nn
+nn
+y C y B
+Ty T I AT T Ty TB
+x I TA x TB
+x Cx TB
++
++ −
++
++
+=+
+ = − +
+ = − +
+ = +
+
+--- Trang 11 / 12 ---
+PP lặp Jacobi
+A là ma trận chéo trội cột
+• Liên hệ về chuẩn qua phép đổi biến: 
+11
+min
+max
+mp
+ii
+mp
+ii
+yx Ty T y x a
+y T x T x a x y
+
+− − 
+=  =  
+=  =  
+
+
+--- Trang 12 / 12 ---
+PP lặp Jacobi
+A là ma trận chéo trội cột
+• Hệ quả là:
+( ) ( ) ( )
+( ) ( ) ( )
+1 11
+11 1 1
+1 101
+11 1 1
+* 1
+* 1
+max .min
+n n n
+n
+n
+ii
+ii
+Cx x x x B
+Cx x x x B
+a
+a
+
+
+
+−−  − −
+−  − −
+=

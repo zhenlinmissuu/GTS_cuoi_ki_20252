@@ -1,0 +1,538 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: MI3041_Giaitichso_03092019.pdf ===
+Tổng số trang: 7
+========================================
+
+--- Trang 1 / 7 ---
+MI3041          GIẢI TÍCH SỐ 
+Phiên bản: 2019.1.0 
+Mục tiêu: Sinh viên xây dựng được các thuật toán khác nhau và sử dụng được một loại ngôn 
+ngữ nào đó lập trình giải một số bài toán trong không gian một chiều và nhiều chiều. 
+Objective: Students can write some algorithms and use a programming language to solve some 
+problems in one or multi – dimensional spaces. 
+ 
+Nội dung: Một số phương pháp giải đúng hoặc gần đúng các bài toán: tìm nghiệm phương trình 
+phi tuyến trong không gian có số chiều hữu hạn bất kỳ; tìm nghiệm phương trình đại số tuyến 
+tính trong không gian nhiều chiều; tìm giá trị riêng, vector riêng của ma trận, ứng dụng giá trị 
+riêng và vector riêng trong xấp xỉ ma trận.  
+Contents: Some methods for solving the following problems: the nonlinear equation in finite - 
+dimensional space, linear equation system, finding eigen values and eigen vectors and their 
+application in matrix approximation.  
+  
+1. THÔNG TIN CHUNG 
+Tên học phần: Giải tích số 
+(Numerical analysis) 
+Mã số học phần: MI3041 
+Khối lượng: 2 (2 – 1 – 0 - 4) 
+- Lý thuyết:  30 tiết  
+- Bài tập/BTL: 15 tiết 
+- Thí nghiệm/Thực hành: 0 tiết 
+Học phần tiên quyết: - IT1110: Tin học đại cương 
+ 
+Học phần học trước: - MI1111/2/3/; MI1121/2: Giải tích 1; Giải tích 2,  
+- MI1141/2/3:  Đại số 
+- MI2060: Cơ sở giải tích hàm 
+Học phần song hành: Không 
+ 
+2. MÔ TẢ HỌC PHẦN 
+Học phần đưa ra  một số ý tưởng giải một số bài toán trong các không gian hữu hạn chiều,  cách 
+triển khai xây d ựng phương pháp t ừ ý tưởng, cách ch ứng tỏ phương pháp xây d ựng được là 
+đúng đắn và hợp lý, phân tích ưu, nhược điểm và các trường hợp có thể sử dụng được phương 
+pháp, từ đó hướng tới việc sinh viên có thể viết lại thuật toán, lập trình giải bài toán bằng các 
+phương pháp đã có, cao hơn là phát triển hoặc kết hợp các phương pháp để giải quyết bài toán 
+phức tạp hơn.    
+ 
+3. MỤC TIÊU VÀ CHUẨN ĐẦU RA CỦA HỌC PHẦN 
+Học phần hướng tới việc sinh viên có khả năng phát hiện vấn đề, phân tích vấn đề từ đó 
+chọn lựa phương pháp thích hợp để giải quyết một vấn đề chuyên ngành trong khuôn khổ 
+học phần đồng thời lập trình các phương pháp số giải gần đúng các bài toán đó. 
+ 
+
+--- Trang 2 / 7 ---
+      Sinh viên hoàn thành học phần này có khả năng: 
+Mục 
+tiêu/CĐR Mô tả mục tiêu/Chuẩn đầu ra của học phần 
+CĐR được phân 
+bổ cho HP/ Mức 
+độ (I/T/U) 
+[1] [2] [3] 
+M1 Sinh viên nhận biết được một số dạng bài toán cơ bản, 
+trình bày được ý tưởng, cách xây dựng một phương 
+pháp giải bài toán  
+ 
+M1.1 Nhận diện bài toán: xác định rõ bài toán cho trước thuộc 
+lớp nào trong số các bài toán được đưa ra trong học phần. 
+Trình bày lại ý tưởng, phương pháp giải các bài toán, ưu 
+nhược điểm của từng phương pháp. 
+ 
+M1.2 Phân tích được điều kiện đầu vào của bài toán và từ đó lựa 
+chọn được phương pháp giải hợp lý. 
+ 
+M1.3  Trình bày được ý tưởng, phát triển lại ý tưởng thành 
+phương pháp, chứng minh lại hoặc tự chứng minh  phương 
+pháp thu được là đúng đắn, phân tích được vai trò của các 
+điều kiện đầu vào, sự thay đổi của kết quả đầu ra khi điều 
+kiện đầu vào thay đổi.  
+ 
+M2 Hình thành được các kỹ năng về tư duy, kỹ năng về 
+thực hành, kỹ năng về phân tí ch, xử lý, quản lý thông 
+tin và các kỹ năng xã hội cần thiết 
+ 
+M2.1 Phân tích, lập luận và tổng hợp được thông tin để xác định 
+được dữ liệu đầu vào, dữ liệu đầu ra và cấu trúc điều khiển 
+phù hợp trong thuật toán  
+ 
+M2.2 Có tư duy logic, tư duy tổng thể và hệ thống để đảm bảo 
+tính mạch lạc, sáng sủa của chương trình. 
+ 
+M2.3 Có khả năng tự học, tự nghiên cứu, chủ động, sáng tạo  
+M2.4 Có khả năng làm việc độc lập và làm việc theo nhóm  
+M2.5 Sử dụng ngoại ngữ tiếng Anh hiệu quả trong tìm hiểu về 
+ngôn ngữ lập trình và đọc tài liệu tham khảo tiếng Anh. 
+ 
+M3 Hình thành năng lực phân tích, hình thành ý tưởng và 
+giải quyết vấn đề 
+ 
+M3.1 Tự lựa chọn và tự học một loại ngôn ngữ lập trình, viết 
+thuật toán theo các phương pháp giải bài toán trong học 
+phần để giải một bài toán cụ thể.   
+ 
+M3.2 Viết thuật toán, lập trình giải bài toán tổng quát trong đó 
+có gói kiểm tra điều kiện thực hiện 
+Điều chỉnh thuật toán và chương trình phù hợp với dữ liệu 
+đầu vào khi dữ liệu chưa đạt điều kiện của phương pháp, 
+mở rộng lớp bài toán có thể giải được, kết hợp các phương 
+pháp để giải quyết vấn đề phức tạp hơn  
+ 
+ 
+ 
+
+--- Trang 3 / 7 ---
+4. TÀI LIỆU HỌC TẬP 
+Giáo trình 
+[1] Sách Giải tích số – Lê Trọng Vinh. 
+[2] Sách Giải tích số - Phạm Kỳ Anh 
+[3] Sách Numerical Methods in Engineering with MATLAB - Jaan Kiusalaas. 
+Tham khảo 
+      [1] Sách Experiments with MATLAB – Cleve Moler  
+      [2] Website: http://www.mathworks.com/ 
+      [3] Matlab help. 
+ 
+ 
+ 
+5. CÁCH ĐÁNH GIÁ HỌC PHẦN 
+Điểm thành phần Phương pháp đánh 
+giá cụ thể Mô tả CĐR được 
+đánh giá 
+Tỷ 
+trọng 
+[1] [2] [3] [4] [5] 
+A1. Điểm quá trình (*) 
+ 
+A1.1. Đánh giá quá 
+trình 
+Thi viết / 
+Thi vấn đáp / 
+Trắc nghiệm / 
+Bài tập lớn 
+M1.1÷M1.2 
+M2.1÷M2.5 
+M3.1÷M3.2 
+30% 
+A2. Điểm cuối kỳ A2.1. Thi cuối kỳ Thi viết/ 
+Thi vấn đáp 
+M1.1÷M1.2 
+M2.1÷M2.5 
+M3.1÷M3.2 
+70% 
+* Điểm quá trình sẽ được điều chỉnh bằng cách cộng thêm điểm chuyên cần. Điểm chuyên cần 
+có giá trị từ –2 đến +2, theo Quy chế Đào tạo đại học hệ chính quy của Trường ĐH Bách khoa 
+Hà Nội.  
+ 
+6. KẾ HOẠCH GIẢNG DẠY 
+Tuần Nội dung 
+CĐR 
+học 
+phần 
+Hoạt động dạy và học (*) 
+Bài 
+đánh 
+giá 
+[1] [2] [3] [4] [5] 
+1 Giới thiệu môn học 
+Chương 1:  Sai số 
+1.1 Các loại sai số 
+1.2 Các quy ước viết số gần 
+đúng 
+1.3 Sai số trong tính toán 
+ 
+M1.1 Giảng bài; 
+Hỏi – đáp 
+Làm bài tập ví dụ 
+A1.1; 
+ 
+
+--- Trang 4 / 7 ---
+Tuần Nội dung 
+CĐR 
+học 
+phần 
+Hoạt động dạy và học (*) 
+Bài 
+đánh 
+giá 
+[1] [2] [3] [4] [5] 
+2 Chương 2: Một số phương pháp 
+giải phương trình phi tuyến trong 
+không gian 1 chiều  
+2.1 Khoảng cách li nghiệm 
+2.1 Phương pháp chia đôi 
+ 
+ 
+M1.1; 
+M1.2; 
+M2.3; 
+M2.4; 
+M2.5; 
+M3.1; 
+  
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+3 2.2 Phương pháp dây cung 
+ 
+ 
+ 
+M1.1; 
+M1.2; 
+M2.3; 
+M2.4; 
+M2.5; 
+M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+4 2.3 Phương pháp tiếp tuyến M1.1; 
+M1.2; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+5 2.4 Phương pháp lặp đơn M1.1; 
+M1.2; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+6 Chương 3: Một số phương pháp 
+giải phương trình phi tuyến 
+trong không gian nhiều chiều 
+3.1 Phương pháp lặp đơn 
+3.2 Phương pháp Newton 
+M1.1; 
+M1.2; 
+M2.2; 
+M2.3; 
+M2.4; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+A1.1; 
+A2.1; 
+
+--- Trang 5 / 7 ---
+Tuần Nội dung 
+CĐR 
+học 
+phần 
+Hoạt động dạy và học (*) 
+Bài 
+đánh 
+giá 
+[1] [2] [3] [4] [5] 
+M2.5; 
+M3.1; 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+7 Chương 4: Một số phương pháp 
+giải hệ đại số tuyến tính 
+4.1 Phương pháp Gauss và Phương 
+pháp Gauss-Jordan 
+ 
+ 
+M1.1; 
+M1.2; 
+M2.1; 
+M2.2; 
+M2.3; 
+M2.4; 
+M2.5; 
+M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+8 4.2 Phương pháp phân tách LU và 
+phương phá Choleski 
+ 
+M1.1; 
+M1.2; 
+M2.1; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+9 4.3 Phương pháp l ặp đơn và l ặp 
+Jacobi 
+4.4 Phương pháp l ặp Seidel và l ặp 
+Gauss-Seidel 
+ 
+M1.1; 
+M1.2; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+10 4.5 Sử dụng các phương pháp giải 
+đúng hệ đại số tuyến tính để tìm 
+ma trận nghịch đảo 
+4.6 Phương pháp viền quanh tìm 
+ma trận nghịch đảo 
+ 
+ 
+M1.1; 
+M1.2; 
+M2.1; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+
+--- Trang 6 / 7 ---
+Tuần Nội dung 
+CĐR 
+học 
+phần 
+Hoạt động dạy và học (*) 
+Bài 
+đánh 
+giá 
+[1] [2] [3] [4] [5] 
+11 4.7 4.5 Sử dụng các phương pháp 
+lặp giải hệ đại số tuyến tính để tìm 
+ma trận nghịch đảo 
+ 
+4.8 Phương pháp Newton tìm g ần 
+đúng ma trận nghịch đảo 
+ 
+ 
+M1.1; 
+M1.2; 
+M2.1; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+12 Chương 5:  Giá tr ị riêng, vector 
+riêng  
+5.1 Phương pháp Danielevski tìm 
+đa thức đặc trưng 
+M1.1; 
+M1.2; 
+M2.1; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+ M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+A2.1; 
+13  5.2 Phương pháp lũy th ừa tìm giá 
+trị riêng trội và phương pháp xuống 
+thang tìm giá trị riêng trội tiếp theo 
+ 
+M1.1; 
+M1.2; 
+M2.1; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+ M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+  A2.1; 
+14 5.3 Khai triển kỳ dị của ma trận và 
+ứng dụng 
+M1.1; 
+M1.2; 
+M2.1; 
+M2.2; 
+M2.3; 
+M2.4; 
+ M2.5; 
+ M3.1; 
+GV giảng bài hoặc cho SV 
+-Đọc trước tài liệu; 
+-Phân nhóm thuyết trình, 
+và trao đổi 
+GV tổng kết, khẳng định 
+kiến thức. 
+-SV lập trình chạy một số 
+bài toán cụ thể theo yêu 
+cầu của GV 
+A1.1; 
+  A2.1; 
+15 Tổng kết và ôn tập  Tổng kết kiến thức, trao 
+đổi, giải đáp thắc mắc 
+ 
+*GV có thể lựa chọn hoạt động giảng dạy phù hợp với quy mô lớp học và khả năng của SV ở 
+mỗi buổi học 
+
+--- Trang 7 / 7 ---
+12 QUY ĐỊNH CỦA HỌC PHẦN 
+(Các quy định của học phần nếu có) 
+13 NGÀY PHÊ DUYỆT: ………………….. 
+Chủ tịch Hội đồng Nhóm xây dựng đề cương 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+14 QUÁ TRÌNH CẬP NHẬT 
+Lần 
+cập 
+nhật 
+Nội dung điều chỉnh 
+Ngày 
+tháng 
+được phê 
+duyệt 
+Áp dụng từ 
+kỳ/khóa 
+Ghi 
+chú 
+1 ……………    
+2 ……………………    
+ 

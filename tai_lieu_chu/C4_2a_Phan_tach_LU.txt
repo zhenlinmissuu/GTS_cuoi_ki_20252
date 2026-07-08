@@ -1,0 +1,615 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C4_2a_Phan_tach_LU.pdf ===
+Tổng số trang: 24
+========================================
+
+--- Trang 1 / 24 ---
+PHƯƠNG PHÁP PHÂN TÁCH LU
+Gv: Ts Đỗ Đức Tâm.
+Ngày 30 tháng 5 năm 2023 1 / 24
+
+--- Trang 2 / 24 ---
+Hệ phương trình tuyến tính
+Xét hệ phương trình tuyến tính
+Ax = b (1)
+trong đó
+A =
+
+
+a11 a12 · · ·a1n
+a21 a22 · · ·a2n
+· · ·
+an1 an2 · · ·ann
+
+
+và
+x = (x1, x2, · · ·, xn)T; b = (b1, b2, · · ·, bn)T.
+Ngày 30 tháng 5 năm 2023 2 / 24
+
+--- Trang 3 / 24 ---
+Phân tích LU của ma trận
+Định lý về phân tích LU của ma trận
+Cho ma trận vuông A với tất cả các định thức con chính khác 0. Khi đó,
+ma trận A có thể phân tích duy nhất dưới dạngA = LU, trong đóL− là
+ma trận tam giác dưới không suy biến vàU− là ma trận tam giác trên
+không suy biến.
+L =
+
+
+l11 0 · · ·0
+l21 l22 · · ·0
+· · ·
+ln1 ln2 · · ·lnn
+
+
+U =
+
+
+u11 u12 · · ·u1n
+0 u22 · · ·u2n
+· · ·
+0 0 · · ·unn
+
+
+Ngày 30 tháng 5 năm 2023 3 / 24
+
+--- Trang 4 / 24 ---
+Tìm ma trậnL và U?
+Phương trình trên tương ứng với một hệ có
+- n × n phương trình
+- n × n + n ẩn
+Có thể chọn trướcn giá trị, các giá trị còn lại tìm được bằng cách giải
+phương trình. Cụ thể ta chọn
+diag(U) = [1,1, · · ·,1].
+
+
+a11 a12 · · ·a1n
+a21 a22 · · ·a2n
+... ... ... ...
+an1 an2 · · ·ann
+
+ =
+
+
+l11
+l21 l22
+... ... ...
+ln1 ln2 · · ·lnn
+
+×
+
+
+1 u12 · · ·u1n
+1 · · ·u2n
+... ...
+1
+
+
+Ngày 30 tháng 5 năm 2023 4 / 24
+
+--- Trang 5 / 24 ---
+Giải hệ phương trình như thế nào?
+Với ma trậnM bất kỳ kí hiệu:
+- M j và là cột thứj của ma trậnM.
+- Mivà dòng thứi của ma trậnM.
+Bước 1: TìmL1 và U1:
+LU 1 = A1 → L1 = A1; L1U = A1 → U1 = A1/l11.
+Bước 2: TìmL2 và U2:
+LU 2 = A2 → L1u12 + L2 = A2 → L2 = A2 − L1u12.
+L2U = A2 → l21U1 + l22U2 = A2 → U2 = (A2 − l21U1) /l22.
+Bước k: Tìm Lk và Uk:
+LU k = Ak → Lk = Ak −
+k−1X
+t=1
+Ltutk .
+Lk U = Ak → Uk = 1
+lkk
+ 
+Ak −
+k−1X
+t=1
+Utlkt.
+!
+Ngày 30 tháng 5 năm 2023 5 / 24
+
+--- Trang 6 / 24 ---
+Dạng tọa độ của công thức nghiệm
+( li1 = ai1, i = 1, n
+u1i = a1i
+a11
+, k = 2, n
+
+
+
+li2 = ai2 − li1u12, i ≥ 2
+u2k = a2k − l21u12
+l22
+, k ≥ 2
+
+
+
+lik = aik − li1u1k − li2u2k − · · · −li,k−1uk−1,k , i ≥ k
+ukj = akj − u1j lk1 + u2j lk2 + · · ·+ uk−1,j lk,k−1
+lkk
+, j ≥ k
+Câu hỏi: Xây dựng công thức cho trường hợp chọn
+diag(L) = [1,1, · · ·,1]
+Ngày 30 tháng 5 năm 2023 6 / 24
+
+--- Trang 7 / 24 ---
+Ý tưởng phương pháp giải hệ bằng phân rãLU
+Ax = b ↔ LUx = b
+Đặt y := Ux
+Ly = b
+Ta có thể giải hệ trên sử dụng quá trình nghịch của phương pháp Gauss
+để tìm y. Nghiệm x của hệ tìm được bằng cách giải hệ
+Ux = y .
+Ngày 30 tháng 5 năm 2023 7 / 24
+
+--- Trang 8 / 24 ---
+Ví dụ
+Ví dụ : Giải hệ phương trình
+
+
+
+2x1 +2x2 −3x3 = 9
+−4x1 −3x2 +4x3 = −15
+2x1 + x2 +2x3 = 3
+Ta phân tích
+A =
+
+
+2 2 −3
+−4 −3 4
+2 1 2
+
+ =
+
+
+2 0 0
+−4 1 0
+2 −1 3
+
+
+
+
+1 1 −1.5
+0 1 −2
+0 0 1
+
+
+Ta có:L1 = A1 = [2, −4,2]T; U1 = A1/l11 = [1,1, −1.5]
+L2 = A2 − L1u12 = [2, −3,1]T − [2, −4,2]T ∗1 = [0,1, −1]T .
+U2 = (A2 − l21U1) /l22 = ([−4, −3,4] − (−4) ∗ [1,1, −1.5])/1 = [0,1, −2]
+l33 = a33 − l31u13 − l32u23 = 2 −2 ∗ (−1.5) − (−1) ∗ (−2) =3
+Ngày 30 tháng 5 năm 2023 8 / 24
+
+--- Trang 9 / 24 ---
+Ví dụ (tiếp)
+Giải hệ Ly = b
+
+
+2 0 0
+−4 1 0
+2 −1 3
+
+
+
+
+y1
+y2
+y3
+
+ =
+
+
+9
+−15
+3
+
+ ⇒
+
+
+y1
+y2
+y3
+
+ =
+
+
+4.5
+3
+−1
+
+
+Giải hệ Ux = y
+
+
+1 1 −1.5
+0 1 −2
+0 0 1
+
+
+
+
+x1
+x2
+x3
+
+ =
+
+
+4.5
+3
+−1
+
+ ⇒
+
+
+x1
+x2
+x3
+
+ =
+
+
+2
+1
+−1
+
+
+Ngày 30 tháng 5 năm 2023 9 / 24
+
+--- Trang 10 / 24 ---
+Phương pháp Cholesky
+Phương pháp Cholesky áp dụng cho hệ phương trình có ma trận hệ sốA
+là ma trận đối xứng(aij = aji ∀i, j = 1,2, ..,n) và det(A) ̸= 0. Khi đó, ma
+trận A phân tích được dưới dạng
+A = Q T Q
+trong đó
+Q =
+
+
+q11 q12 · · ·q1n
+0 q22 · · ·q2n
+· · ·
+0 0 · · ·qnn
+
+
+Hệ phương trình tuyến tính (1) trở thànhQ T Qx = b. Việc giải hệ (1) quy
+về việc giải liên tiếp 2 hệ phương trình tuyến tínhQ T y = b và Qx = y.
+Ngày 30 tháng 5 năm 2023 10 / 24
+
+--- Trang 11 / 24 ---
+Phương pháp Cholesky
+Phương pháp tìm ma trận Q
+Biểu diễn của ma trậnA
+
+
+a11 a12 .. a1n
+a21 a22 .. a2n
+· · ·
+an1 an2 .. ann
+
+ =
+
+
+q11 0 .. 0
+q12 q22 .. 0
+· · ·
+q1n q2n .. qnn
+
+
+
+
+q11 q12 .. q1n
+0 q22 .. q2n
+· · ·
+0 0 .. qnn
+
+
+Mỗi phần tử của ma trậnA được tính bởi công thức
+aij =
+nX
+k=1
+qki qkj ∀i ≤ j. (2)
+Ngày 30 tháng 5 năm 2023 11 / 24
+
+--- Trang 12 / 24 ---
+Phương pháp Cholesky
+Phương pháp tìm ma trận Q
+Từ công thức (2) suy ra công thức tính các phần tử của ma trậnQ
+q11 = √a11; q1j = a1j
+q11
+∀i = 2, · · ·, n;
+qii =
+ 
+aii −
+i−1X
+k=1
+q2
+ki
+!1/2
+∀i = 2, · · ·, n;
+qij = aij − Pi−1
+k=1 qki qkj
+qii
+∀i < j;
+qij = 0 ∀i > j.
+Ngày 30 tháng 5 năm 2023 12 / 24
+
+--- Trang 13 / 24 ---
+Phương pháp Cholesky
+Giải hệ phương trình Q T y = b
+Hệ phương trình tuyến tínhQ T y = b có thể viết dưới dạng
+
+
+
+q11y1 = b1
+q12y1 + q22y2 = b2
+...
+q1ny1 + q2ny2 + · · ·+ qnnyn = bn
+Công thức tính nghiệm
+y1 = b1
+q11
+y2 = b2 − q12y1
+q22
+...
+yn = bn − (q1ny1 + q2ny2 + · · ·+ q1(n−1)yn−1)
+qnn
+Ngày 30 tháng 5 năm 2023 13 / 24
+
+--- Trang 14 / 24 ---
+Phương pháp Cholesky
+Giải hệ phương trình Qx = y
+Hệ phương trình tuyến tínhQx = y có thể viết dưới dạng
+
+
+
+q11x1 + q12x2 + q13x3 + · · ·+ q1nxn = y1
+q22x2 + q23x3 + · · ·+ q2nxn = y2
+...
+qnnx1 = yn
+Công thức tính nghiệm
+xn = yn
+qnn
+xn−1 = yn−1 − qn−1,nxn
+qn−1,n−1
+...
+x1 = y1 − (q2nx2 + · · ·+ q1,n−1xn−1)
+q11
+Ngày 30 tháng 5 năm 2023 14 / 24
+
+--- Trang 15 / 24 ---
+Ví dụ giải hệ phương trình bằng phương pháp Cholesky
+Giải hệ phương trình:
+
+
+
+81x1 −45x2 +45x3 = 531
+−45x1 +50x2 −15x3 = −460
+45x1 −15x2 +38x3 = 193
+Lời giải Xét ma trận hệ số
+A =
+
+
+81 −45 45
+−45 50 15
+45 15 38
+
+ ; b =
+
+
+531
+−460
+193
+
+
+Bước 1: Tìm các phần tử của ma trậnQ:
+q11 = √a11 =
+√
+81 = 9; q12 = a12
+q11
+= −45
+9 = −5; q13 = a13
+q11
+= 45
+9 = 5;
+q22 =
+q
+a22 − q2
+12 =
+q
+50 − (−5)2 = 5; q23 = a23 − q12q13
+q22
+=
+= −15 − (−5)5
+5 = 2; q33 =
+q
+a33 − q2
+13 − q2
+23 =
+p
+38 −52 −22 = 3.
+Ngày 30 tháng 5 năm 2023 15 / 24
+
+--- Trang 16 / 24 ---
+Ví dụ giải hệ phương trình bằng phương pháp Cholesky
+Ma trận hệ sốA được biểu diễn dưới dạng:
+A = LT L =
+
+
+9 0 0
+−5 5 0
+5 2 3
+
+
+
+
+9 −5 5
+0 5 2
+0 0 3
+
+
+Bước 2: Giải hệ phương trìnhLT y = b
+
+
+
+9y1 = 531
+−5y1 +5y2 = −460
+5y1 +2y2 +3y3 = 193
+Sử dụng phương pháp thế giải được nghiệm của hệ trên là
+y = (59, −33, −12)T .
+Ngày 30 tháng 5 năm 2023 16 / 24
+
+--- Trang 17 / 24 ---
+Ví dụ giải hệ phương trình bằng phương pháp Cholesky
+Bước 3: Giải hệ phương trìnhLx = y
+
+
+
+9x1 −5x2 +5x3 = 59
+5x2 +2x3 = −33
+3x3 = −12
+Sử dụng phương pháp thế giải được nghiệm của hệ trên là
+x = (6, −5, −4)T .
+Ngày 30 tháng 5 năm 2023 17 / 24
+
+--- Trang 18 / 24 ---
+Một số chú ý
+1. uii = 0 cần thông báo ma trậnA suy biến, không thỏa mãn điều kiện
+thực hiện phương pháp.
+2. uii < 0 cần chuyển sang tính toán với số phức và thực hiện các phép
+toán như trong công thức nhưng trên tập số phức.
+3.Trường hợp A không đối xứng và không suy biến:
+Ax = b ⇔ AT Ax = AT b
+Đặt
+M := AT A = Q T Q, d := AT b.
+Hệ trên tương đương
+Q T Qx = d ⇔
+ Qx = y
+Q T y = d
+Ngày 30 tháng 5 năm 2023 18 / 24
+
+--- Trang 19 / 24 ---
+Công thức truy đuổi giải hệ có ma trận dạng ba đường
+chéo
+Xét hệ phương trình dạng
+
+
+
+−c0x0 + b0x1 = −d0
+ai xi−1 − ci xx + bi xi+1 = −di ∀i = 1,2, ..,N −1;
+anxn−1 + xn = −dn,
+Hệ phương trình trên có ma trận hệ số dạng 3 đường chéo:
+
+
+−c0 b0 0 ... 0 0
+a1 −c1 b1 ... 0 0
+0 a2 −c2 ... 0 0
+...
+0 0 0 ... −cn−1 bn−1
+0 0 0 ... an −cn
+
+
+Ngày 30 tháng 5 năm 2023 19 / 24
+
+--- Trang 20 / 24 ---
+Công thức truy đuổi phải
+Nghiệm của hệ phuong trình được tìm theo công thức truy đuổi sau:
+α1 = b0
+c0
+; β1 = d0
+c0
+;
+αi+1 = bi
+ci − αi ai
+; βi+1 = ai βi + di
+ci − αi ai
+i = 1,2, ...,n −1;
+xn = anβn + dn
+cn − anαn
+;
+xi = αi+1xi+1 + βi+1 i = 0,1,2, ...,n −1
+Ngày 30 tháng 5 năm 2023 20 / 24
+
+--- Trang 21 / 24 ---
+Công thức truy đuổi trái
+Nghiệm của hệ phuong trình được tìm theo công thức truy đuổi sau:
+ξ1 = an
+cn
+; ηn = dn
+cn
+;
+ξi = ai
+ci − ξi+1bi
+; ηi = bi ηi+1 + di
+ci − ξi+1bi
+i = 1,2, ...,n −1;
+x0 = b0η1 + d0
+c0 − b0ξ1
+;
+xi+1 = ξi+1xi + ηi+1 i = 0,1,2, ...,n −1
+Ngày 30 tháng 5 năm 2023 21 / 24
+
+--- Trang 22 / 24 ---
+Điều kiện ổn định của thuật toán
+Điều kiện để công thức truy đuổi ổn định:
+ai > 0, bi > 0, ci ≥ ai + bi i = 1,2, ...,n −1
+0 ≤ b0
+c0
+< 1;0 ≤ an
+cn
+< 1
+Ngày 30 tháng 5 năm 2023 22 / 24
+
+--- Trang 23 / 24 ---
+Ví dụ giải hệ phương trình bằng phương pháp truy đuổi
+Hệ phương trình:
+
+
+−2 1 0 0 0
+3 −8 1 0 0
+0 5 −12 2 0
+0 0 6 −18 4
+0 0 0 5 −10
+
+
+∗
+
+
+x0
+x1
+x2
+x3
+x4
+
+
+=
+
+
+−25
+72
+−69
+−156
+20
+
+
+Lời giải:
+α1 = 1
+2 = 0,5; β1 = −25
+2 = −12,5;
+α2 = 18 −3 ∗0,5 = 0,154; β2 = 72 +3 ∗ (−12,5)
+8 −3 ∗0,5 = 5,308
+Tương tự ta có:
+α3 = 0,178; β3 = −3,781; α4 = 0,236; β4 = −10,553;
+Ngày 30 tháng 5 năm 2023 23 / 24
+
+--- Trang 24 / 24 ---
+Ví dụ giải hệ phương trình bằng phương pháp truy đuổi
+x4 = a4β4 + d4
+c4 − a4α4
+= 5(−10,553) +20
+10 −5 ∗0,236 = −3,7148;
+Áp dụng công thức truy đuổi phải:
+x3 = −11,4296; x2 = −5,8155; x1 = 4,4124; x0 = −10,2938.
+Ngày 30 tháng 5 năm 2023 24 / 24

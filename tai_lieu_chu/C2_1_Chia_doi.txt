@@ -1,0 +1,265 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C2_1_Chia_doi.pdf ===
+Tổng số trang: 18
+========================================
+
+--- Trang 1 / 18 ---
+GIẢI GẦN ĐÚNG PHƯƠNG TRÌNH
+f (x) = 0. PHƯƠNG PHÁP CHIA ĐÔI.
+Gv: Ts Đỗ Đức Tâm.
+Ngày 27 tháng 9 năm 2019 1 / 11
+
+--- Trang 2 / 18 ---
+Xét phương trình
+f (x) = 0 (1)
+trong đó f (x) là hàm số liên tục trên đoạn[a, b].
+Để tìm nghiệm gần đúng của phương trình (1) ta tiến hành qua 2 bước:
+- Tách nghiệm: xét tính chất nghiệm của phương trình, phương trình có
+nghiệm hay không, có bao nhiêu nghiệm, các khoảng chứa nghiệm nếu có.
+Đối với bước này, ta có thể dùng phương pháp đồ thị, kết hợp với các định
+lý mà toán học hỗ trợ.
+- Chính xác hoá nghiệm: thu hẹp dần khoảng chứa nghiệm để hội tụ được
+đến giá trị nghiệm gần đúng với độ chính xác cho phép. Trong bước này ta
+có thể áp dụng một trong các phương pháp:
++ Phương pháp chia đôi
++ Phương pháp lặp
++ Phương pháp tiếp tuyến
++ Phương pháp dây cung
+Ngày 27 tháng 9 năm 2019 2 / 11
+
+--- Trang 3 / 18 ---
+Xét phương trình
+f (x) = 0 (1)
+trong đó f (x) là hàm số liên tục trên đoạn[a, b].
+Để tìm nghiệm gần đúng của phương trình (1) ta tiến hành qua 2 bước:
+- Tách nghiệm: xét tính chất nghiệm của phương trình, phương trình có
+nghiệm hay không, có bao nhiêu nghiệm, các khoảng chứa nghiệm nếu có.
+Đối với bước này, ta có thể dùng phương pháp đồ thị, kết hợp với các định
+lý mà toán học hỗ trợ.
+- Chính xác hoá nghiệm: thu hẹp dần khoảng chứa nghiệm để hội tụ được
+đến giá trị nghiệm gần đúng với độ chính xác cho phép. Trong bước này ta
+có thể áp dụng một trong các phương pháp:
++ Phương pháp chia đôi
++ Phương pháp lặp
++ Phương pháp tiếp tuyến
++ Phương pháp dây cung
+Ngày 27 tháng 9 năm 2019 2 / 11
+
+--- Trang 4 / 18 ---
+Xét phương trình
+f (x) = 0 (1)
+trong đó f (x) là hàm số liên tục trên đoạn[a, b].
+Để tìm nghiệm gần đúng của phương trình (1) ta tiến hành qua 2 bước:
+- Tách nghiệm: xét tính chất nghiệm của phương trình, phương trình có
+nghiệm hay không, có bao nhiêu nghiệm, các khoảng chứa nghiệm nếu có.
+Đối với bước này, ta có thể dùng phương pháp đồ thị, kết hợp với các định
+lý mà toán học hỗ trợ.
+- Chính xác hoá nghiệm: thu hẹp dần khoảng chứa nghiệm để hội tụ được
+đến giá trị nghiệm gần đúng với độ chính xác cho phép. Trong bước này ta
+có thể áp dụng một trong các phương pháp:
++ Phương pháp chia đôi
++ Phương pháp lặp
++ Phương pháp tiếp tuyến
++ Phương pháp dây cung
+Ngày 27 tháng 9 năm 2019 2 / 11
+
+--- Trang 5 / 18 ---
+Xét phương trình
+f (x) = 0 (1)
+trong đó f (x) là hàm số liên tục trên đoạn[a, b].
+Để tìm nghiệm gần đúng của phương trình (1) ta tiến hành qua 2 bước:
+- Tách nghiệm: xét tính chất nghiệm của phương trình, phương trình có
+nghiệm hay không, có bao nhiêu nghiệm, các khoảng chứa nghiệm nếu có.
+Đối với bước này, ta có thể dùng phương pháp đồ thị, kết hợp với các định
+lý mà toán học hỗ trợ.
+- Chính xác hoá nghiệm: thu hẹp dần khoảng chứa nghiệm để hội tụ được
+đến giá trị nghiệm gần đúng với độ chính xác cho phép. Trong bước này ta
+có thể áp dụng một trong các phương pháp:
++ Phương pháp chia đôi
++ Phương pháp lặp
++ Phương pháp tiếp tuyến
++ Phương pháp dây cung
+Ngày 27 tháng 9 năm 2019 2 / 11
+
+--- Trang 6 / 18 ---
+Tách nghiệm
+Phương pháp đồ thị:
+Trường hợp hàm f(x) đơn giản
+- Vẽ đồ thị f(x)
+- Nghiệm phương trình là hoành độ giao điểm của f(x) với trục x, từ đó
+suy ra số nghiệm, khoảng nghiệm.
+Trường hợp f(x) phức tạp
+- Biến đổi tương đươngf (x) = 0⇔ g (x) = h(x)
+- Vẽ đồ thị củag (x), h(x)
+- Hoành độ giao điểm củag (x) và h(x) là nghiệm phương trình, từ đó suy
+ra số nghiệm, khoảng nghiệm.
+Ngày 27 tháng 9 năm 2019 3 / 11
+
+--- Trang 7 / 18 ---
+Tách nghiệm
+Khoảng phân ly nghiệm:
+Định nghĩa
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu trong khoảng đó phương trình (1) chỉ chứa một nghiệm thựcα
+duy nhất.
+Định lý
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu f (a)f (b)< 0 và f (x) là hàm số đơn điệu liên tục trong[a, b].
+Định lý
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu f (a)f (b)< 0 và f′(x) giữ nguyên dấu trong đoạn[a, b].
+Ngày 27 tháng 9 năm 2019 4 / 11
+
+--- Trang 8 / 18 ---
+Tách nghiệm
+Khoảng phân ly nghiệm:
+Định nghĩa
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu trong khoảng đó phương trình (1) chỉ chứa một nghiệm thựcα
+duy nhất.
+Định lý
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu f (a)f (b)< 0 và f (x) là hàm số đơn điệu liên tục trong[a, b].
+Định lý
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu f (a)f (b)< 0 và f′(x) giữ nguyên dấu trong đoạn[a, b].
+Ngày 27 tháng 9 năm 2019 4 / 11
+
+--- Trang 9 / 18 ---
+Tách nghiệm
+Khoảng phân ly nghiệm:
+Định nghĩa
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu trong khoảng đó phương trình (1) chỉ chứa một nghiệm thựcα
+duy nhất.
+Định lý
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu f (a)f (b)< 0 và f (x) là hàm số đơn điệu liên tục trong[a, b].
+Định lý
+Khoảng (a, b) được gọi là một khoảng phân ly nghiệmα của phương trình
+(1) nếu f (a)f (b)< 0 và f′(x) giữ nguyên dấu trong đoạn[a, b].
+Ngày 27 tháng 9 năm 2019 4 / 11
+
+--- Trang 10 / 18 ---
+Ví dụ:Tách nghiệm cho phương trìnhx 3− x +5 = 0.
+Giải Ta cóf′(x) = 3x 2−1, f′(x) = 0⇔ x =± 1√
+3
+Bảng biến thiên:
+x
+f′(x)
+f (x)
+−∞ − 1√
+3
+1√
+3 +∞
++ 0 − 0 +
+−∞−∞
+5.3855.385
+4.6154.615
++∞+∞
+Từ bảng biến thiên ta thấy phương trình có một nghiệm duy nhất
+α< − 1√
+3. Mặt khácf (−2)f (−1)< 0 nênα∈ (−2,−1).
+Ngày 27 tháng 9 năm 2019 5 / 11
+
+--- Trang 11 / 18 ---
+Ví dụ:Tách nghiệm cho phương trình 2x + x−4 = 0.
+Giải Ta có 2x + x−4 = 0⇔ 2x =−x +4. Áp dụng phương pháp đồ thị:
+Từ đồ thị suy ra phương trình có 1 nghiệmα∈ (1,2).
+Ngày 27 tháng 9 năm 2019 6 / 11
+
+--- Trang 12 / 18 ---
+Phương pháp chia đôi
+Ý tưởng
+Cho phương trìnhf (x) = 0, f (x) liên tục và trái dấu tại 2 đầu[a, b].
+Giả sử f (a)< 0, f (b)> 0 (nếu ngược lại thì xét−f (x) = 0 ). Theo định
+lý 1, trên[a, b] phương trình có ít nhất 1 nghiệmα.
+Cách tìm nghiệmα:
+Đặt [a0, b0] = [ a, b] và lập các khoảng lồng nhau[ai, bi ], (i = 1,2,3,... )
+[ai, bi ] =
+{
+[ai−1, (ai−1 + bi−1)/2] nếu f ((ai−1 + bi−1)/2)> 0
+[(ai−1 + bi−1)/2, bi−1] nếu f ((ai−1 + bi−1)/2)< 0
+Ngày 27 tháng 9 năm 2019 7 / 11
+
+--- Trang 13 / 18 ---
+Phương pháp chia đôi
+Ý tưởng
+Cho phương trìnhf (x) = 0, f (x) liên tục và trái dấu tại 2 đầu[a, b].
+Giả sử f (a)< 0, f (b)> 0 (nếu ngược lại thì xét−f (x) = 0 ). Theo định
+lý 1, trên[a, b] phương trình có ít nhất 1 nghiệmα.
+Cách tìm nghiệmα:
+Đặt [a0, b0] = [ a, b] và lập các khoảng lồng nhau[ai, bi ], (i = 1,2,3,... )
+[ai, bi ] =
+{
+[ai−1, (ai−1 + bi−1)/2] nếu f ((ai−1 + bi−1)/2)> 0
+[(ai−1 + bi−1)/2, bi−1] nếu f ((ai−1 + bi−1)/2)< 0
+Ngày 27 tháng 9 năm 2019 7 / 11
+
+--- Trang 14 / 18 ---
+Phương pháp chia đôi
+Như vậy:
+- Hoặc nhận được nghiệm đúng ở một bước nào đó:α = (ai−1 + bi−1)/2
+nếu f ((ai−1 + bi−1)/2) = 0.
+- Hoặc nhận được 2 dãyan và bn, trong đó:
+an: là dãy đơn điệu tăng và bị chặn trên;
+bn: là dãy đơn điệu giảm và bị chặn dưới;
+ngoài ra do|bn− an| = (b− a)/2n nên tồn tại giới hạn
+lim
+n→+∞
+an = lim
+n→+∞
+bn =α
+là nghiệm phương trình (1). Có thể chọnα = an+bn
+2 làm nghiệm xấp xỉ tại
+bước thứ n.
+Ngày 27 tháng 9 năm 2019 8 / 11
+
+--- Trang 15 / 18 ---
+Sai số
+Sai số của phương pháp chia đôi theo đạo hàm hàm số:
+Nếu m = min(|f′(x)|> 0) trên đoạn [a, b] thì
+|xn−α|<|f (xn)|
+m , (2)
+Sai số theo độ dài đoạn[a, b]:
+|xn−α|< b− a
+2n . (3)
+Ngày 27 tháng 9 năm 2019 9 / 11
+
+--- Trang 16 / 18 ---
+Sai số
+Sai số của phương pháp chia đôi theo đạo hàm hàm số:
+Nếu m = min(|f′(x)|> 0) trên đoạn [a, b] thì
+|xn−α|<|f (xn)|
+m , (2)
+Sai số theo độ dài đoạn[a, b]:
+|xn−α|< b− a
+2n . (3)
+Ngày 27 tháng 9 năm 2019 9 / 11
+
+--- Trang 17 / 18 ---
+Ví dụ:Tìm nghiệm phương trình: 2x + x−4 = 0 bằng ppháp chia đôi.
+Giải:
+- Tách nghiệm: phương trình có 1 nghiệmx∈ (1,2).
+- Chính xác hoá nghiệm: áp dụng phương pháp chia đôi(f (1)< 0). Bảng
+kết quả:
+n an bn f
+( an + bn
+2
+)
+0 1 2 +
+1 1 1.5 -
+2 1.25 1.5 -
+3 1.375 1.5 +
+4 1.375 1.438 +
+5 1.375 1.406 +
+6 1.375 1.391 -
+7 1.383 1.391 +
+8 1.383 1.387 -
+9 1.385 1.387 -
+10 1.386 1.387
+Kết luận: Nghiệm của phương trình:x≈ 1.386 với sai số là 9,76.10−4.
+Ngày 27 tháng 9 năm 2019 10 / 11
+
+--- Trang 18 / 18 ---
+Sơ đồ giải thuật
+Ngày 27 tháng 9 năm 2019 11 / 11

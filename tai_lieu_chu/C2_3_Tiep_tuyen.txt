@@ -1,0 +1,120 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C2_3_Tiep_tuyen.pdf ===
+Tổng số trang: 10
+========================================
+
+--- Trang 1 / 10 ---
+GIẢI GẦN ĐÚNG PHƯƠNG TRÌNH
+f (x) = 0. PHƯƠNG PHÁP TIẾP TUYẾN
+(PHƯƠNG PHÁP NEWTON).
+Gv: Ts. Đỗ Đức Tâm.
+Ngày 27 tháng 9 năm 2019 1 / 10
+
+--- Trang 2 / 10 ---
+Nội dung phương pháp tiếp tuyến
+Xét phương trình
+f (x) = 0 (1)
+trong đó f (x) là hàm số có đạo hàm liên tục và khác 0 trên khoảng phân
+ly nghiệm (a, b).
+a. Công thức lặp:
+Chọn x0 thuộc khoảng nghiệm(a, b).
+Tiếp tuyến tạiA0(x0, f (x0)) cắt trục Ox tại điểm có hoành độx1;
+Tiếp tuyến tạiA1(x1, f (x1)) cắt trục Ox tại điểm có hoành độx2;
+Tiếp tuyến tạiAn(xn, f (xn)) cắt trục Ox tại điểm có hoành độxn;
+Cứ tiếp tục quá trình trên ta nhận được dãyxn. Nếu dãyxn hội tụ đến giá
+trị µ thì µ là nghiệm của phương trình (1).
+Ngày 27 tháng 9 năm 2019 2 / 10
+
+--- Trang 3 / 10 ---
+Nội dung phương pháp tiếp tuyến
+a. Công thức lặp: Phương trình tiếp tuyến tạiAn(xn, f (xn))
+y− f (xn) = f′(xn)(x− xn)
+Tiếp tuyến cắt trụcOx tại điểm có toạ độ(xn+1,0). Do vậy:
+f (xn) = f′(xn)(xn− xn+1)
+hay
+xn+1 = xn− f (xn)
+f′(xn). (2)
+Ngày 27 tháng 9 năm 2019 3 / 10
+
+--- Trang 4 / 10 ---
+Nội dung phương pháp tiếp tuyến
+b. Ý nghĩa hình học:
+Ngày 27 tháng 9 năm 2019 4 / 10
+
+--- Trang 5 / 10 ---
+Điều kiện hội tụ của phương pháp tiếp tuyến
+Định lý 1
+Giả sử [a, b] là khoảng nghiệm của phương trìnhf (x) = 0. Đạo hàmf′(x)
+và f′′(x) liên tục, không đổi dấu, không triệt tiêu trên[a, b]. Khi đó ta
+chọn xấp xỉ nghiệm ban đầux0∈ [a, b] sao cho
+f (x0)f′′(x)> 0
+thì dãy số xây dựng bởi công thức (2) hội tụ đơn điệu đến nghiệm đúng
+của phương trìnhf (x) = 0.
+- Nếu f′(x) và f′′(x) cùng dấu trên[a, b] thì dãy hội tụ giảm đến nghiệm
+đúng của phương trình (1);
+- Nếu f′(x) và f′′(x) khác dấu trên[a, b] thì dãy hội tụ tăng đến nghiệm
+đúng của phương trình (1).
+Ngày 27 tháng 9 năm 2019 5 / 10
+
+--- Trang 6 / 10 ---
+Sai số của phương pháp
+Nếu chọn phần tửxn của dãy (2) làm xấp xỉ nghiệm thựcη của phương
+trình (1) và tồn tạiM2 và m1 sao cho
+|f′(x)|≥ m1> 0 ∀x∈ [a, b];
+|f′′(x)|≤ M2 ∀x∈ [a, b].
+Khi đó ta có
+|xn−η|≤ M2
+2m1
+(xn− xn−1)2 (3)
+Nhận xét: Phương pháp tiếp tuyến hội tụ nhanh hơn phương pháp lặp
+đơn và phương pháp chia đôi.
+Ngày 27 tháng 9 năm 2019 6 / 10
+
+--- Trang 7 / 10 ---
+Ví dụ: Tìm nghiệm: x 3 + x−5 = 0 bằng phương pháp tiếp tuyến.
+Lời giải: - Tách nghiệm: Bằng phương pháp đồ thị tìm được phương trình
+có duy nhất một nghiệm thuộc khoảng(1,2).
+- Chính xác hóa nghiệm:f′(x) = 3x 2 +1≥ m1 = 4 ∀x∈ [1,2];
+0< f′′(x) = 6x≤ M2 = 12 ∀x∈ (1,2).
+Do f (2)f′′(x)> 0 ∀x∈ (1,2) nên chọn x0 = 2 là xấp xỉ nghiệm ban đầu.
+Theo định lý 1 ta có dãy
+xn = xn−1− f (xn−1)
+f′(xn−1)
+hội tụ đến nghiệm của phương trình đã cho.
+Ngày 27 tháng 9 năm 2019 7 / 10
+
+--- Trang 8 / 10 ---
+- Ta có bảng sau
+n xn xn− f (xn)
+f′(xn)
+0 2 1.6153846
+1 1.6153846 1.5212930
+2 1.5212930 1.51599642
+3 1.51599642 1.51598022
+4 1.51598022 1.51598022
+Chọn x4 = 1.51598022 là nghiệm xấp xỉ thì sai số theo công thức (3) là
+|x4−η|≤ 12
+8|x4− x3|2 = 0.4.10−10.
+Suy ra nghiệm xấp xỉx4 = 1.51598022 có tất cả các chữ số là chữ số tin
+tưởng.
+Ngày 27 tháng 9 năm 2019 8 / 10
+
+--- Trang 9 / 10 ---
+Thuật toán và sơ đồ khối
+c. Thuật toán
+- Khai báo hàmf (x), f′(x), M2, m1,ε, x
+- Nhập x
+- Lặp y = x; x = x− f (x)/f′(x) trong khi M2
+2m1
+|x− y|>ε.
+- Xuất nghiệm:x (hoặc y).
+Ngày 27 tháng 9 năm 2019 9 / 10
+
+--- Trang 10 / 10 ---
+Thuật toán và sơ đồ khối
+start
+f (x), f′(x), M2, m1, x,ε
+y := x, x := x− f (x)/f′(x)
+M2
+2m1
+|x− y|>ε. print x finishnoyes
+Ngày 27 tháng 9 năm 2019 10 / 10

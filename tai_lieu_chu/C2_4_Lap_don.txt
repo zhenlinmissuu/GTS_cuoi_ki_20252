@@ -1,0 +1,120 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C2_4_Lap_don.pdf ===
+Tổng số trang: 10
+========================================
+
+--- Trang 1 / 10 ---
+GIẢI GẦN ĐÚNG PHƯƠNG TRÌNH
+f (x) = 0. PHƯƠNG PHÁP LẶP ĐƠN.
+Gv: Ts. Đỗ Đức Tâm.
+Ngày 15 tháng 9 năm 2019 1 / 10
+
+--- Trang 2 / 10 ---
+Nội dung phương pháp lặp đơn
+Xét phương trình
+f (x) = 0 (1)
+trong đó f (x) là hàm số có đạo hàm liên tục trên khoảng phân ly nghiệm
+(a, b).
+a. Ý tưởng:
+Biến đổi tương đương:
+f (x) = 0⇔ x = g (x)
+Chọn giá trị ban đầux0∈ (a, b). Xây dựng dãy xấp xỉ nghiệm theo công
+thức truy hồi
+xn = g (xn−1). (2)
+Như vậy ta nhận được dãyxn, nếu dãy này hội tụ thì tồn tại giới hạn
+lim
+n→+∞
+xn =η
+là nghiệm phương trình.
+Ngày 15 tháng 9 năm 2019 2 / 10
+
+--- Trang 3 / 10 ---
+Nội dung phương pháp lặp đơn
+b. Ý nghĩa hình học:
+Trường hợp hình a: hội tụ đến nghiệmµ
+Trường hợp hình b: không hội tụ đến nghiệmµ.
+Ngày 15 tháng 9 năm 2019 3 / 10
+
+--- Trang 4 / 10 ---
+Điều kiện hội tụ của phương pháp lặp đơn
+Định lý 1
+Giả sử hàmg (x) xác định, khả vi trên đoạn[a, b] và mọi x∈ [a, b] giá trị
+g (x) đều thuộc [a, b]. Khi đó nếu tồn tạiq> 0 sao cho
+|g′(x)|≤ q< 1∀x∈ (a, b)
+thì:
++ Quá trình lặp hội tụ đến nghiệm không phụ thuộc vàox0∈ [a, b]
++ Giới hạnlimn→+∞ xn =η là nghiệm duy nhất trên(a, b).
+Ngày 15 tháng 9 năm 2019 4 / 10
+
+--- Trang 5 / 10 ---
+Sai số của phương pháp
+Nếu chọn phần tửxn của dãy (2) làm xấp xỉ nghiệm thựcη của phương
+trình (1) vàq là số như trong định lý 1 thì ta có
+|xn−η|≤ q
+1− q|xn− xn−1| (3)
+và
+|xn−η|≤ qn
+1− q|x1− x0|. (4)
+Nhận xét: Từ công thức (4) có thể tính được số lần lặp cần thiết để đạt
+được sai sốε cho trước.
+Ngày 15 tháng 9 năm 2019 5 / 10
+
+--- Trang 6 / 10 ---
+Ví dụ: Tìm nghiệm: x 3− x−1 = 0 bằng phương pháp lặp.
+Lời giải: - Tách nghiệm: Bằng phương pháp đồ thị tìm được phương trình
+có một nghiệm thuộc khoảng(1,2).
+Ngày 15 tháng 9 năm 2019 6 / 10
+
+--- Trang 7 / 10 ---
+- Chính xác hóa nghiệm:
+x 3− x−1 = 0⇔ x 3 = x +1
+hay
+x =
+3√
+x +1.
+Chọn
+g (x) =
+3√
+x +1
+thì
+g′(x) = 1
+3
+3
+√
+1
+(x +1)2⇒| g′(x)|≤ 1
+3 < 1∀x∈ [1,2].
+Do đó phương pháp lặp hội tụ.
+Ngày 15 tháng 9 năm 2019 7 / 10
+
+--- Trang 8 / 10 ---
+- Áp dụng phương pháp lặp (chọnx0 = 1) ta được bảng sau
+n xn g (x) = 3√x +1
+0 1 1.260
+1 1.260 1.312
+2 1.312 1.322
+3 1.322 1.324
+4 1.324 1.325
+5 1.325 1.325
+Chọn x5 = 1.325 là nghiệm xấp xỉ thì sai số là
+|x5−η|≤ q
+1− q|x5− x4| = 0.5.10−3.
+Suy ra nghiệm xấp xỉx5 = 1.325 có 4 chữ số tin tưởng.
+Ngày 15 tháng 9 năm 2019 8 / 10
+
+--- Trang 9 / 10 ---
+Thuật toán và sơ đồ khối
+c. Thuật toán
+- Khai báo hàmg (x);
+- Nhập x,ε, q;
+- Lặp: y = x, x = g (x) trong khi|q∗ (x− y )/(1− q)|>ε ;
+- Xuất nghiệm:x (hoặc y).
+Ngày 15 tháng 9 năm 2019 9 / 10
+
+--- Trang 10 / 10 ---
+Thuật toán và sơ đồ khối
+start
+g (x), q,ε
+y := x, x := g (x)
+q∗|x−y|
+(1−q) >ε print x endnoyes
+Ngày 15 tháng 9 năm 2019 10 / 10

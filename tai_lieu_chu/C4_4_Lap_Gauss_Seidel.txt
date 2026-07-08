@@ -1,0 +1,359 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C4_4_Lap_Gauss_Seidel.pdf ===
+Tổng số trang: 16
+========================================
+
+--- Trang 1 / 16 ---
+PP LẶP GAUSS - SEIDEL 
+Hà Thị Ngọc Yến
+Hà nội, 2025
+
+--- Trang 2 / 16 ---
+Ý tưởng phương pháp
+- Cải tiến phương pháp lặp đơn khi gặp phương 
+trình lặp hội tụ với tốc độ chậm
+- Thông tin mới được sử dụng càng sớm càng 
+tốt
+( ) ( )01 ,n n m px Cx D x −= + 
+
+
+--- Trang 3 / 16 ---
+Ý tưởng phương pháp
+- Phương pháp lặp đơn đã chứng tỏ dãy lặp
+khi thì lần xấp xỉ sau tốt hơn lần xấp xỉ
+trước đó
+( ) ( )01 ,n n m px Cx D x −= + 
+1B 
+( ) ( )1**nnx x x x −−  −
+
+--- Trang 4 / 16 ---
+Ý tưởng phương pháp
+Phương trình lặp Jacobi 
+( ) ( ) ( )
+( ) ( ) ( )
+( ) ( ) ( ) ( )
+( ) ( ) ( )
+1
+12 1 112
+1
+21 2 221
+1
+31 32 3 33 1 2
+1
+1212
+nn n
+m mi iii
+nn n
+m mi iii
+n n n n
+m mi ii i i
+nnn
+mi m m ii
+x c x c x d
+x c x c x d
+x c x c x c x d
+x c x c x
++
++
++
++
+= + + +
+= + + +
+= + + + +
+= + +
+
+
+--- Trang 5 / 16 ---
+Ý tưởng phương pháp
+Thay ngay khi có giá trị mới 
+( ) ( ) ( )
+( ) ( ) ( )
+( ) ( ) ( ) ( )
+( ) ( ) ( )
+1
+12 1 112
+11
+21 2 221
+1
+31 32 3 33 1 2
+1
+1212
+nn n
+m mi iii
+nn n
+m mi iii
+n n n n
+m mi ii i i
+nnn
+mi m m ii
+x c x c x d
+x c x c x d
+x c x c x c x d
+x c x c x
++
+++
++
++
+= + + +
+= + + +
+= + + + +
+= + +
+
+
+--- Trang 6 / 16 ---
+Ý tưởng phương pháp
+Thay ngay khi có giá trị mới 
+( ) ( ) ( )
+( ) ( ) ( )
+( ) ( ) ( ) ( )
+( ) ( ) ( )
+1
+12 1 112
+11
+21 2 221
+1 1 1
+31 32 3 33 1 2
+1
+1212
+nn n
+m mi iii
+nn n
+m mi iii
+n n n n
+m mi ii i i
+nnn
+mi m m mi ii
+x c x c x d
+x c x c x d
+x c x c x c x d
+x c x c x d
++
+++
++ + +
++
+= + + +
+= + + +
+= + + + +
+= + + +
+
+
+--- Trang 7 / 16 ---
+Ý tưởng phương pháp
+Phương trình lặp Seidel 
+( ) ( ) ( )
+( ) ( ) ( )
+( ) ( ) ( ) ( )
+( ) ( ) ( )
+1
+12 1 112
+11
+21 2 221
+1 1 1
+31 32 3 33 1 2
+111
+1212
+nn n
+m mi iii
+nn n
+m mi iii
+n n n n
+m mi ii i i
+nnn
+mi m m mi ii
+x c x c x d
+x c x c x d
+x c x c x c x d
+x c x c x d
++
+++
++ + +
++++
+= + + +
+= + + +
+= + + + +
+= + + +
+
+
+--- Trang 8 / 16 ---
+Ý tưởng phương pháp
+Thay ngay khi có giá trị mới 
+( ) ( ) ( )
+( ) ( ) ( )
+11
+11
+000
+;
+0 0 0
+n n n
+ij
+ij
+nn
+x Ux Lx d
+b
+LU
+b
+x I L Ux d
+++
+−+
+= + +
+
+== 
+ 
+= − +
+
+
+--- Trang 9 / 16 ---
+SỰ HỘI TỤ
+Định lý 1:  Giả sử là ma trận vuông cấp
+khi đó, các mệnh đề sau là tương đương:
+1. Ma trận hội tụ, tức là
+2.
+3. Mọi giá trị riêng đều có modun nhỏ hơn 1 
+lim 0 n
+n
+B
+→
+=
+B
+,m
+( ) max 1.ii
+B =
+lim 0
+n
+n
+B
+→
+=
+
+--- Trang 10 / 16 ---
+SỰ HỘI TỤ
+Định lý 2:    Cho ma trận vuông                    
+Khi đó, với mỗi           tồn tại một chuẩn trên
+sao cho
+Hệ quả 3:  Nếu              với một chuẩn nào đó thì
+là ma trận hội tụ   
+0 
+.mmB 
+( ) ( )B B B    +
+m
+1B 
+B
+
+--- Trang 11 / 16 ---
+SỰ HỘI TỤ
+Viết lại pt lặp Gauss-Seidel
+( )
+( ) ( ) ( )
+( ) ( ) ( )
+( )
+1
+1
+11
+1
+,
+:
+A A A A A A
+nn
+A A A
+nn
+A A A
+A A A
+A D L U I TA TL TU T D
+D L x U x b
+x D L U x b
+M D L U
+−
++
+−+
+−
+= − −  − = + =
+− = +
+= − +
+=−
+
+--- Trang 12 / 16 ---
+SỰ HỘI TỤ
+Bổ đề:  Nếu           thì ma trận                            
+khả nghịch
+( ) ( )
+( )
+1
+det : det 0
+det 0
+A A A
+A A A
+I M I D L U
+D L U
+
+
+−− = − − =
+ − − =
+1 
+( )A A AD L U −−
+
+--- Trang 13 / 16 ---
+SỰ HỘI TỤ
+Định lý 4: 
+Nếu      là ma trận chéo trội thì 
+( ) ( )
+1
+1, : A A AM M D L U
+−
+ = −
+A
+
+--- Trang 14 / 16 ---
+Sai số
+( )
+( )( )
+( ) ( )
+( )
+( )( )
+( ) ( )
+1,
+1, 1,
+10*
+1*
+0, max
+max , max
+11
+11
+ijji
+row row im ii ij ji
+ijij i j
+col col j m j m jjij jj ij ij
+k
+k
+k k k
+a
+sq
+aa
+aasq a aa
+qX X X X sq
+qX X X X sq
+
+= 
+
+==  
+−
+==
+−
+==
+−
+−  − −−
+−  − −−
+
+
+ 
+
+--- Trang 15 / 16 ---
+0 1 2 3 4 5
+1 -0.1 1.215355556 1.231443995 1.22043199 1.218805285
+1 0.613333333 0.75853037 0.781724376 0.783359785 0.783345537
+1 -0.602888889 -0.729584543 -0.730420254 -0.729264539 -0.729102344
+1 -0.1 1.356666667 1.048777778 1.245722222 1.195661852
+1 0.466666667 0.953333333 0.740666667 0.807607407 0.776608148
+1 -0.7 -0.607777778 -0.737222222 -0.713522222 -0.730985309
+
+
+--- Trang 16 / 16 ---
+Ví dụ

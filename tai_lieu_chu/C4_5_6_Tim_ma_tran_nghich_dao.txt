@@ -1,0 +1,436 @@
+=== TÀI LIỆU CHUYỂN ĐỔI: C4_5_6_Tim_ma_tran_nghich_dao.pdf ===
+Tổng số trang: 18
+========================================
+
+--- Trang 1 / 18 ---
+Các phương pháp
+tìm ma trận nghịch đảo
+Hà nội, 2026
+
+--- Trang 2 / 18 ---
+• Phương pháp dùng ma trận phần phụ
+• Phương pháp Gauss và Gauss-Jordan
+• Phương pháp Choleski
+• Phương pháp viền quanh
+CÁC PHƯƠNG PHÁP TÌM ĐÚNG MA TRẬN NGHỊCH ĐẢO
+
+--- Trang 3 / 18 ---
+PP dùng ma trận phần phụ
+• Định lý:
+( )
+( )
+1 det
+det .
+ij
+ij ij nn
+t
+C c A
+AC A E
++
+
+= = − 
+=
+
+--- Trang 4 / 18 ---
+PP Gauss và Gauss-Jordan
+• Đưa về giải phương trình
+bằng phương pháp G và GJ
+AX E=
+ 
+1||A E E A −
+
+--- Trang 5 / 18 ---
+PP Choleski
+• Phân tách ma trận đối xứng     (hoặc        ) 
+thành tích hai ma trận tam giác là chuyển 
+vị của nhau:
+( )
+,0
+t t t
+ij ij nn
+A S S A A S S
+S s s i j
+
+==
+= =  
+A
+tAA
+
+--- Trang 6 / 18 ---
+PP Choleski
+• Giải n phương trình
+• Ghép các cột nghiệm         tạo thành ma trận 
+nghịch đảo cần tìm
+• C2: Tạo gói tìm nghịch đảo của ma trận tam 
+giác
+( ) ( )t i t i t
+iiS Sx e S Sx A e=  =
+()ix
+
+--- Trang 7 / 18 ---
+PP viền quanh
+• Phân khối ma trận:
+1 1,1 1 1,1 1
+1, 1 , 1, 1 ,
+,
+n n n n
+nn
+n n n n n n
+ABAA ab
+
+
+− − − − −
+−−
+   ==   
+   
+
+--- Trang 8 / 18 ---
+PP viền quanh
+• Nhân hai ma trận
+( )
+( )
+( )
+( )
+1 1 1,1 1, 1 1
+1, 1 1 , 1, 1 1, 1
+1 1,1 1,1 , 1,11
+1, 1 1,1 , ,
+1
+02
+.
+3
+14
+0
+n n n n n n
+n n n n n
+n n n n n
+n n n n n n
+n
+Ab
+A
+B
+AE
+ab
+AE
+Ba
+
+
+
+
+− − − − −
+−−
+−
+−
+− − −
+−
+−
+−−
+
+ +== 
+
+ +=
++=
+
++=
+
+--- Trang 9 / 18 ---
+PP viền quanh
+• Lấy (2) nhân với                 từ bên trái rồi 
+trừ đi (4), ta tìm được
+• Thay vào (2) ta có
+1
+1, 1 1nn A −
+−−
+( ), 1
+, 1, 1 1 1,1
+1 5nn
+n n n n n
+b aA  −
+− − −
+= −
+( )
+1
+1 1,1
+1,1 1
+, 1, 1 1 1,1
+6
+nn
+n
+n n n n n
+A
+aA
+ 
+−
+−−
+− −
+− − −
+−= −
+
+--- Trang 10 / 18 ---
+PP viền quanh
+• Làm tương tự với cặp phương trình (1) và (3) ta 
+thu được:
+( )
+( )
+1
+1, 1 1
+1, 1 1
+, 1, 1 1 1,1
+1
+1,1 1, 1 11
+1 1 1 1
+, 1, 1 1 1,1
+7
+8
+nn
+n
+n n n n n
+n n n
+n n n
+n n n n n
+A
+aA
+AB A E aA
+ 
+
+
+−
+−−
+− −
+− − −
+−
+− − −−
+− − − −
+− − −
+−= −
+=−  −
+
+--- Trang 11 / 18 ---
+PP viền quanh
+• Điều kiện:
+1
+1
+1
+, 1, 1 1 1,1 0
+n
+n n n n n
+A
+aA 
+−
+−
+−
+− − −
+
+−
+
+--- Trang 12 / 18 ---
+PP viền quanh
+• Điều kiện:
+• Do đó,
+11
+1 1,11 1,1 1 1 1,1
+1, 11, 1 1, 1
+11
+1 1, 1 1 1,1
+0
+01
+det det
+nnn n n n n
+n nnn n nn
+n n nn n n n
+AA E A
+a a
+A A a A
+ 
+ 
+
+−−
+−−− − − − −
+−−−
+−−
+− − − −
+    =    
+   
+=−
+1
+1, 1 1 1,1det 0 0 nn n n nA a A  −
+− − −  − 
+
+--- Trang 13 / 18 ---
+PP viền quanh
+• Điều kiện:
+• A khả nghịch bất kỳ:
+• Ma trận                  thỏa mãn điều kiện 
+thực hiện phương pháp. Khi đó
+1 1, .kA k n−  =
+( ) , , 0
+" " 0 0.
+t t tx A A x x A Ax Ax Ax
+Ax x
+= = 
+=  =  =
+11 tA M A−−=
+tM A A=
+
+--- Trang 14 / 18 ---
+CÁC PP LẶP
+• Phương pháp lặp Jacobi (A chéo trội)
+• Phương pháp lặp Gauss - Seildel
+( )( ) ( )
+( ) ( )
+11
+A D L U
+X I T D L U X T TL TU X T
+X I TL TUX T D L UX T
+−−
+= − −
+= − − − + = + +
+= − + = − +
+( )X I TA X T= − +
+
+--- Trang 15 / 18 ---
+PP LẶP NEWTON 
+• Ý tưởng: Tìm nghịch đảo của số thực bằng pp 
+tiếp tuyến
+( )
+( ) ( )
+( )
+( ) ( )
+' ''
+23
+1 '
+2
+11 0, 0
+12 0; 0 0
+1
+11
+n n
+n n n n n n
+n
+n
+ax f x a a x
+f x f x x xx
+afx xx x x x x ax fx
+x
++
+=  = − = 
+−=  =   
+−
+= − = − = − − −
+
+--- Trang 16 / 18 ---
+PP LẶP NEWTON 
+• Ý tưởng: mô phỏng pp tìm nghịch đảo của số 
+thực
+( )
+( ) ( )
+( )
+1 '
+2
+1
+1
+11
+n n
+n n n n n n
+n
+n
+n n n n
+afx xx x x x x ax fx
+x
+X X X AX E
++
++
+−
+= − = − = − − −
+= − −
+
+--- Trang 17 / 18 ---
+PP LẶP NEWTON 
+• Sự hội tụ của phương pháp:
+( )
+( )
+( )
+2 1 1
+1
+1
+1
+11
+2 2 2 2
+10
+2
+1 0 0 01
+kn
+n
+n n n n
+n n n n n n n n
+n n n n
+n n n n n n
+n n n k
+n
+n
+X X X E AX
+G E AX X X X G X E G
+G E AX E AX E G
+E AX AX G G AX G
+G G G G
+G G G
+++
++
++
++
+++
+−−
+→
++
+= + −
+= −  = + = +
+= − = − +
+= − − = −
+= = = = =
+  ⎯⎯⎯ →  
+
+
+--- Trang 18 / 18 ---
+PP LẶP NEWTON 
+• Sai số:
+( )
+( ) ( )
+( )
+1 1 1
+11
+11
+0 0 0
+0
+11
+0 0 0 0
+0
+2
+011
+00 ,111
+n
+n n n n n
+nn
+k
+k
+k
+k
+n
+G AX E A X A X A A G
+X A A G
+AX I G G
+A X I G X G
+X qA X A X q Gqq
+− − −
+−−
+−−
+=
+−−
+=
+−−
+= − = −  − =
+−
+= − =
+ = − =
+   −  = −−
+
+
