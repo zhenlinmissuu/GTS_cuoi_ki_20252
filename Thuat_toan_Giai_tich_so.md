@@ -103,40 +103,125 @@ Tài liệu này hướng dẫn chi tiết từng bước thực hiện, điều
 **Mục tiêu:** Giải hệ tuyến tính $AX = b$ hoặc tìm ma trận nghịch đảo $A^{-1}$.
 
 ### 8. Phân tách LU (Cơ bản)
-**Mục đích:** Tách $A = LU$ để biến đổi hệ $AX = b$ thành 2 hệ tam giác dễ giải là $LY = b$ và $UX = Y$.
-**Các bước thực hiện:**
-* **Bước 1:** Khởi tạo ma trận $L$ là ma trận đơn vị $I$, ma trận $B$ copy toàn bộ từ $A$.
-* **Bước 2 (Khử Gauss):** Duyệt từng cột $k$ (từ 1 đến $n-1$):
-  - Hệ số nhân (lưu vào $L$): $L_{ik} = \frac{B_{ik}}{B_{kk}}$ (với $i > k$).
-  - Khử các hàng dưới (cập nhật $B$): $B_{ij} = B_{ij} - L_{ik} \cdot B_{kj}$.
-* **Bước 3:** Ma trận $U$ chính là nửa trên của $B$ sau khi khử xong.
-* **Bước 4 (Giải hệ):** Giải $LY = b$ (dùng phép thế tiến), sau đó giải $UX = Y$ (dùng phép thế lùi).
+
+**Input:**
+- Ma trận vuông $A \in Mat(n, n)$
+
+**Output:**
+- Ma trận A được phân rã chứa cả L và U
+
+**Thuật toán:**
+
+**B1. Khởi tạo:**
+- Tạo ma trận $B \leftarrow A$ (sao chép để cập nhật).
+
+**B2. Lặp:**
+- Với mỗi cột $k \leftarrow 0$ đến $n-2$:
+  - Nếu $B[k,k] = 0$, báo lỗi "Ma trận suy biến, không thể phân rã LU."
+  - Với mỗi hàng $i \leftarrow k+1$ đến $n-1$:
+    - Tính hệ số $L[i,k]$: $B[i,k] \leftarrow B[i,k] / B[k,k]$
+    - Cập nhật phần còn lại của hàng $i$:
+      với mỗi $j \leftarrow k+1$ đến $n-1$: $B[i,j] \leftarrow B[i,j] - B[i,k] \times B[k,j]$.
+
+**B3. Tách L và U:**
+- Khởi tạo $L = I_n, U = 0_{n \times n}$.
+- Với mỗi chỉ số $i, j = 0, \ldots, n-1$:
+  $L_{i,j} = \begin{cases} 1, & i = j, \\ B_{i,j}, & i > j, \\ 0, & i < j, \end{cases} \quad U_{i,j} = \begin{cases} B_{i,j}, & i \le j, \\ 0, & i > j. \end{cases}$
+
+**B4. Trả về: Ma trận L, ma trận U.**
 
 ### 9. Phân tách LU (Có Pivoting)
-**Mục đích:** Tránh sai số làm tròn hoặc lỗi chia cho 0 khi phần tử chéo $B_{kk}$ quá nhỏ hoặc bằng 0.
-**Các bước thực hiện:**
-* **Bước 1:** Khởi tạo ma trận hoán vị $P = I$.
-* **Bước 2 (Tìm Pivot và Hoán vị):** Ở mỗi bước khử cột $k$:
-  - Tìm phần tử có trị tuyệt đối lớn nhất (gọi là pivot) từ hàng $k$ trở xuống.
-  - Hoán vị hàng $k$ với hàng chứa pivot trong ma trận $B$ và tương tự trong ma trận $P$.
-* **Bước 3 (Khử):** Tiến hành khử Gauss như bình thường trên ma trận đã được hoán vị.
-* **Bước 4:** Trích xuất $L$, $U$, $P$. Giải hệ $AX = b$ bằng cách giải 2 hệ $LY = P \cdot b$ và $UX = Y$.
+
+**Input:**
+- Ma trận vuông $A \in \mathbb{R}^{n \times n}$.
+- Vector vế phải $B \in \mathbb{R}^{n \times 1}$.
+
+**Output:**
+- Ma trận tam giác dưới L với đường chéo chính bằng 1.
+- Ma trận tam giác trên U.
+- Ma trận hoán vị P.
+- Vector hoán vị $perm$.
+- Vector nghiệm $X \in \mathbb{R}^{n \times 1}$ của hệ $AX = B$.
+
+**Thuật toán:**
+
+**B1. Khởi tạo:**
+- Tạo ma trận P là ma trận đơn vị cấp n.
+- Tạo bản sao của ma trận A.
+- Tạo vector $perm = [0, 1, 2, \ldots, n-1]$.
+
+**B2. Phân tích LU có pivoting:**
+- Với mỗi cột $k \leftarrow 0$ đến $n-2$:
+  - Tìm chỉ số $p \leftarrow \arg\max_{k \le i \le n-1} |A[i, k]|$. $\triangleright$ Chọn pivot lớn nhất trong cột k
+  - Nếu $A[p, k] = 0$, báo lỗi: "Ma trận suy biến, không thể phân rã LU."
+  - Nếu $p \neq k$, hoán đổi:
+    - Hoán đổi hàng k và p trong A.
+    - Hoán đổi hàng k và p trong P.
+    - Hoán đổi $perm[k]$ và $perm[p]$.
+  - Với mỗi hàng $i \leftarrow k+1$ đến $n-1$:
+    - Nếu $A[i, k] \neq 0$:
+      - Tính hệ số $A[i, k]$: $A[i, k] \leftarrow A[i, k] / A[k, k]$. (Phần tử $L[i,k]$)
+      - Cập nhật các phần tử còn lại: $A[i, k+1:n] \leftarrow A[i, k+1:n] - A[i, k] \cdot A[k, k+1:n]$.
+
+**B3. Tách L và U:**
+- Tạo ma trận L với đường chéo chính bằng 1 và phần dưới đường chéo lấy từ A.
+- Tạo ma trận U với phần trên đường chéo và đường chéo chính lấy từ A.
+
+**B4. Giải hệ phương trình $AX = B$:**
+- Hoán vị vector B theo $perm$: $B' \leftarrow B[perm]$.
+- Giải hệ tam giác dưới $LY = B'$:
+  - Với mỗi $i \leftarrow 0$ đến $n-1$: $Y[i] \leftarrow B'[i] - \sum_{k=0}^{i-1} L[i,k] \cdot Y[k]$.
+- Giải hệ tam giác trên $UX = Y$:
+  - Với mỗi $i \leftarrow n-1$ xuống $0$: $X[i] \leftarrow (Y[i] - \sum_{k=i+1}^{n-1} U[i,k] \cdot X[k]) / U[i,i]$.
+
+**B5. Trả về: L, U, P, perm, X.**
 
 ### 10. Phân tách Cholesky
-**Điều kiện:** Ma trận $A$ phải đối xứng ($A = A^T$) và xác định dương. Ta phân tách $A = LL^T$.
-**Các bước thực hiện:**
-* **Bước 1 (Tính ma trận L):** Duyệt từng cột từ trái sang phải, tính từng phần tử:
-  - Đường chéo: $L_{ii} = \sqrt{A_{ii} - \sum_{k=1}^{i-1} L_{ik}^2}$
-  - Dưới đường chéo ($j > i$): $L_{ji} = \frac{A_{ji} - \sum_{k=1}^{i-1} L_{jk} L_{ik}}{L_{ii}}$
-* **Bước 2 (Giải hệ):** Giải lần lượt $LY = b$ và $L^T X = Y$.
+
+**Input:**
+- Ma trận vuông $A \in Mat(n, n)$
+
+**Output:**
+- Ma trận tam giác dưới L sao cho $A = L L^T$
+
+**Thuật toán:**
+
+**B1. Khởi tạo:**
+- Tạo ma trận sao chép $L \leftarrow A$
+
+**B2. Tính các phần tử của L:**
+- Với $i \leftarrow 0$ đến $n-1$:
+  - Gán: $temp \leftarrow L[i,i] - \sum_{k=0}^{i-1} L[i,k]^2$
+  - Nếu $temp < 0$ thì báo lỗi "Ma trận không dương xác định".
+  - Tính phần tử đường chéo: $L[i,i] = \sqrt{temp}$
+  - Tính các phần tử dưới đường chéo:
+    với mỗi $j \leftarrow i+1$ đến $n-1$: $L[j,i] \leftarrow \frac{1}{L[i,i]} \left( L[j,i] - \sum_{k=0}^{i-1} L[j,k] L[i,k] \right)$
+- Xóa các phần tử trên: với mỗi $j \leftarrow i+1$ đến $n-1$: $L[i,j] \leftarrow 0$
+
+**B3. Trả về: Ma trận L.**
 
 ### 11. Phương pháp Lặp đơn (Hệ phương trình)
-**Mục đích:** Giải hệ biến đổi dạng $X = BX + d$.
-**Các bước thực hiện:**
-* **Bước 1 (Kiểm tra hội tụ):** Tính chuẩn $q = \|B\|$ (thường dùng chuẩn hàng vô cùng). Đảm bảo $q < 1$.
-* **Bước 2 (Bảng lặp):** Chọn $X^{(0)}$ (thường lấy $X^{(0)} = d$). Áp dụng công thức lặp vector:
-  $X^{(k+1)} = B \cdot X^{(k)} + d$
-* **Bước 3 (Kết luận):** Dừng lặp khi sai số hậu nghiệm $\Delta = \frac{q}{1-q} \|X^{(k+1)} - X^{(k)}\| < \epsilon$ (với $q<1$).
+
+**Input:**
+- Ma trận $B \in Mat(n, n)$, vector tự do $d_n$.
+- Sai số $\varepsilon > 0$ cho trước.
+- Số lần lặp tối đa N.
+
+**Output:** Nghiệm $X = (x_1, x_2, \ldots, x_n)^T$ với số lần lặp k với sai số không quá $\varepsilon$ hoặc thông báo thất bại.
+
+**Thuật toán:**
+B1: Gán $q = \|B\|_{(p)} \quad (p = \infty, 1, 2)$
+
+**B2. Kiểm tra điều kiện hội tụ: $q < 1$, nếu không thỏa mãn thì thông báo "Điều kiện hội tụ không thỏa mãn, phương pháp có thể không hội tụ" và dừng chương trình.**
+
+**B3. Khởi tạo: $k = 0$, $X^{(0)} = 0_n$**
+
+**B4. Trong khi $k < N$, lặp:**
+- Tính dựa trên công thức lặp: $X^{(k+1)} = B X^{(k)} + d$
+- Kiểm tra điều kiện dừng: $\frac{q}{1-q} \| X^{(k+1)} - X^{(k)} \| < \varepsilon$. Nếu thỏa mãn thì trả về nghiệm gần đúng $X = X^{(k+1)}$ với số lần lặp $k+1$ và dừng chương trình.
+- Cập nhật cho vòng lặp sau: $k = k+1, X^{(k)} = X^{(k+1)}$.
+
+**B5. Thông báo "Thất bại: Không tìm được nghiệm sau N lần lặp với sai số cho trước." và dừng chương trình.**
 
 ### 12. Phương pháp Lặp Jacobi
 **Mục đích:** Giải hệ $AX = b$ bằng cách tính vòng lặp mà nghiệm mới ở bước $k+1$ chỉ phụ thuộc hoàn toàn vào nghiệm cũ ở bước $k$.
@@ -147,19 +232,138 @@ Tài liệu này hướng dẫn chi tiết từng bước thực hiện, điều
 * **Bước 3 (Kết luận):** Dừng khi sai số $\max|x_i^{(k+1)} - x_i^{(k)}| < \epsilon$.
 
 ### 13. Phương pháp Lặp Gauss-Seidel
-**Mục đích:** Giải hệ $AX = b$. Tối ưu hơn lặp Jacobi vì cập nhật cuốn chiếu (dùng ngay giá trị mới tính được thay vì đợi hết vòng lặp).
-**Các bước thực hiện:**
-* **Bước 1 (Kiểm tra hội tụ):** Đảm bảo tính chéo trội hàng của ma trận $A$.
-* **Bước 2 (Lặp):** Tại bước $k+1$, tính thành phần thứ $i$ dựa vào các thành phần $1 \dots i-1$ (vừa mới tính ở bước $k+1$) và các thành phần $i+1 \dots n$ (đã tính ở bước $k$):
-  $x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} - \sum_{j=i+1}^n a_{ij} x_j^{(k)} \right)$
-* **Bước 3 (Kết luận):** Dừng khi sai số lớn nhất giữa 2 bước lặp $\max|x_i^{(k+1)} - x_i^{(k)}| < \epsilon$.
+
+**Input:**
+- Ma trận $A_{n \times n}$, ma trận $B_{n \times m}$.
+- Sai số $\varepsilon$ cho trước.
+
+**Output:**
+- Nghiệm X của hệ $AX = b$ với sai số không quá $\varepsilon$
+
+**Thuật toán:**
+
+**B1. Xác định ma trận A chéo trội:**
+- Với $\sum_{j \neq i} |a_{ij}| < |a_{ii}| \forall i$: A chéo trội hàng. Gán $s = 0, \quad q = \max_{i=\overline{1,n}} \frac{\sum_{j<i} |a_{ij}|}{|a_{ii}| - \sum_{j>i} |a_{ij}|}$
+- Với $\sum_{i \neq j} |a_{ij}| < |a_{jj}| \forall j$: A chéo trội cột. Gán $s = \max_{j=\overline{1,n}} \frac{1}{|a_{jj}|} \sum_{i>j} |a_{ij}|, \quad q = \max_{j=\overline{1,n}} \frac{\sum_{i<j} |a_{ij}|}{|a_{jj}| - \sum_{i>j} |a_{ij}|}$
+- Nếu không thỏa mãn, cảnh báo phương pháp có thể không hội tụ.
+
+**B2. Khởi tạo: $k = 0$, $X^{(0)} = 0_n$**
+
+**B3. Lặp:**
+- Với mỗi cột $1, 2, \ldots, m$ của ma trận B, tính dựa trên công thức lặp:
+  $x_{i,t}^{(k+1)} = \frac{1}{a_{ii}} \left( b_{i,t} - \sum_{j=1}^{i-1} a_{ij} x_{j,t}^{(k+1)} - \sum_{j=i+1}^n a_{ij} x_{j,t}^{(k)} \right), \quad i = \overline{1, n}$
+- Kiểm tra điều kiện dừng:
+  $\frac{q}{(1-s)(1-q)} \| X_k - X_{k-1} \| < \varepsilon.$
+  Nếu thỏa mãn thì dừng lặp.
+- Ngược lại, gán $k = k+1$ và tiếp tục vòng lặp
+
+**B4. Trả về kết quả nghiệm gần đúng $X^{(k+1)}$ cùng sai số không quá $\varepsilon$.**
 
 **Lưu ý (Đổi dòng tạo chéo trội):** Nếu ma trận $A$ ban đầu không chéo trội, ta phải tiến hành hoán vị các phương trình (đổi dòng) để ma trận thỏa mãn điều kiện $|A_{ii}| > \sum_{j \neq i} |A_{ij}| \quad \forall i$ trước khi áp dụng Jacobi hoặc Gauss-Seidel.
 
 ### 14. & 15. Tìm ma trận nghịch đảo $A^{-1}$
-**Chiến lược chung:** Tìm ma trận nghịch đảo tương đương với việc giải $n$ hệ phương trình tuyến tính $A \cdot x_j = e_j$, với $e_j$ là cột thứ $j$ của ma trận đơn vị.
-* **Dùng Cholesky:** Phân tách $A = LL^T$ một lần duy nhất. Giải 2 hệ tam giác $Ly = e_j$ và $L^T x_j = y$ lặp lại cho từng cột $j$.
-* **Dùng Gauss-Seidel/Jacobi:** Chạy vòng lặp cho từng vế phải $e_j$ cho đến khi hội tụ ra nghiệm $x_j$. Hợp nhất các vector $x_j$ thành ma trận $A^{-1}$.
+#### Tìm ma trận nghịch đảo bằng phương pháp phân tích Choleski
+
+**Input:**
+- Ma trận vuông $A \in Mat(n, n)$.
+
+**Output:**
+- Ma trận nghịch đảo $A^{-1}$ (nếu A thỏa mãn điều kiện).
+
+**Thuật toán:**
+
+**B1. Kiểm tra ma trận A:**
+- Kiểm tra xem A có đối xứng không (tức là $A = A^T$).
+- Nếu A không đối xứng, báo lỗi: "Ma trận A không đối xứng. Không thể áp dụng trực tiếp phương pháp Cholesky." và dừng thuật toán.
+
+**B2. Phân tách Cholesky $A = L L^T$:**
+- Khởi tạo ma trận L kích thước $n \times n$ với tất cả các phần tử bằng 0.
+- Với $i \leftarrow 0$ đến $n-1$:
+  - Gán: $temp \leftarrow A[i,i] - \sum_{k=0}^{i-1} L[i,k]^2$
+  - Nếu $temp < 0$ thì báo lỗi "Ma trận A không dương xác định. Không thể phân tách Cholesky". và dừng thuật toán.
+  - Tính đường chéo: $L[i,i] \leftarrow \sqrt{temp}$
+  - Tính các phần tử dưới đường chéo:
+    với mỗi $j \leftarrow i+1$ đến $n-1$: $L[j,i] \leftarrow \frac{1}{L[i,i]} \left( A[j,i] - \sum_{k=0}^{i-1} L[j,k] L[i,k] \right)$
+
+**B3. Tính các cột của ma trận nghịch đảo $A_{inv}$**
+- Khởi tạo ma trận $A_{inv} \in Mat(n,n)$.
+- Khởi tạo vector cột tạm thời $y_{col}$ kích thước $n \times 1$.
+- Với $j \leftarrow 0$ đến $n-1$:
+  - Với $i \leftarrow 0$ đến $n-1$:
+    $y_{col}[i] \leftarrow \frac{1}{L[i,i]} \left( \delta_{ij} - \sum_{k=0}^{i-1} L[i,k] y_{col}[k] \right)$
+  - Với $i \leftarrow n-1$ xuống $0$:
+    $A_{inv}[i,j] \leftarrow \frac{1}{L[i,i]} \left( y_{col}[i] - \sum_{k=i+1}^{n-1} L[k,i] A_{inv}[k,j] \right)$
+
+**B4. Trả về: Ma trận $A_{inv}$.**
+
+#### Tìm ma trận nghịch đảo bằng phương pháp lặp Jacobi
+
+**Input:**
+- Ma trận vuông $A_{n \times n}$.
+- Sai số cho trước $\varepsilon$.
+- Số lần lặp tối đa cho phép N.
+
+**Output:**
+- Ma trận nghịch đảo $A^{-1}$.
+
+**Thuật toán:**
+
+**B1. Khởi tạo:**
+- Xây dựng ma trận đơn vị $I_{n \times n}$.
+- Khởi tạo ma trận kết quả $X \leftarrow 0_{n \times n}$.
+
+**B2. Kiểm tra tính chéo trội và tính hệ số:**
+- Nếu A chéo trội hàng: Gán $p = \infty$ và
+  $\lambda = 1, \quad q = \max_{1 \le i \le n} \left( \frac{1}{|a_{ii}|} \sum_{j \neq i} |a_{ij}| \right)$
+- Nếu A chéo trội cột: Gán $p = 1$ và
+  $\lambda = \frac{\max_{1 \le i \le n} |a_{ii}|}{\min_{1 \le i \le n} |a_{ii}|}, \quad q = \max_{1 \le j \le n} \left( \frac{1}{|a_{jj}|} \sum_{i \neq j} |a_{ij}| \right)$
+- Nếu không, dừng thuật toán.
+
+**B3. Lặp:**
+Cho $t$ chạy từ $1$ đến $n$ (tương ứng với mỗi cột của $I$ và $X$):
+- Khởi tạo vector lặp $x_{old} \leftarrow 0_{n \times 1}$.
+- Cho $k$ chạy từ $1$ đến $N$:
+  - Tính vector lặp mới $x_{new}$:
+    $(x_{new})_i = \frac{1}{a_{ii}} \left( (e_t)_i - \sum_{j \neq i} a_{ij} (x_{old})_j \right), \quad i = \overline{1, n}$
+  - Kiểm tra điều kiện dừng: Nếu $\| x_{new} - x_{old} \|_p < \frac{\varepsilon(1-q)}{\lambda q}$, thoát vòng lặp k.
+  - Gán $x_{old} \leftarrow x_{new}$.
+- Gán cột thứ t của ma trận X bằng $x_{new}$.
+
+**B4. Trả về kết quả: Trả về ma trận X là ma trận $A^{-1}$.**
+
+#### Tìm ma trận nghịch đảo bằng phương pháp lặp Gauss-Seidel
+
+**Input:**
+- Ma trận vuông $A_{n \times n}$.
+- Sai số cho trước $\varepsilon$.
+- Số lần lặp tối đa cho phép N.
+
+**Output:**
+- Ma trận nghịch đảo $A^{-1}$.
+
+**Thuật toán:**
+
+**B1. Khởi tạo:**
+- Xây dựng ma trận đơn vị $I_{n \times n}$.
+- Khởi tạo ma trận kết quả $X \leftarrow 0_{n \times n}$.
+
+**B2. Xác định ma trận chéo trội và tính hệ số:**
+- Nếu A chéo trội hàng: Gán $s = 0, \quad q = \max_{i=\overline{1,n}} \frac{\sum_{j<i} |a_{ij}|}{|a_{ii}| - \sum_{j>i} |a_{ij}|}$
+- Nếu A chéo trội cột: Gán $s = \max_{j=\overline{1,n}} \frac{1}{|a_{jj}|} \sum_{i>j} |a_{ij}|, \quad q = \max_{j=\overline{1,n}} \frac{\sum_{i<j} |a_{ij}|}{|a_{jj}| - \sum_{i>j} |a_{ij}|}$
+- Nếu không, dừng thuật toán.
+
+**B3. Lặp:**
+Cho $t$ chạy từ $1$ đến $n$ (tương ứng với mỗi cột của $I$ và $X$):
+- Khởi tạo vector lặp $x_{old} \leftarrow 0_{n \times 1}$.
+- Cho $k$ chạy từ $1$ đến $N$:
+  - Tạo một bản sao $x_{new} \leftarrow x_{old}$.
+  - Tính vector lặp mới:
+    $(x_{new})_i = \frac{1}{a_{ii}} \left( (e_t)_i - \sum_{j=1}^{i-1} a_{ij} (x_{new})_j - \sum_{j=i+1}^n a_{ij} (x_{old})_j \right), \quad i = \overline{1, n}$
+  - Kiểm tra điều kiện dừng: Nếu $\frac{q}{(1-s)(1-q)} \| x_{new} - x_{old} \|_\infty < \varepsilon$, thoát vòng lặp k.
+  - Gán $x_{old} \leftarrow x_{new}$.
+- Gán cột thứ t của ma trận X bằng $x_{new}$.
+
+**B4. Trả về kết quả: Trả về ma trận X là ma trận $A^{-1}$.**
 
 ### 16. Ma trận nghịch đảo bằng phương pháp Viền quanh (Bordering)
 **Mục đích:** Tính nghịch đảo ma trận cấp $n$ bằng cách viền quanh dần từ ma trận con cấp 1 đến $n$.
@@ -181,45 +385,154 @@ Tài liệu này hướng dẫn chi tiết từng bước thực hiện, điều
 ## CHƯƠNG 5: GIÁ TRỊ RIÊNG VÀ VECTOR RIÊNG
 
 ### 17. Phương pháp Danielevski (Tìm đa thức đặc trưng)
-**Mục đích:** Đưa ma trận $A$ về dạng Frobenius để đọc trực tiếp hệ số của đa thức đặc trưng.
-**Các bước thực hiện:**
-* **Bước 1:** Khởi tạo ma trận biến đổi $P = A$.
-* **Bước 2 (Khử ngược):** Duyệt lùi cột $k$ từ $n-1$ về $1$. Xây dựng ma trận $M_k$:
-  - Hàng $k-1$ của $M_k$ chính là hàng $k$ của $P$. Các hàng khác giữ nguyên (như ma trận đơn vị $I$).
-  - Tính ma trận nghịch đảo $M_k^{-1}$.
-  - Cập nhật ma trận mới $P_{mới} = M_k \cdot P_{cũ} \cdot M_k^{-1}$.
-* **Bước 3 (Kết luận):** Hàng đầu tiên của ma trận Frobenius cuối cùng chính là hệ số của đa thức đặc trưng:
-  $P(\lambda) = (-1)^n \left(\lambda^n - p_{0,0}\lambda^{n-1} - \dots - p_{0,n-1}\right)$
+
+**Input:**
+- Ma trận vuông $A_{n \times n}$.
+
+**Output:**
+- Một danh sách các đa thức đặc trưng $P_1(\lambda), P_2(\lambda), \ldots$ của các khối Frobenius. Đa thức đặc trưng của A là tích của chúng.
+
+**Thuật toán:**
+
+**B1. Khởi tạo:**
+- Gán ma trận làm việc $P \leftarrow A$.
+- Khởi tạo danh sách đa thức kết quả: $list\_poly$.
+- Gán $m \leftarrow n$ với n là kích thước của khối ma trận đang xét.
+
+**B2. Lặp: Lặp $k$ từ $m$ xuống $2$:**
+- TH1: Nếu $p_{k, k-1} \neq 0$.
+  - Gọi Thuật toán phụ M (với đầu vào là chỉ số hàng k và ma trận P hiện tại) để xây dựng ma trận $M_k$ và $M_k^{-1}$.
+  - Cập nhật $P$: $P \leftarrow M_k \cdot P \cdot M_k^{-1}$.
+- TH2: Nếu $p_{k, k-1} = 0$.
+  - Hoán vị: Tìm $j$ sao cho $1 \le j < k-1$ và $p_{k, j} \neq 0$.
+    - Nếu tìm thấy một $j$ như vậy:
+      - Gọi Thuật toán phụ C (với đầu vào là các chỉ số cột $j$ và $k-1$) để xây dựng ma trận hoán vị C.
+      - Cập nhật P: $P \leftarrow C \cdot P \cdot C^{-1}$.
+      - Quay lại kiểm tra TH1 với giá trị k hiện tại.
+    - Ngược lại, nếu không tìm thấy $j$ như trên:
+      - Phân rã:
+        1. Xác định và xử lý khối Frobenius: Khối Frobenius $P'$ được xác định là ma trận con của $P$ bao gồm các hàng và cột từ chỉ số $k$ đến $m$.
+        2. Trích xuất đa thức đặc trưng của khối $P'$ (là một khối Frobenius) và thêm vào $list\_poly$, với 2 dạng:
+           +) Nếu P là một khối Frobenius dạng 1, các hệ số của đa thức đặc trưng có thể được đọc trực tiếp từ hàng đầu tiên của P
+           +) Nếu P là một khối Frobenius dạng 2, các hệ số được đọc trực tiếp từ hàng cuối cùng của P.
+        Thiết lập lại bài toán:
+        1. Cập nhật kích thước bài toán: $m \leftarrow k - 1$.
+        2. Thu nhỏ ma trận P: P được gán bằng ma trận con của P bao gồm các hàng và cột từ chỉ số $1$ đến $m$.
+        3. Gán $k \leftarrow m + 1$ để vòng lặp bắt đầu lại.
+
+**B3. Xử lý khối cuối cùng:**
+- Sau khi vòng lặp kết thúc, P là khối Frobenius cuối cùng (hoặc một ma trận con $1 \times 1$). Trích xuất đa thức đặc trưng của nó và thêm vào $list\_poly$.
+
+**B4. Trả về kết quả: Trả về danh sách $list\_poly$.**
+
+**Các thuật toán phụ:**
+* Thuật toán phụ M (Xây dựng ma trận biến đổi):
+  - Input: Hàng $k$, ma trận P.
+  - Output: $M_k, M_k^{-1}$.
+  - Các bước:
+    B1. Tạo $M_k$ là ma trận đơn vị, sau đó thay thế hàng $k-1$ của $M_k$ bằng hàng $k$ của P.
+    B2. Tạo $M_k^{-1}$ là ma trận đơn vị, sau đó thay thế hàng $k-1$ của $M_k^{-1}$ với các phần tử $(M_k^{-1})_{k-1, j} \leftarrow -p_{k, j} / p_{k, k-1}$ (với $j \neq k-1$) và $(M_k^{-1})_{k-1, k-1} \leftarrow 1 / p_{k, k-1}$.
+* Thuật toán phụ C (Xây dựng ma trận hoán vị):
+  - Input: Các chỉ số cột $j$ và $k-1$.
+  - Output: Ma trận C.
+  - Các bước: Tạo ma trận đơn vị, sau đó hoán vị cột $j$ và cột $k-1$. ($C = C^{-1}$).
+* Thuật toán phụ S (Xây dựng ma trận khử khối $S_q$):
+  - Input: Ma trận P đang khối, cột 'q' của khối B.
+  - Output: $S_q, S_q^{-1}$.
+  - Các bước: Xây dựng ma trận $S_q$ là ma trận đơn vị với một khối con ngoài đường chéo được điền các giá trị lấy từ cột 'q' của B (với dấu ngược lại) để khi nhân ma trận sẽ triệt tiêu được cột 'q' đó.
 
 ### 18. Phương pháp Xuống thang
-**Mục đích:** Tìm giá trị riêng trội (lớn nhất) thứ 2 sau khi đã biết giá trị riêng lớn nhất $\lambda_1$ và vector riêng $v_1$.
-**Các bước thực hiện:**
-* **Bước 1 (Lập vector phụ):** Tính vector $x = \frac{v_1}{\|v_1\|^2}$.
-* **Bước 2 (Lập ma trận xuống thang):** "Khử" thành phần $\lambda_1$ ra khỏi $A$ để tạo ma trận $B$:
-  $B = A - \lambda_1 v_1 x^T$
-* **Bước 3 (Tìm trị riêng thứ 2):** Sử dụng phương pháp lũy thừa (Power Method) trên ma trận $B$ để tìm $\lambda_2$ (là trị riêng trội của $B$) và vector riêng $u_2$.
-* **Bước 4 (Khôi phục vector riêng):** Vector riêng thực sự của $A$ tương ứng với $\lambda_2$ là:
-  $v_2 = (\lambda_2 - \lambda_1) u_2 + \lambda_1 (x^T u_2) v_1$
+
+**Input:**
+- Ma trận vuông $A_{n \times n}$.
+- Giá trị riêng trội nhất đã biết $\lambda_1$.
+- Vector riêng phải tương ứng $v_1$ (đã chuẩn hóa: $\|v_1\|_2 = 1$).
+- Các tham số cho phương pháp lũy thừa con: Vector ban đầu $X^{(0)}$, sai số $\varepsilon$, số lặp tối đa $k_{max}$.
+
+**Output:**
+- Giá trị riêng trội thứ hai $\lambda_2$.
+- Vector riêng tương ứng $v_2$.
+
+**Thuật toán:**
+
+**B1. Xây dựng ma trận xuống thang:**
+- Chuẩn hóa vector riêng: $v_1 \leftarrow \frac{v_1}{\|v_1\|}$
+- Chọn vector phụ x: Chọn một vector x sao cho $x \leftarrow \frac{v_1}{v_1^T v_1}$
+- Tính ma trận xuống thang B:
+  $B \leftarrow A - \lambda_1 v_1 x^T$
+
+**B2. Tìm trị riêng trội của ma trận B:**
+- Áp dụng thuật toán phương pháp lũy thừa cho ma trận B với vector ban đầu $X^{(0)}$.
+- Kết quả thu được:
+  - Trị riêng trội của B, chính là trị riêng trội thứ hai của A: $\lambda_2$.
+  - Vector riêng tương ứng thu được là vector riêng $u_2$ của ma trận B
+
+**B3. Tìm vector riêng của A:**
+- Sử dụng công thức biến đổi ngược để tìm vector riêng $v_2$ của A từ $u_2$:
+  $v_2 \leftarrow (\lambda_2 - \lambda_1) u_2 + \lambda_1 (x^T u_2) v_1$
+- Chuẩn hóa vector riêng kết quả: $v_2 \leftarrow \frac{v_2}{\|v_2\|_2}$
+
+**B4. Trả về kết quả:**
+- Trả về trị riêng trội thứ hai cùng vector riêng tương ứng $(\lambda_2, v_2)$ đã tìm được.
 
 ### 19. Phân tích giá trị kỳ dị (SVD) và Phương pháp lũy thừa
-**Mục đích:** Phân tích ma trận $A = U \Sigma V^T$ hoặc tìm giá trị kỳ dị lớn nhất $\sigma_1$. 
-**Các bước tìm $\sigma_1$ bằng PP Lũy thừa:**
-* **Bước 1 (Chuẩn bị):** Giá trị kỳ dị lớn nhất $\sigma_1 = \sqrt{\lambda_{\max}(A^T A)}$. Ta đặt $B = A^T A$. Chọn ngẫu nhiên vector $v_0$ rồi chuẩn hóa về chuẩn 2 ($\|v_0\|_2 = 1$).
-* **Bước 2 (Lặp tìm trị riêng trội của B):** Tại bước $k$:
-  - Nhân ma trận: $Y = B \cdot v_k$.
-  - Tính xấp xỉ trị riêng (hệ số Rayleigh): $\lambda = v_k^T \cdot Y$.
-  - Chuẩn hóa vector cho vòng tiếp theo: $v_{k+1} = \frac{Y}{\|Y\|_2}$.
-* **Bước 3 (Kết luận):** Dừng lặp khi $\|v_{k+1} - v_k\| < \epsilon$. Ta có $\sigma_1 = \sqrt{\lambda}$.
-  - Vector kỳ dị phải (cột của V): $v = v_{k+1}$
-  - Vector kỳ dị trái (cột của U): $u = \frac{1}{\sigma_1} A \cdot v_{k+1}$.
+**Mục đích:** Tìm giá trị kỳ dị lớn nhất $\sigma_1$ bằng Phương pháp lũy thừa.
+
+**Input:**
+- Ma trận $A_{m \times n}$.
+- Các tham số cho phương pháp lũy thừa: Vector ban đầu $X^{(0)}$, sai số $r$, số lặp tối đa $k_{max}$.
+
+**Output:**
+- Giá trị kỳ dị lớn nhất $\sigma_1$.
+- Thông báo về sự hội tụ.
+
+**Thuật toán:**
+
+**B1. Khởi tạo:**
+- Xây dựng ma trận đối xứng: $B \leftarrow A^T A$.
+- Gán $k \leftarrow 0$.
+- Chuẩn hóa vector ban đầu theo chuẩn 2: $v \leftarrow \frac{X^{(0)}}{\|X^{(0)}\|_2}$
+
+**B2. Tìm trị riêng trội của B bằng Phương pháp Lũy thừa:**
+- Lặp: Lặp trong khi $k < k_{max}$:
+  - Gán $v_{old} \leftarrow v$.
+  - Tính vector mới: $Y \leftarrow B \cdot v_{old}$.
+  - Ước lượng trị riêng bằng thương Rayleigh: $\lambda_1 \leftarrow v_{old}^T \cdot Y$.
+  - Chuẩn hóa vector mới bằng chuẩn 2: $v \leftarrow \frac{Y}{\|Y\|_2}$.
+  - Cập nhật $k \leftarrow k + 1$.
+  - Kiểm tra hội tụ: Nếu $\|v - v_{old}\|_\infty < \varepsilon$, thoát vòng lặp.
+
+**B3. Tính giá trị kỳ dị lớn nhất:**
+- Tính giá trị kỳ dị:
+  $\sigma_1 \leftarrow \sqrt{\lambda_1}$
+
+**B4. Trả về kết quả:**
+- Trả về giá trị $\sigma_1$ và thông báo về sự hội tụ.
 
 **Ứng dụng SVD (Phân tích thành phần chính - PCA / Nén ảnh):** 
 SVD cho phép biểu diễn ma trận $A$ dưới dạng tổng các ma trận hạng 1: $A = \sum_{i=1}^r \sigma_i u_i v_i^T$. Trong nén ảnh, ta chỉ giữ lại $k$ giá trị kỳ dị lớn nhất đầu tiên ($k \ll r$) để tái tạo ảnh xấp xỉ $A_k = \sum_{i=1}^k \sigma_i u_i v_i^T$ giúp tiết kiệm đáng kể không gian lưu trữ mà vẫn giữ được đặc trưng chính của ảnh ban đầu.
 
 ### 20. Tính số điều kiện Cond(A)
-**Mục đích:** Đánh giá độ ổn định của ma trận trong giải hệ phương trình tuyến tính. Số $Cond(A)$ càng lớn thì hệ càng dễ bị nhiễu do sai số làm tròn.
-**Các bước thực hiện:**
-* **Bước 1:** Dùng SVD để tìm toàn bộ phổ giá trị kỳ dị của $A$.
-* **Bước 2:** Lấy giá trị kỳ dị cực đại $\sigma_{\max}$ và cực tiểu $\sigma_{\min}$.
-* **Bước 3:** Tính số điều kiện: $Cond(A) = \frac{\sigma_{\max}}{\sigma_{\min}} = \|A\|_2 \|A^{-1}\|_2$. 
-  - Nếu $\sigma_{\min} \approx 0$, hệ rất kém ổn định hoặc suy biến ($Cond(A) \to \infty$).
+
+**Input:**
+- Ma trận vuông $A_{n \times n}$.
+
+**Output:**
+- Số điều kiện của ma trận A, $cond(A)$.
+
+**Thuật toán:**
+
+**B1. Tìm tất cả các giá trị kỳ dị của A:**
+- Áp dụng thuật toán tìm khai triển kỳ dị để tìm ra danh sách tất cả các giá trị kỳ dị của ma trận A: $(\sigma_1, \sigma_2, \ldots, \sigma_n)$.
+
+**B2. Xác định $\sigma_{max}$ và $\sigma_{min}$:**
+- Tìm giá trị kỳ dị lớn nhất: $\sigma_{max} \leftarrow \max(\sigma_1, \ldots, \sigma_n)$.
+- Tìm giá trị kỳ dị nhỏ nhất: $\sigma_{min} \leftarrow \min(\sigma_1, \ldots, \sigma_n)$.
+
+**B3. Tính số điều kiện:**
+- Nếu $\sigma_{min} = 0$, hiện thông báo "Ma trận A là ma trận suy biến và số điều kiện là vô cùng".
+- Ngược lại, tính số điều kiện theo công thức:
+  $cond(A) \leftarrow \frac{\sigma_{max}}{\sigma_{min}}$
+
+**B4. Trả về kết quả:**
+- Trả về giá trị $cond(A)$.
